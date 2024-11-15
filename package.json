@@ -1,14 +1,14 @@
 {
-  "name": "",
+  "name": "pantryPlusApiClient",
   "version": "1.0.0",
-  "description": "OpenAPI client for ",
+  "description": "OpenAPI client for the pantryPlus REST API",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
     "axios",
     "typescript",
     "openapi-client",
     "openapi-generator",
-    ""
+    "pantryPlus"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",
