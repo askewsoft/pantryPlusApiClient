@@ -20,23 +20,15 @@ npm install
 npm run build
 ```
 
-## Usage
-There are 3 ways to use this library. For each domain object, the module exports these options:
-* Functional Programming Interface
-* Object Oriented Interface
-* Factory Interface
-
-### Functional Programming Interface - Example
-
-The example below shows the functional programming interface.
+## Usage Example
 
 ```typescript
 import {
-    ListsApiFp,
-    LocationsApiFp,
-    ShoppersApiFp,
-    GroupsApiFp,
-    CategoriesApiFp,
+    ListsApi,
+    LocationsApi,
+    ShoppersApi,
+    GroupsApi,
+    CategoriesApi,
     Configuration
 } from 'pantryPlusApiClient';
 
@@ -45,11 +37,11 @@ const configuration = new Configuration({
 });
 
 const api = {
-    shopper: ShoppersApiFp(configuration),
-    list: ListsApiFp(configuration),
-    location: LocationsApiFp(configuration),
-    group: GroupsApiFp(configuration),
-    category: CategoriesApiFp(configuration),
+    shopper: new ShoppersApi(configuration),
+    list: new ListsApi(configuration),
+    location: new LocationsApi(configuration),
+    group: new GroupsApi(configuration),
+    category: new CategoriesApi(configuration),
 };
 
 export default api;
@@ -63,6 +55,6 @@ import api from './path/to/pantryPlusApiClient';
 const shopper = await api.shopper.createShopper({
     id: '123',
     email: 'test@test.com',
-    nickname: 'test',
+    nickName: 'test',
 });
 ```
