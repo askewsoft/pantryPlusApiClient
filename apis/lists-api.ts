@@ -17,11 +17,10 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { Category } from '../models';
 import { CategoryResponse } from '../models';
+import { Item } from '../models';
 import { List } from '../models';
-import { ListIdItemsBody } from '../models';
-import { OmitCategoryId_ } from '../models';
-import { OmitListGroupId_ } from '../models';
 import { PickCategoryId_ } from '../models';
 import { PickItemId_ } from '../models';
 import { PickListId_ } from '../models';
@@ -34,13 +33,13 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Adds a category to a list
-         * @param {OmitCategoryId_} body the category to add
+         * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addCategory: async (body: OmitCategoryId_, xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addCategory: async (body: Category, xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling addCategory.');
@@ -92,13 +91,13 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Adds an item to a list
-         * @param {ListIdItemsBody} body the item to add
+         * @param {Item} body the item to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addItem: async (body: ListIdItemsBody, xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addItem: async (body: Item, xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling addItem.');
@@ -150,12 +149,12 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Creates a new list of items
-         * @param {OmitListGroupId_} body the list to create
+         * @param {List} body the list to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createList: async (body: OmitListGroupId_, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createList: async (body: List, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createList.');
@@ -614,13 +613,13 @@ export const ListsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Adds a category to a list
-         * @param {OmitCategoryId_} body the category to add
+         * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addCategory(body: OmitCategoryId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickCategoryId_>>> {
+        async addCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickCategoryId_>>> {
             const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).addCategory(body, xAuthUser, listId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -630,13 +629,13 @@ export const ListsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Adds an item to a list
-         * @param {ListIdItemsBody} body the item to add
+         * @param {Item} body the item to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addItem(body: ListIdItemsBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickItemId_>>> {
+        async addItem(body: Item, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickItemId_>>> {
             const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).addItem(body, xAuthUser, listId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -646,12 +645,12 @@ export const ListsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Creates a new list of items
-         * @param {OmitListGroupId_} body the list to create
+         * @param {List} body the list to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createList(body: OmitListGroupId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickListId_>>> {
+        async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickListId_>>> {
             const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).createList(body, xAuthUser, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -783,36 +782,36 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Adds a category to a list
-         * @param {OmitCategoryId_} body the category to add
+         * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addCategory(body: OmitCategoryId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickCategoryId_>> {
+        async addCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickCategoryId_>> {
             return ListsApiFp(configuration).addCategory(body, xAuthUser, listId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Adds an item to a list
-         * @param {ListIdItemsBody} body the item to add
+         * @param {Item} body the item to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addItem(body: ListIdItemsBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickItemId_>> {
+        async addItem(body: Item, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickItemId_>> {
             return ListsApiFp(configuration).addItem(body, xAuthUser, listId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Creates a new list of items
-         * @param {OmitListGroupId_} body the list to create
+         * @param {List} body the list to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createList(body: OmitListGroupId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>> {
+        async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>> {
             return ListsApiFp(configuration).createList(body, xAuthUser, options).then((request) => request(axios, basePath));
         },
         /**
@@ -913,39 +912,39 @@ export class ListsApi extends BaseAPI {
     /**
      * 
      * @summary Adds a category to a list
-     * @param {OmitCategoryId_} body the category to add
+     * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async addCategory(body: OmitCategoryId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickCategoryId_>> {
+    public async addCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickCategoryId_>> {
         return ListsApiFp(this.configuration).addCategory(body, xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @summary Adds an item to a list
-     * @param {ListIdItemsBody} body the item to add
+     * @param {Item} body the item to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async addItem(body: ListIdItemsBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickItemId_>> {
+    public async addItem(body: Item, xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickItemId_>> {
         return ListsApiFp(this.configuration).addItem(body, xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @summary Creates a new list of items
-     * @param {OmitListGroupId_} body the list to create
+     * @param {List} body the list to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async createList(body: OmitListGroupId_, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickListId_>> {
+    public async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickListId_>> {
         return ListsApiFp(this.configuration).createList(body, xAuthUser, options).then((request) => request(this.axios, this.basePath));
     }
     /**

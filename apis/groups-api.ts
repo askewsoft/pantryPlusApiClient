@@ -17,9 +17,9 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { Group } from '../models';
 import { GroupCreationResponse } from '../models';
 import { GroupResponse } from '../models';
-import { PickGroupNameOrMembers_ } from '../models';
 import { Shopper } from '../models';
 /**
  * GroupsApi - axios parameter creator
@@ -30,12 +30,12 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrMembers_} body the group to create
+         * @param {Group} body the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGroup: async (body: PickGroupNameOrMembers_, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createGroup: async (body: Group, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createGroup.');
@@ -229,13 +229,13 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Updates an existing group name and/or associated members
-         * @param {PickGroupNameOrMembers_} body the group to update
+         * @param {Group} body the group to update
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGroup: async (body: PickGroupNameOrMembers_, xAuthUser: string, groupId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateGroup: async (body: Group, xAuthUser: string, groupId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateGroup.');
@@ -296,12 +296,12 @@ export const GroupsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrMembers_} body the group to create
+         * @param {Group} body the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGroup(body: PickGroupNameOrMembers_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GroupCreationResponse>>> {
+        async createGroup(body: Group, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GroupCreationResponse>>> {
             const localVarAxiosArgs = await GroupsApiAxiosParamCreator(configuration).createGroup(body, xAuthUser, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -356,13 +356,13 @@ export const GroupsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Updates an existing group name and/or associated members
-         * @param {PickGroupNameOrMembers_} body the group to update
+         * @param {Group} body the group to update
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateGroup(body: PickGroupNameOrMembers_, xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async updateGroup(body: Group, xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await GroupsApiAxiosParamCreator(configuration).updateGroup(body, xAuthUser, groupId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -381,12 +381,12 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrMembers_} body the group to create
+         * @param {Group} body the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGroup(body: PickGroupNameOrMembers_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GroupCreationResponse>> {
+        async createGroup(body: Group, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GroupCreationResponse>> {
             return GroupsApiFp(configuration).createGroup(body, xAuthUser, options).then((request) => request(axios, basePath));
         },
         /**
@@ -425,13 +425,13 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Updates an existing group name and/or associated members
-         * @param {PickGroupNameOrMembers_} body the group to update
+         * @param {Group} body the group to update
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateGroup(body: PickGroupNameOrMembers_, xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async updateGroup(body: Group, xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return GroupsApiFp(configuration).updateGroup(body, xAuthUser, groupId, options).then((request) => request(axios, basePath));
         },
     };
@@ -447,13 +447,13 @@ export class GroupsApi extends BaseAPI {
     /**
      * 
      * @summary Creates a new group of shoppers
-     * @param {PickGroupNameOrMembers_} body the group to create
+     * @param {Group} body the group to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public async createGroup(body: PickGroupNameOrMembers_, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GroupCreationResponse>> {
+    public async createGroup(body: Group, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GroupCreationResponse>> {
         return GroupsApiFp(this.configuration).createGroup(body, xAuthUser, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -495,14 +495,14 @@ export class GroupsApi extends BaseAPI {
     /**
      * 
      * @summary Updates an existing group name and/or associated members
-     * @param {PickGroupNameOrMembers_} body the group to update
+     * @param {Group} body the group to update
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public async updateGroup(body: PickGroupNameOrMembers_, xAuthUser: string, groupId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async updateGroup(body: Group, xAuthUser: string, groupId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return GroupsApiFp(this.configuration).updateGroup(body, xAuthUser, groupId, options).then((request) => request(this.axios, this.basePath));
     }
 }

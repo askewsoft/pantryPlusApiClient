@@ -17,7 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { OmitLocationId_ } from '../models';
+import { Location } from '../models';
 import { PickLocationId_ } from '../models';
 /**
  * LocationsApi - axios parameter creator
@@ -28,12 +28,12 @@ export const LocationsApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary Creates a new location
-         * @param {OmitLocationId_} body the location to create
+         * @param {Location} body the location to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createLocation: async (body: OmitLocationId_, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createLocation: async (body: Location, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createLocation.');
@@ -147,12 +147,12 @@ export const LocationsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Creates a new location
-         * @param {OmitLocationId_} body the location to create
+         * @param {Location} body the location to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createLocation(body: OmitLocationId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickLocationId_>>> {
+        async createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickLocationId_>>> {
             const localVarAxiosArgs = await LocationsApiAxiosParamCreator(configuration).createLocation(body, xAuthUser, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -187,12 +187,12 @@ export const LocationsApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @summary Creates a new location
-         * @param {OmitLocationId_} body the location to create
+         * @param {Location} body the location to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createLocation(body: OmitLocationId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>> {
+        async createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>> {
             return LocationsApiFp(configuration).createLocation(body, xAuthUser, options).then((request) => request(axios, basePath));
         },
         /**
@@ -220,13 +220,13 @@ export class LocationsApi extends BaseAPI {
     /**
      * 
      * @summary Creates a new location
-     * @param {OmitLocationId_} body the location to create
+     * @param {Location} body the location to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LocationsApi
      */
-    public async createLocation(body: OmitLocationId_, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickLocationId_>> {
+    public async createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickLocationId_>> {
         return LocationsApiFp(this.configuration).createLocation(body, xAuthUser, options).then((request) => request(this.axios, this.basePath));
     }
     /**
