@@ -24,19 +24,12 @@ export interface Shopper {
      */
     id: string;
     /**
-     * The first name of the shopper
+     * The nickname of the shopper
      *
      * @type {string}
      * @memberof Shopper
      */
-    firstName: string;
-    /**
-     * The last name of the shopper
-     *
-     * @type {string}
-     * @memberof Shopper
-     */
-    lastName: string;
+    nickName: string;
     /**
      * The email of the shopper
      *

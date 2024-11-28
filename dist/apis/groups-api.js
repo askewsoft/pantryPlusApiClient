@@ -88,7 +88,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrMembers_} body the group to create
+         * @param {Group} body the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -290,7 +290,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates an existing group name and/or associated members
-         * @param {PickGroupNameOrMembers_} body the group to update
+         * @param {Group} body the group to update
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -356,7 +356,7 @@ exports.GroupsApiFp = function (configuration) {
         /**
          *
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrMembers_} body the group to create
+         * @param {Group} body the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -460,7 +460,7 @@ exports.GroupsApiFp = function (configuration) {
         /**
          *
          * @summary Updates an existing group name and/or associated members
-         * @param {PickGroupNameOrMembers_} body the group to update
+         * @param {Group} body the group to update
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -495,7 +495,7 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrMembers_} body the group to create
+         * @param {Group} body the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -555,7 +555,7 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates an existing group name and/or associated members
-         * @param {PickGroupNameOrMembers_} body the group to update
+         * @param {Group} body the group to update
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -584,7 +584,7 @@ var GroupsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Creates a new group of shoppers
-     * @param {PickGroupNameOrMembers_} body the group to create
+     * @param {Group} body the group to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -652,7 +652,7 @@ var GroupsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates an existing group name and/or associated members
-     * @param {PickGroupNameOrMembers_} body the group to update
+     * @param {Group} body the group to update
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.

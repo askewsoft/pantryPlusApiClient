@@ -88,7 +88,7 @@ exports.LocationsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates a new location
-         * @param {OmitLocationId_} body the location to create
+         * @param {Location} body the location to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -206,7 +206,7 @@ exports.LocationsApiFp = function (configuration) {
         /**
          *
          * @summary Creates a new location
-         * @param {OmitLocationId_} body the location to create
+         * @param {Location} body the location to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -267,7 +267,7 @@ exports.LocationsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates a new location
-         * @param {OmitLocationId_} body the location to create
+         * @param {Location} body the location to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -311,7 +311,7 @@ var LocationsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Creates a new location
-     * @param {OmitLocationId_} body the location to create
+     * @param {Location} body the location to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

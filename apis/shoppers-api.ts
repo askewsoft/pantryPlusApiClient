@@ -17,9 +17,10 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { GroupResponse } from '../models';
 import { Item } from '../models';
+import { List } from '../models';
 import { Location } from '../models';
+import { PickGroupIdOrNameOrOwnerId_ } from '../models';
 import { PickShopperId_ } from '../models';
 import { Shopper } from '../models';
 /**
@@ -405,7 +406,7 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<GroupResponse>>>> {
+        async getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwnerId_>>>> {
             const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).getGroups(xAuthUser, shopperId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -435,7 +436,7 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLists(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Array>>>> {
+        async getLists(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<List>>>> {
             const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).getLists(xAuthUser, shopperId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -515,7 +516,7 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<GroupResponse>>> {
+        async getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwnerId_>>> {
             return ShoppersApiFp(configuration).getGroups(xAuthUser, shopperId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -537,7 +538,7 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLists(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Array>>> {
+        async getLists(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<List>>> {
             return ShoppersApiFp(configuration).getLists(xAuthUser, shopperId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -604,7 +605,7 @@ export class ShoppersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    public async getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<GroupResponse>>> {
+    public async getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwnerId_>>> {
         return ShoppersApiFp(this.configuration).getGroups(xAuthUser, shopperId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -628,7 +629,7 @@ export class ShoppersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    public async getLists(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Array>>> {
+    public async getLists(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<List>>> {
         return ShoppersApiFp(this.configuration).getLists(xAuthUser, shopperId, options).then((request) => request(this.axios, this.basePath));
     }
     /**

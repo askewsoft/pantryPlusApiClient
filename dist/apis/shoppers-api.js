@@ -88,7 +88,7 @@ exports.ShoppersApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates a new shopper
-         * @param {OmitShopperId_} body the shopper to be created
+         * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -382,7 +382,7 @@ exports.ShoppersApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates an existing shopper
-         * @param {OmitShopperId_} body the updated shopper properties
+         * @param {Shopper} body the updated shopper properties
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper to be updated
          * @param {*} [options] Override http request option.
@@ -448,7 +448,7 @@ exports.ShoppersApiFp = function (configuration) {
         /**
          *
          * @summary Creates a new shopper
-         * @param {OmitShopperId_} body the shopper to be created
+         * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -603,7 +603,7 @@ exports.ShoppersApiFp = function (configuration) {
         /**
          *
          * @summary Updates an existing shopper
-         * @param {OmitShopperId_} body the updated shopper properties
+         * @param {Shopper} body the updated shopper properties
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper to be updated
          * @param {*} [options] Override http request option.
@@ -638,7 +638,7 @@ exports.ShoppersApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates a new shopper
-         * @param {OmitShopperId_} body the shopper to be created
+         * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -727,7 +727,7 @@ exports.ShoppersApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates an existing shopper
-         * @param {OmitShopperId_} body the updated shopper properties
+         * @param {Shopper} body the updated shopper properties
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper to be updated
          * @param {*} [options] Override http request option.
@@ -756,7 +756,7 @@ var ShoppersApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Creates a new shopper
-     * @param {OmitShopperId_} body the shopper to be created
+     * @param {Shopper} body the shopper to be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
@@ -857,7 +857,7 @@ var ShoppersApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates an existing shopper
-     * @param {OmitShopperId_} body the updated shopper properties
+     * @param {Shopper} body the updated shopper properties
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper to be updated
      * @param {*} [options] Override http request option.

@@ -12,7 +12,7 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
-import { OmitLocationId_ } from '../models';
+import { Location } from '../models';
 import { PickLocationId_ } from '../models';
 /**
  * LocationsApi - axios parameter creator
@@ -22,12 +22,12 @@ export declare const LocationsApiAxiosParamCreator: (configuration?: Configurati
     /**
      *
      * @summary Creates a new location
-     * @param {OmitLocationId_} body the location to create
+     * @param {Location} body the location to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createLocation: (body: OmitLocationId_, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createLocation: (body: Location, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates an existing location name
@@ -47,12 +47,12 @@ export declare const LocationsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Creates a new location
-     * @param {OmitLocationId_} body the location to create
+     * @param {Location} body the location to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createLocation(body: OmitLocationId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickLocationId_>>>;
+    createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickLocationId_>>>;
     /**
      *
      * @summary Updates an existing location name
@@ -72,12 +72,12 @@ export declare const LocationsApiFactory: (configuration?: Configuration, basePa
     /**
      *
      * @summary Creates a new location
-     * @param {OmitLocationId_} body the location to create
+     * @param {Location} body the location to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createLocation(body: OmitLocationId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>>;
+    createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>>;
     /**
      *
      * @summary Updates an existing location name
@@ -99,13 +99,13 @@ export declare class LocationsApi extends BaseAPI {
     /**
      *
      * @summary Creates a new location
-     * @param {OmitLocationId_} body the location to create
+     * @param {Location} body the location to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LocationsApi
      */
-    createLocation(body: OmitLocationId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>>;
+    createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>>;
     /**
      *
      * @summary Updates an existing location name

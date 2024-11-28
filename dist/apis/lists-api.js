@@ -88,7 +88,7 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Adds a category to a list
-         * @param {OmitCategoryId_} body the category to add
+         * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -146,7 +146,7 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Adds an item to a list
-         * @param {ListIdItemsBody} body the item to add
+         * @param {Item} body the item to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -204,7 +204,7 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates a new list of items
-         * @param {OmitListId_} body the list to create
+         * @param {List} body the list to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -604,7 +604,7 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates a list
-         * @param {OmitListId_} body the updated list
+         * @param {List} body the updated list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -670,7 +670,7 @@ exports.ListsApiFp = function (configuration) {
         /**
          *
          * @summary Adds a category to a list
-         * @param {OmitCategoryId_} body the category to add
+         * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -697,7 +697,7 @@ exports.ListsApiFp = function (configuration) {
         /**
          *
          * @summary Adds an item to a list
-         * @param {ListIdItemsBody} body the item to add
+         * @param {Item} body the item to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -724,7 +724,7 @@ exports.ListsApiFp = function (configuration) {
         /**
          *
          * @summary Creates a new list of items
-         * @param {OmitListId_} body the list to create
+         * @param {List} body the list to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -913,7 +913,7 @@ exports.ListsApiFp = function (configuration) {
         /**
          *
          * @summary Updates a list
-         * @param {OmitListId_} body the updated list
+         * @param {List} body the updated list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -948,7 +948,7 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Adds a category to a list
-         * @param {OmitCategoryId_} body the category to add
+         * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -964,7 +964,7 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Adds an item to a list
-         * @param {ListIdItemsBody} body the item to add
+         * @param {Item} body the item to add
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -980,7 +980,7 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates a new list of items
-         * @param {OmitListId_} body the list to create
+         * @param {List} body the list to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1092,7 +1092,7 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates a list
-         * @param {OmitListId_} body the updated list
+         * @param {List} body the updated list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -1121,7 +1121,7 @@ var ListsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Adds a category to a list
-     * @param {OmitCategoryId_} body the category to add
+     * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
@@ -1139,7 +1139,7 @@ var ListsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Adds an item to a list
-     * @param {ListIdItemsBody} body the item to add
+     * @param {Item} body the item to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
@@ -1157,7 +1157,7 @@ var ListsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Creates a new list of items
-     * @param {OmitListId_} body the list to create
+     * @param {List} body the list to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1283,7 +1283,7 @@ var ListsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates a list
-     * @param {OmitListId_} body the updated list
+     * @param {List} body the updated list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.

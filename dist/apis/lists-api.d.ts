@@ -12,10 +12,10 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
-import { CategoryResponse } from '../models';
-import { ListIdItemsBody } from '../models';
-import { OmitCategoryId_ } from '../models';
-import { OmitListId_ } from '../models';
+import { Category } from '../models';
+import { Item } from '../models';
+import { List } from '../models';
+import { PickCategoryIdOrName_ } from '../models';
 import { PickCategoryId_ } from '../models';
 import { PickItemId_ } from '../models';
 import { PickListId_ } from '../models';
@@ -27,32 +27,32 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Adds a category to a list
-     * @param {OmitCategoryId_} body the category to add
+     * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addCategory: (body: OmitCategoryId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    addCategory: (body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Adds an item to a list
-     * @param {ListIdItemsBody} body the item to add
+     * @param {Item} body the item to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addItem: (body: ListIdItemsBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    addItem: (body: Item, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Creates a new list of items
-     * @param {OmitListId_} body the list to create
+     * @param {List} body the list to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createList: (body: OmitListId_, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createList: (body: List, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes a list of items
@@ -117,13 +117,13 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Updates a list
-     * @param {OmitListId_} body the updated list
+     * @param {List} body the updated list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateList: (body: OmitListId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateList: (body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ListsApi - functional programming interface
@@ -133,32 +133,32 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Adds a category to a list
-     * @param {OmitCategoryId_} body the category to add
+     * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addCategory(body: OmitCategoryId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickCategoryId_>>>;
+    addCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickCategoryId_>>>;
     /**
      *
      * @summary Adds an item to a list
-     * @param {ListIdItemsBody} body the item to add
+     * @param {Item} body the item to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addItem(body: ListIdItemsBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickItemId_>>>;
+    addItem(body: Item, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickItemId_>>>;
     /**
      *
      * @summary Creates a new list of items
-     * @param {OmitListId_} body the list to create
+     * @param {List} body the list to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createList(body: OmitListId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickListId_>>>;
+    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickListId_>>>;
     /**
      *
      * @summary Deletes a list of items
@@ -176,7 +176,7 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CategoryResponse>>>>;
+    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>>;
     /**
      *
      * @summary Purchases an item on a list
@@ -223,13 +223,13 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Updates a list
-     * @param {OmitListId_} body the updated list
+     * @param {List} body the updated list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateList(body: OmitListId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    updateList(body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * ListsApi - factory interface
@@ -239,32 +239,32 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Adds a category to a list
-     * @param {OmitCategoryId_} body the category to add
+     * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addCategory(body: OmitCategoryId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickCategoryId_>>;
+    addCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickCategoryId_>>;
     /**
      *
      * @summary Adds an item to a list
-     * @param {ListIdItemsBody} body the item to add
+     * @param {Item} body the item to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addItem(body: ListIdItemsBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickItemId_>>;
+    addItem(body: Item, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickItemId_>>;
     /**
      *
      * @summary Creates a new list of items
-     * @param {OmitListId_} body the list to create
+     * @param {List} body the list to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createList(body: OmitListId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>>;
+    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>>;
     /**
      *
      * @summary Deletes a list of items
@@ -282,7 +282,7 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CategoryResponse>>>;
+    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>;
     /**
      *
      * @summary Purchases an item on a list
@@ -329,13 +329,13 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Updates a list
-     * @param {OmitListId_} body the updated list
+     * @param {List} body the updated list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateList(body: OmitListId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateList(body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * ListsApi - object-oriented interface
@@ -347,35 +347,35 @@ export declare class ListsApi extends BaseAPI {
     /**
      *
      * @summary Adds a category to a list
-     * @param {OmitCategoryId_} body the category to add
+     * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    addCategory(body: OmitCategoryId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickCategoryId_>>;
+    addCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickCategoryId_>>;
     /**
      *
      * @summary Adds an item to a list
-     * @param {ListIdItemsBody} body the item to add
+     * @param {Item} body the item to add
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    addItem(body: ListIdItemsBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickItemId_>>;
+    addItem(body: Item, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickItemId_>>;
     /**
      *
      * @summary Creates a new list of items
-     * @param {OmitListId_} body the list to create
+     * @param {List} body the list to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    createList(body: OmitListId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>>;
+    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>>;
     /**
      *
      * @summary Deletes a list of items
@@ -395,7 +395,7 @@ export declare class ListsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CategoryResponse>>>;
+    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>;
     /**
      *
      * @summary Purchases an item on a list
@@ -446,12 +446,12 @@ export declare class ListsApi extends BaseAPI {
     /**
      *
      * @summary Updates a list
-     * @param {OmitListId_} body the updated list
+     * @param {List} body the updated list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    updateList(body: OmitListId_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateList(body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }
