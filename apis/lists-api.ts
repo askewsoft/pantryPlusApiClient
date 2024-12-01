@@ -298,6 +298,61 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Retrieves the items for a category
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId 
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getItems: async (xAuthUser: string, listId: string, categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling getItems.');
+            }
+            // verify required parameter 'listId' is not null or undefined
+            if (listId === null || listId === undefined) {
+                throw new RequiredError('listId','Required parameter listId was null or undefined when calling getItems.');
+            }
+            // verify required parameter 'categoryId' is not null or undefined
+            if (categoryId === null || categoryId === undefined) {
+                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling getItems.');
+            }
+            const localVarPath = `/lists/{listId}/categories/{categoryId}/items`
+                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)))
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -689,6 +744,22 @@ export const ListsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Retrieves the items for a category
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId 
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Item>>>> {
+            const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).getItems(xAuthUser, listId, categoryId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -838,6 +909,18 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
+         * @summary Retrieves the items for a category
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId 
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>> {
+            return ListsApiFp(configuration).getItems(xAuthUser, listId, categoryId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -970,6 +1053,19 @@ export class ListsApi extends BaseAPI {
      */
     public async getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<PickCategoryIdOrName_>>> {
         return ListsApiFp(this.configuration).getCategories(xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Retrieves the items for a category
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId 
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    public async getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Item>>> {
+        return ListsApiFp(this.configuration).getItems(xAuthUser, listId, categoryId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
