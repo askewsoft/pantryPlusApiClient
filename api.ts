@@ -13,6 +13,7 @@
  */
 export * from './apis/categories-api';
 export * from './apis/groups-api';
+export * from './apis/items-api';
 export * from './apis/lists-api';
 export * from './apis/locations-api';
 export * from './apis/shoppers-api';

@@ -9,9 +9,16 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/categories-api';
-export * from './apis/groups-api';
-export * from './apis/items-api';
-export * from './apis/lists-api';
-export * from './apis/locations-api';
-export * from './apis/shoppers-api';
+/**
+* the body of the request
+*
+* @export
+* @interface CategoriesCategoryIdBody
+*/
+export interface CategoriesCategoryIdBody {
+    /**
+     * @type {string}
+     * @memberof CategoriesCategoryIdBody
+     */
+    name: string;
+}

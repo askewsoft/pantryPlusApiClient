@@ -12,6 +12,7 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
+import { CategoriesCategoryIdBody } from '../models';
 /**
  * CategoriesApi - axios parameter creator
  * @export
@@ -27,6 +28,16 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
      * @throws {RequiredError}
      */
     removeItemFromCategory: (xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Updates a category
+     * @param {CategoriesCategoryIdBody} body the body of the request
+     * @param {string} xAuthUser the email of the user
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateCategory: (body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CategoriesApi - functional programming interface
@@ -43,6 +54,16 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
+     * @summary Updates a category
+     * @param {CategoriesCategoryIdBody} body the body of the request
+     * @param {string} xAuthUser the email of the user
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateCategory(body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * CategoriesApi - factory interface
@@ -59,6 +80,16 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
      * @throws {RequiredError}
      */
     removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Updates a category
+     * @param {CategoriesCategoryIdBody} body the body of the request
+     * @param {string} xAuthUser the email of the user
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateCategory(body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * CategoriesApi - object-oriented interface
@@ -78,4 +109,15 @@ export declare class CategoriesApi extends BaseAPI {
      * @memberof CategoriesApi
      */
     removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Updates a category
+     * @param {CategoriesCategoryIdBody} body the body of the request
+     * @param {string} xAuthUser the email of the user
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    updateCategory(body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

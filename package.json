@@ -1,6 +1,6 @@
 {
   "name": "pantryPlusApiClient",
-  "version": "1.0.0",
+  "version": "0.9.4",
   "description": "OpenAPI client for the pantryPlus REST API",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [

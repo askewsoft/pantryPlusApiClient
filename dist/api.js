@@ -25,6 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 __exportStar(require("./apis/categories-api"), exports);
 __exportStar(require("./apis/groups-api"), exports);
+__exportStar(require("./apis/items-api"), exports);
 __exportStar(require("./apis/lists-api"), exports);
 __exportStar(require("./apis/locations-api"), exports);
 __exportStar(require("./apis/shoppers-api"), exports);
