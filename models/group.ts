@@ -44,7 +44,7 @@ export interface Group {
     name: string;
 
     /**
-     * UUID representation of the groups's ID
+     * UUID representation of the group's ID
      *
      * @type {string}
      * @memberof Group

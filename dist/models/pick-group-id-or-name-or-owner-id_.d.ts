@@ -17,7 +17,7 @@
 */
 export interface PickGroupIdOrNameOrOwnerId_ {
     /**
-     * UUID representation of the groups's ID
+     * UUID representation of the group's ID
      *
      * @type {string}
      * @memberof PickGroupIdOrNameOrOwnerId_

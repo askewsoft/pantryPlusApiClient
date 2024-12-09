@@ -18,12 +18,117 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { CategoriesCategoryIdBody } from '../models';
+import { Item } from '../models';
 /**
  * CategoriesApi - axios parameter creator
  * @export
  */
 export const CategoriesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Adds an item to a category
+         * @param {string} xAuthUser 
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addItemToCategory: async (xAuthUser: string, categoryId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling addItemToCategory.');
+            }
+            // verify required parameter 'categoryId' is not null or undefined
+            if (categoryId === null || categoryId === undefined) {
+                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling addItemToCategory.');
+            }
+            // verify required parameter 'itemId' is not null or undefined
+            if (itemId === null || itemId === undefined) {
+                throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling addItemToCategory.');
+            }
+            const localVarPath = `/categories/{categoryId}/items/{itemId}`
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Gets the items in a category
+         * @param {string} xAuthUser 
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCategoryItems: async (xAuthUser: string, categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling getCategoryItems.');
+            }
+            // verify required parameter 'categoryId' is not null or undefined
+            if (categoryId === null || categoryId === undefined) {
+                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling getCategoryItems.');
+            }
+            const localVarPath = `/categories/{categoryId}/items`
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Removes an item from a category
@@ -148,6 +253,37 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Adds an item to a category
+         * @param {string} xAuthUser 
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addItemToCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await CategoriesApiAxiosParamCreator(configuration).addItemToCategory(xAuthUser, categoryId, itemId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Gets the items in a category
+         * @param {string} xAuthUser 
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCategoryItems(xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Item>>>> {
+            const localVarAxiosArgs = await CategoriesApiAxiosParamCreator(configuration).getCategoryItems(xAuthUser, categoryId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Removes an item from a category
          * @param {string} xAuthUser 
          * @param {string} categoryId the ID of the category
@@ -189,6 +325,29 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
     return {
         /**
          * 
+         * @summary Adds an item to a category
+         * @param {string} xAuthUser 
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addItemToCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return CategoriesApiFp(configuration).addItemToCategory(xAuthUser, categoryId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Gets the items in a category
+         * @param {string} xAuthUser 
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCategoryItems(xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>> {
+            return CategoriesApiFp(configuration).getCategoryItems(xAuthUser, categoryId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Removes an item from a category
          * @param {string} xAuthUser 
          * @param {string} categoryId the ID of the category
@@ -221,6 +380,31 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
  * @extends {BaseAPI}
  */
 export class CategoriesApi extends BaseAPI {
+    /**
+     * 
+     * @summary Adds an item to a category
+     * @param {string} xAuthUser 
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    public async addItemToCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return CategoriesApiFp(this.configuration).addItemToCategory(xAuthUser, categoryId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Gets the items in a category
+     * @param {string} xAuthUser 
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    public async getCategoryItems(xAuthUser: string, categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Item>>> {
+        return CategoriesApiFp(this.configuration).getCategoryItems(xAuthUser, categoryId, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * 
      * @summary Removes an item from a category

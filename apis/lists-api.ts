@@ -298,14 +298,13 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
-         * @summary Retrieves the items for a category
+         * @summary Retrieves the uncategorized items for a list
          * @param {string} xAuthUser the email address of the user
-         * @param {string} listId 
-         * @param {string} categoryId the ID of the category
+         * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems: async (xAuthUser: string, listId: string, categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getItems: async (xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xAuthUser' is not null or undefined
             if (xAuthUser === null || xAuthUser === undefined) {
                 throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling getItems.');
@@ -314,13 +313,8 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
             if (listId === null || listId === undefined) {
                 throw new RequiredError('listId','Required parameter listId was null or undefined when calling getItems.');
             }
-            // verify required parameter 'categoryId' is not null or undefined
-            if (categoryId === null || categoryId === undefined) {
-                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling getItems.');
-            }
-            const localVarPath = `/lists/{listId}/categories/{categoryId}/items`
-                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)))
-                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            const localVarPath = `/lists/{listId}/items`
+                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -744,15 +738,14 @@ export const ListsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Retrieves the items for a category
+         * @summary Retrieves the uncategorized items for a list
          * @param {string} xAuthUser the email address of the user
-         * @param {string} listId 
-         * @param {string} categoryId the ID of the category
+         * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Item>>>> {
-            const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).getItems(xAuthUser, listId, categoryId, options);
+        async getItems(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Item>>>> {
+            const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).getItems(xAuthUser, listId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -909,15 +902,14 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          * 
-         * @summary Retrieves the items for a category
+         * @summary Retrieves the uncategorized items for a list
          * @param {string} xAuthUser the email address of the user
-         * @param {string} listId 
-         * @param {string} categoryId the ID of the category
+         * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>> {
-            return ListsApiFp(configuration).getItems(xAuthUser, listId, categoryId, options).then((request) => request(axios, basePath));
+        async getItems(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>> {
+            return ListsApiFp(configuration).getItems(xAuthUser, listId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1056,16 +1048,15 @@ export class ListsApi extends BaseAPI {
     }
     /**
      * 
-     * @summary Retrieves the items for a category
+     * @summary Retrieves the uncategorized items for a list
      * @param {string} xAuthUser the email address of the user
-     * @param {string} listId 
-     * @param {string} categoryId the ID of the category
+     * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Item>>> {
-        return ListsApiFp(this.configuration).getItems(xAuthUser, listId, categoryId, options).then((request) => request(this.axios, this.basePath));
+    public async getItems(xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Item>>> {
+        return ListsApiFp(this.configuration).getItems(xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

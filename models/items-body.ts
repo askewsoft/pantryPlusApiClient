@@ -12,26 +12,29 @@
  * Do not edit the class manually.
  */
 
-import { GroupMembers } from './group-members';
  /**
- * From T, pick a set of properties whose keys are in the union K
+ * the body of the request
  *
  * @export
- * @interface PickGroupIdOrMembers_
+ * @interface ItemsBody
  */
-export interface PickGroupIdOrMembers_ {
+export interface ItemsBody {
 
     /**
-     * UUID representation of the group's ID
-     *
      * @type {string}
-     * @memberof PickGroupIdOrMembers_
+     * @memberof ItemsBody
      */
-    id: string;
+    upc: string;
 
     /**
-     * @type {GroupMembers}
-     * @memberof PickGroupIdOrMembers_
+     * @type {string}
+     * @memberof ItemsBody
      */
-    members: GroupMembers;
+    name: string;
+
+    /**
+     * @type {string}
+     * @memberof ItemsBody
+     */
+    itemId: string;
 }

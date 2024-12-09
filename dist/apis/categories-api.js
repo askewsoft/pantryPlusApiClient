@@ -87,6 +87,112 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
+         * @summary Adds an item to a category
+         * @param {string} xAuthUser
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addItemToCategory: function (xAuthUser, categoryId, itemId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_a) {
+                    // verify required parameter 'xAuthUser' is not null or undefined
+                    if (xAuthUser === null || xAuthUser === undefined) {
+                        throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling addItemToCategory.');
+                    }
+                    // verify required parameter 'categoryId' is not null or undefined
+                    if (categoryId === null || categoryId === undefined) {
+                        throw new base_1.RequiredError('categoryId', 'Required parameter categoryId was null or undefined when calling addItemToCategory.');
+                    }
+                    // verify required parameter 'itemId' is not null or undefined
+                    if (itemId === null || itemId === undefined) {
+                        throw new base_1.RequiredError('itemId', 'Required parameter itemId was null or undefined when calling addItemToCategory.');
+                    }
+                    localVarPath = "/categories/{categoryId}/items/{itemId}"
+                        .replace("{" + "categoryId" + "}", encodeURIComponent(String(categoryId)))
+                        .replace("{" + "itemId" + "}", encodeURIComponent(String(itemId)));
+                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                    if (configuration) {
+                        baseOptions = configuration.baseOptions;
+                    }
+                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                    localVarHeaderParameter = {};
+                    localVarQueryParameter = {};
+                    if (xAuthUser !== undefined && xAuthUser !== null) {
+                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                    }
+                    query = new URLSearchParams(localVarUrlObj.search);
+                    for (key in localVarQueryParameter) {
+                        query.set(key, localVarQueryParameter[key]);
+                    }
+                    for (key in options.params) {
+                        query.set(key, options.params[key]);
+                    }
+                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                    return [2 /*return*/, {
+                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                            options: localVarRequestOptions,
+                        }];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Gets the items in a category
+         * @param {string} xAuthUser
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCategoryItems: function (xAuthUser, categoryId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_a) {
+                    // verify required parameter 'xAuthUser' is not null or undefined
+                    if (xAuthUser === null || xAuthUser === undefined) {
+                        throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling getCategoryItems.');
+                    }
+                    // verify required parameter 'categoryId' is not null or undefined
+                    if (categoryId === null || categoryId === undefined) {
+                        throw new base_1.RequiredError('categoryId', 'Required parameter categoryId was null or undefined when calling getCategoryItems.');
+                    }
+                    localVarPath = "/categories/{categoryId}/items"
+                        .replace("{" + "categoryId" + "}", encodeURIComponent(String(categoryId)));
+                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                    if (configuration) {
+                        baseOptions = configuration.baseOptions;
+                    }
+                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                    localVarHeaderParameter = {};
+                    localVarQueryParameter = {};
+                    if (xAuthUser !== undefined && xAuthUser !== null) {
+                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                    }
+                    query = new URLSearchParams(localVarUrlObj.search);
+                    for (key in localVarQueryParameter) {
+                        query.set(key, localVarQueryParameter[key]);
+                    }
+                    for (key in options.params) {
+                        query.set(key, options.params[key]);
+                    }
+                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                    return [2 /*return*/, {
+                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                            options: localVarRequestOptions,
+                        }];
+                });
+            });
+        },
+        /**
+         *
          * @summary Removes an item from a category
          * @param {string} xAuthUser
          * @param {string} categoryId the ID of the category
@@ -209,6 +315,59 @@ exports.CategoriesApiFp = function (configuration) {
     return {
         /**
          *
+         * @summary Adds an item to a category
+         * @param {string} xAuthUser
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addItemToCategory: function (xAuthUser, categoryId, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.CategoriesApiAxiosParamCreator(configuration).addItemToCategory(xAuthUser, categoryId, itemId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Gets the items in a category
+         * @param {string} xAuthUser
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCategoryItems: function (xAuthUser, categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.CategoriesApiAxiosParamCreator(configuration).getCategoryItems(xAuthUser, categoryId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Removes an item from a category
          * @param {string} xAuthUser
          * @param {string} categoryId the ID of the category
@@ -271,6 +430,37 @@ exports.CategoriesApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
+         * @summary Adds an item to a category
+         * @param {string} xAuthUser
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addItemToCategory: function (xAuthUser, categoryId, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, exports.CategoriesApiFp(configuration).addItemToCategory(xAuthUser, categoryId, itemId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Gets the items in a category
+         * @param {string} xAuthUser
+         * @param {string} categoryId the ID of the category
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCategoryItems: function (xAuthUser, categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, exports.CategoriesApiFp(configuration).getCategoryItems(xAuthUser, categoryId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
          * @summary Removes an item from a category
          * @param {string} xAuthUser
          * @param {string} categoryId the ID of the category
@@ -314,6 +504,41 @@ var CategoriesApi = /** @class */ (function (_super) {
     function CategoriesApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    /**
+     *
+     * @summary Adds an item to a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    CategoriesApi.prototype.addItemToCategory = function (xAuthUser, categoryId, itemId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, exports.CategoriesApiFp(this.configuration).addItemToCategory(xAuthUser, categoryId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Gets the items in a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    CategoriesApi.prototype.getCategoryItems = function (xAuthUser, categoryId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, exports.CategoriesApiFp(this.configuration).getCategoryItems(xAuthUser, categoryId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
     /**
      *
      * @summary Removes an item from a category

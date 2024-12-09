@@ -17,6 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { ItemsBody } from '../models';
 import { ItemsItemIdBody } from '../models';
 /**
  * ItemsApi - axios parameter creator
@@ -24,6 +25,58 @@ import { ItemsItemIdBody } from '../models';
  */
 export const ItemsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * 
+         * @summary Creates an item
+         * @param {ItemsBody} body the body of the request
+         * @param {string} xAuthUser 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createItem: async (body: ItemsBody, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling createItem.');
+            }
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling createItem.');
+            }
+            const localVarPath = `/items`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * 
          * @summary Updates an item
@@ -93,6 +146,21 @@ export const ItemsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Creates an item
+         * @param {ItemsBody} body the body of the request
+         * @param {string} xAuthUser 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createItem(body: ItemsBody, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await ItemsApiAxiosParamCreator(configuration).createItem(body, xAuthUser, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Updates an item
          * @param {ItemsItemIdBody} body the body of the request
          * @param {string} xAuthUser 
@@ -118,6 +186,17 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          * 
+         * @summary Creates an item
+         * @param {ItemsBody} body the body of the request
+         * @param {string} xAuthUser 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createItem(body: ItemsBody, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return ItemsApiFp(configuration).createItem(body, xAuthUser, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Updates an item
          * @param {ItemsItemIdBody} body the body of the request
          * @param {string} xAuthUser 
@@ -138,6 +217,18 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class ItemsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Creates an item
+     * @param {ItemsBody} body the body of the request
+     * @param {string} xAuthUser 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    public async createItem(body: ItemsBody, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return ItemsApiFp(this.configuration).createItem(body, xAuthUser, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * 
      * @summary Updates an item

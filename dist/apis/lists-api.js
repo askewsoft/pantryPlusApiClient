@@ -355,14 +355,13 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Retrieves the items for a category
+         * @summary Retrieves the uncategorized items for a list
          * @param {string} xAuthUser the email address of the user
-         * @param {string} listId
-         * @param {string} categoryId the ID of the category
+         * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems: function (xAuthUser, listId, categoryId, options) {
+        getItems: function (xAuthUser, listId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
@@ -375,13 +374,8 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
                     if (listId === null || listId === undefined) {
                         throw new base_1.RequiredError('listId', 'Required parameter listId was null or undefined when calling getItems.');
                     }
-                    // verify required parameter 'categoryId' is not null or undefined
-                    if (categoryId === null || categoryId === undefined) {
-                        throw new base_1.RequiredError('categoryId', 'Required parameter categoryId was null or undefined when calling getItems.');
-                    }
-                    localVarPath = "/lists/{listId}/categories/{categoryId}/items"
-                        .replace("{" + "listId" + "}", encodeURIComponent(String(listId)))
-                        .replace("{" + "categoryId" + "}", encodeURIComponent(String(categoryId)));
+                    localVarPath = "/lists/{listId}/items"
+                        .replace("{" + "listId" + "}", encodeURIComponent(String(listId)));
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
                         baseOptions = configuration.baseOptions;
@@ -857,19 +851,18 @@ exports.ListsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Retrieves the items for a category
+         * @summary Retrieves the uncategorized items for a list
          * @param {string} xAuthUser the email address of the user
-         * @param {string} listId
-         * @param {string} categoryId the ID of the category
+         * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems: function (xAuthUser, listId, categoryId, options) {
+        getItems: function (xAuthUser, listId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.ListsApiAxiosParamCreator(configuration).getItems(xAuthUser, listId, categoryId, options)];
+                        case 0: return [4 /*yield*/, exports.ListsApiAxiosParamCreator(configuration).getItems(xAuthUser, listId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1107,17 +1100,16 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Retrieves the items for a category
+         * @summary Retrieves the uncategorized items for a list
          * @param {string} xAuthUser the email address of the user
-         * @param {string} listId
-         * @param {string} categoryId the ID of the category
+         * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getItems: function (xAuthUser, listId, categoryId, options) {
+        getItems: function (xAuthUser, listId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.ListsApiFp(configuration).getItems(xAuthUser, listId, categoryId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, exports.ListsApiFp(configuration).getItems(xAuthUser, listId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -1306,19 +1298,18 @@ var ListsApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Retrieves the items for a category
+     * @summary Retrieves the uncategorized items for a list
      * @param {string} xAuthUser the email address of the user
-     * @param {string} listId
-     * @param {string} categoryId the ID of the category
+     * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    ListsApi.prototype.getItems = function (xAuthUser, listId, categoryId, options) {
+    ListsApi.prototype.getItems = function (xAuthUser, listId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.ListsApiFp(this.configuration).getItems(xAuthUser, listId, categoryId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, exports.ListsApiFp(this.configuration).getItems(xAuthUser, listId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

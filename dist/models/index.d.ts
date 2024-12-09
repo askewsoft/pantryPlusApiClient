@@ -3,6 +3,7 @@ export * from './category';
 export * from './group';
 export * from './group-members';
 export * from './item';
+export * from './items-body';
 export * from './items-item-id-body';
 export * from './list';
 export * from './location';

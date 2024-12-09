@@ -18,7 +18,7 @@ import { GroupMembers } from './group-members';
 */
 export interface PickGroupIdOrMembers_ {
     /**
-     * UUID representation of the groups's ID
+     * UUID representation of the group's ID
      *
      * @type {string}
      * @memberof PickGroupIdOrMembers_

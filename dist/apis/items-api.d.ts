@@ -12,12 +12,22 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
+import { ItemsBody } from '../models';
 import { ItemsItemIdBody } from '../models';
 /**
  * ItemsApi - axios parameter creator
  * @export
  */
 export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Creates an item
+     * @param {ItemsBody} body the body of the request
+     * @param {string} xAuthUser
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createItem: (body: ItemsBody, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates an item
@@ -36,6 +46,15 @@ export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) 
 export declare const ItemsApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Creates an item
+     * @param {ItemsBody} body the body of the request
+     * @param {string} xAuthUser
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createItem(body: ItemsBody, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
      * @summary Updates an item
      * @param {ItemsItemIdBody} body the body of the request
      * @param {string} xAuthUser
@@ -50,6 +69,15 @@ export declare const ItemsApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const ItemsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Creates an item
+     * @param {ItemsBody} body the body of the request
+     * @param {string} xAuthUser
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createItem(body: ItemsBody, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Updates an item
@@ -68,6 +96,16 @@ export declare const ItemsApiFactory: (configuration?: Configuration, basePath?:
  * @extends {BaseAPI}
  */
 export declare class ItemsApi extends BaseAPI {
+    /**
+     *
+     * @summary Creates an item
+     * @param {ItemsBody} body the body of the request
+     * @param {string} xAuthUser
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    createItem(body: ItemsBody, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Updates an item

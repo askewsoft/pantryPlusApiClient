@@ -15,6 +15,7 @@ __exportStar(require("./category"), exports);
 __exportStar(require("./group"), exports);
 __exportStar(require("./group-members"), exports);
 __exportStar(require("./item"), exports);
+__exportStar(require("./items-body"), exports);
 __exportStar(require("./items-item-id-body"), exports);
 __exportStar(require("./list"), exports);
 __exportStar(require("./location"), exports);

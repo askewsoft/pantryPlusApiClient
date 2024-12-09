@@ -13,11 +13,31 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { CategoriesCategoryIdBody } from '../models';
+import { Item } from '../models';
 /**
  * CategoriesApi - axios parameter creator
  * @export
  */
 export declare const CategoriesApiAxiosParamCreator: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Adds an item to a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addItemToCategory: (xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Gets the items in a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getCategoryItems: (xAuthUser: string, categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Removes an item from a category
@@ -46,6 +66,25 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
 export declare const CategoriesApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Adds an item to a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addItemToCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
+     * @summary Gets the items in a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getCategoryItems(xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Item>>>>;
+    /**
+     *
      * @summary Removes an item from a category
      * @param {string} xAuthUser
      * @param {string} categoryId the ID of the category
@@ -70,6 +109,25 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
  * @export
  */
 export declare const CategoriesApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    /**
+     *
+     * @summary Adds an item to a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    addItemToCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Gets the items in a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getCategoryItems(xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>>;
     /**
      *
      * @summary Removes an item from a category
@@ -98,6 +156,27 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
  * @extends {BaseAPI}
  */
 export declare class CategoriesApi extends BaseAPI {
+    /**
+     *
+     * @summary Adds an item to a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    addItemToCategory(xAuthUser: string, categoryId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Gets the items in a category
+     * @param {string} xAuthUser
+     * @param {string} categoryId the ID of the category
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    getCategoryItems(xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>>;
     /**
      *
      * @summary Removes an item from a category

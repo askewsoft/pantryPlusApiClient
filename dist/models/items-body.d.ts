@@ -13,17 +13,22 @@
 * the body of the request
 *
 * @export
-* @interface ItemsItemIdBody
+* @interface ItemsBody
 */
-export interface ItemsItemIdBody {
+export interface ItemsBody {
     /**
      * @type {string}
-     * @memberof ItemsItemIdBody
+     * @memberof ItemsBody
      */
     upc: string;
     /**
      * @type {string}
-     * @memberof ItemsItemIdBody
+     * @memberof ItemsBody
      */
     name: string;
+    /**
+     * @type {string}
+     * @memberof ItemsBody
+     */
+    itemId: string;
 }

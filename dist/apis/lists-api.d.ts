@@ -73,14 +73,13 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
     getCategories: (xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Retrieves the items for a category
+     * @summary Retrieves the uncategorized items for a list
      * @param {string} xAuthUser the email address of the user
-     * @param {string} listId
-     * @param {string} categoryId the ID of the category
+     * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getItems: (xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getItems: (xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Purchases an item on a list
@@ -189,14 +188,13 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>>;
     /**
      *
-     * @summary Retrieves the items for a category
+     * @summary Retrieves the uncategorized items for a list
      * @param {string} xAuthUser the email address of the user
-     * @param {string} listId
-     * @param {string} categoryId the ID of the category
+     * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Item>>>>;
+    getItems(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Item>>>>;
     /**
      *
      * @summary Purchases an item on a list
@@ -305,14 +303,13 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
     getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>;
     /**
      *
-     * @summary Retrieves the items for a category
+     * @summary Retrieves the uncategorized items for a list
      * @param {string} xAuthUser the email address of the user
-     * @param {string} listId
-     * @param {string} categoryId the ID of the category
+     * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>>;
+    getItems(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>>;
     /**
      *
      * @summary Purchases an item on a list
@@ -428,15 +425,14 @@ export declare class ListsApi extends BaseAPI {
     getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>;
     /**
      *
-     * @summary Retrieves the items for a category
+     * @summary Retrieves the uncategorized items for a list
      * @param {string} xAuthUser the email address of the user
-     * @param {string} listId
-     * @param {string} categoryId the ID of the category
+     * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    getItems(xAuthUser: string, listId: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>>;
+    getItems(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Item>>>;
     /**
      *
      * @summary Purchases an item on a list
