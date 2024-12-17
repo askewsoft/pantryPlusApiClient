@@ -21,8 +21,8 @@ import { Item } from '../models';
 export declare const CategoriesApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Adds an item to a category
-     * @param {string} xAuthUser
+     * @summary Associates an item with a category
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -66,8 +66,8 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
 export declare const CategoriesApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Adds an item to a category
-     * @param {string} xAuthUser
+     * @summary Associates an item with a category
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -111,8 +111,8 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
 export declare const CategoriesApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Adds an item to a category
-     * @param {string} xAuthUser
+     * @summary Associates an item with a category
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -158,8 +158,8 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
 export declare class CategoriesApi extends BaseAPI {
     /**
      *
-     * @summary Adds an item to a category
-     * @param {string} xAuthUser
+     * @summary Associates an item with a category
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.

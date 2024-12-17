@@ -30,18 +30,14 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
     return {
         /**
          * 
-         * @summary Adds an item to a list
-         * @param {string} body 
+         * @summary Associates an item with a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item to associate with the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addItem: async (body: string, xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling addItem.');
-            }
+        addItem: async (xAuthUser: string, listId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xAuthUser' is not null or undefined
             if (xAuthUser === null || xAuthUser === undefined) {
                 throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling addItem.');
@@ -50,8 +46,13 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
             if (listId === null || listId === undefined) {
                 throw new RequiredError('listId','Required parameter listId was null or undefined when calling addItem.');
             }
-            const localVarPath = `/lists/{listId}/items`
-                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)));
+            // verify required parameter 'itemId' is not null or undefined
+            if (itemId === null || itemId === undefined) {
+                throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling addItem.');
+            }
+            const localVarPath = `/lists/{listId}/items/{itemId}`
+                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -66,8 +67,6 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
                 localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
             }
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -78,8 +77,6 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -659,15 +656,15 @@ export const ListsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Adds an item to a list
-         * @param {string} body 
+         * @summary Associates an item with a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item to associate with the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addItem(body: string, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).addItem(body, xAuthUser, listId, options);
+        async addItem(xAuthUser: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).addItem(xAuthUser, listId, itemId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -843,15 +840,15 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          * 
-         * @summary Adds an item to a list
-         * @param {string} body 
+         * @summary Associates an item with a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item to associate with the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addItem(body: string, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return ListsApiFp(configuration).addItem(body, xAuthUser, listId, options).then((request) => request(axios, basePath));
+        async addItem(xAuthUser: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return ListsApiFp(configuration).addItem(xAuthUser, listId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -984,16 +981,16 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
 export class ListsApi extends BaseAPI {
     /**
      * 
-     * @summary Adds an item to a list
-     * @param {string} body 
+     * @summary Associates an item with a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item to associate with the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async addItem(body: string, xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return ListsApiFp(this.configuration).addItem(body, xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
+    public async addItem(xAuthUser: string, listId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return ListsApiFp(this.configuration).addItem(xAuthUser, listId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

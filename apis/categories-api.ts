@@ -27,8 +27,8 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
     return {
         /**
          * 
-         * @summary Adds an item to a category
-         * @param {string} xAuthUser 
+         * @summary Associates an item with a category
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -253,8 +253,8 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Adds an item to a category
-         * @param {string} xAuthUser 
+         * @summary Associates an item with a category
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -325,8 +325,8 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
     return {
         /**
          * 
-         * @summary Adds an item to a category
-         * @param {string} xAuthUser 
+         * @summary Associates an item with a category
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -382,8 +382,8 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
 export class CategoriesApi extends BaseAPI {
     /**
      * 
-     * @summary Adds an item to a category
-     * @param {string} xAuthUser 
+     * @summary Associates an item with a category
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.

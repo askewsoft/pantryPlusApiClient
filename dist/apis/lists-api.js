@@ -87,22 +87,18 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Adds an item to a list
-         * @param {string} body
+         * @summary Associates an item with a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item to associate with the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addItem: function (body, xAuthUser, listId, options) {
+        addItem: function (xAuthUser, listId, itemId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
                 return __generator(this, function (_a) {
-                    // verify required parameter 'body' is not null or undefined
-                    if (body === null || body === undefined) {
-                        throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling addItem.');
-                    }
                     // verify required parameter 'xAuthUser' is not null or undefined
                     if (xAuthUser === null || xAuthUser === undefined) {
                         throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling addItem.');
@@ -111,8 +107,13 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
                     if (listId === null || listId === undefined) {
                         throw new base_1.RequiredError('listId', 'Required parameter listId was null or undefined when calling addItem.');
                     }
-                    localVarPath = "/lists/{listId}/items"
-                        .replace("{" + "listId" + "}", encodeURIComponent(String(listId)));
+                    // verify required parameter 'itemId' is not null or undefined
+                    if (itemId === null || itemId === undefined) {
+                        throw new base_1.RequiredError('itemId', 'Required parameter itemId was null or undefined when calling addItem.');
+                    }
+                    localVarPath = "/lists/{listId}/items/{itemId}"
+                        .replace("{" + "listId" + "}", encodeURIComponent(String(listId)))
+                        .replace("{" + "itemId" + "}", encodeURIComponent(String(itemId)));
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
                         baseOptions = configuration.baseOptions;
@@ -123,7 +124,6 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
                     if (xAuthUser !== undefined && xAuthUser !== null) {
                         localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
                     }
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
                     query = new URLSearchParams(localVarUrlObj.search);
                     for (key in localVarQueryParameter) {
                         query.set(key, localVarQueryParameter[key]);
@@ -134,8 +134,6 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
                     localVarUrlObj.search = (new URLSearchParams(query)).toString();
                     headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                     localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                    localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
                     return [2 /*return*/, {
                             url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                             options: localVarRequestOptions,
@@ -719,19 +717,19 @@ exports.ListsApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Adds an item to a list
-         * @param {string} body
+         * @summary Associates an item with a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item to associate with the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addItem: function (body, xAuthUser, listId, options) {
+        addItem: function (xAuthUser, listId, itemId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.ListsApiAxiosParamCreator(configuration).addItem(body, xAuthUser, listId, options)];
+                        case 0: return [4 /*yield*/, exports.ListsApiAxiosParamCreator(configuration).addItem(xAuthUser, listId, itemId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1023,17 +1021,17 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Adds an item to a list
-         * @param {string} body
+         * @summary Associates an item with a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item to associate with the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addItem: function (body, xAuthUser, listId, options) {
+        addItem: function (xAuthUser, listId, itemId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.ListsApiFp(configuration).addItem(body, xAuthUser, listId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, exports.ListsApiFp(configuration).addItem(xAuthUser, listId, itemId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -1211,19 +1209,19 @@ var ListsApi = /** @class */ (function (_super) {
     }
     /**
      *
-     * @summary Adds an item to a list
-     * @param {string} body
+     * @summary Associates an item with a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item to associate with the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    ListsApi.prototype.addItem = function (body, xAuthUser, listId, options) {
+    ListsApi.prototype.addItem = function (xAuthUser, listId, itemId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.ListsApiFp(this.configuration).addItem(body, xAuthUser, listId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, exports.ListsApiFp(this.configuration).addItem(xAuthUser, listId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

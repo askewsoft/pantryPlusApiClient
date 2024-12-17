@@ -87,8 +87,8 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Adds an item to a category
-         * @param {string} xAuthUser
+         * @summary Associates an item with a category
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -315,8 +315,8 @@ exports.CategoriesApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Adds an item to a category
-         * @param {string} xAuthUser
+         * @summary Associates an item with a category
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -430,8 +430,8 @@ exports.CategoriesApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Adds an item to a category
-         * @param {string} xAuthUser
+         * @summary Associates an item with a category
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -506,8 +506,8 @@ var CategoriesApi = /** @class */ (function (_super) {
     }
     /**
      *
-     * @summary Adds an item to a category
-     * @param {string} xAuthUser
+     * @summary Associates an item with a category
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.

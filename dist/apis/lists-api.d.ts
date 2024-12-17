@@ -24,14 +24,14 @@ import { PickListId_ } from '../models';
 export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Adds an item to a list
-     * @param {string} body
+     * @summary Associates an item with a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item to associate with the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addItem: (body: string, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    addItem: (xAuthUser: string, listId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Adds a category to a list
@@ -139,14 +139,14 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
 export declare const ListsApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Adds an item to a list
-     * @param {string} body
+     * @summary Associates an item with a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item to associate with the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addItem(body: string, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    addItem(xAuthUser: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Adds a category to a list
@@ -254,14 +254,14 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
 export declare const ListsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Adds an item to a list
-     * @param {string} body
+     * @summary Associates an item with a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item to associate with the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    addItem(body: string, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    addItem(xAuthUser: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Adds a category to a list
@@ -371,15 +371,15 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
 export declare class ListsApi extends BaseAPI {
     /**
      *
-     * @summary Adds an item to a list
-     * @param {string} body
+     * @summary Associates an item with a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item to associate with the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    addItem(body: string, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    addItem(xAuthUser: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Adds a category to a list
