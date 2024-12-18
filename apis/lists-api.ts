@@ -20,7 +20,6 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { Category } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
-import { PickCategoryIdOrName_ } from '../models';
 import { PickListId_ } from '../models';
 /**
  * ListsApi - axios parameter creator
@@ -724,7 +723,7 @@ export const ListsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>> {
+        async getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Category>>>> {
             const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).getCategories(xAuthUser, listId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -892,7 +891,7 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickCategoryIdOrName_>>> {
+        async getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Category>>> {
             return ListsApiFp(configuration).getCategories(xAuthUser, listId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1038,7 +1037,7 @@ export class ListsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<PickCategoryIdOrName_>>> {
+    public async getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Category>>> {
         return ListsApiFp(this.configuration).getCategories(xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
     }
     /**

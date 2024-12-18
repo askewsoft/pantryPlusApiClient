@@ -17,6 +17,11 @@
 */
 export interface CategoriesCategoryIdBody {
     /**
+     * @type {number}
+     * @memberof CategoriesCategoryIdBody
+     */
+    ordinal: number;
+    /**
      * @type {string}
      * @memberof CategoriesCategoryIdBody
      */

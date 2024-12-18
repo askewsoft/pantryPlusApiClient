@@ -43,4 +43,12 @@ export interface Category {
      * @memberof Category
      */
     listId: string;
+
+    /**
+     * The ordinal of the category
+     *
+     * @type {number}
+     * @memberof Category
+     */
+    ordinal: number;
 }

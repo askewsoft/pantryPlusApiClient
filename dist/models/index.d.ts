@@ -7,7 +7,6 @@ export * from './items-body';
 export * from './items-item-id-body';
 export * from './list';
 export * from './location';
-export * from './pick-category-id-or-name_';
 export * from './pick-group-id-or-members_';
 export * from './pick-group-id-or-name-or-owner-id_';
 export * from './pick-list-id_';

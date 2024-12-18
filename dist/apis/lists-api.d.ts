@@ -15,7 +15,6 @@ import { RequestArgs, BaseAPI } from '../base';
 import { Category } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
-import { PickCategoryIdOrName_ } from '../models';
 import { PickListId_ } from '../models';
 /**
  * ListsApi - axios parameter creator
@@ -183,7 +182,7 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>>;
+    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Category>>>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -298,7 +297,7 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>;
+    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Category>>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -420,7 +419,7 @@ export declare class ListsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickCategoryIdOrName_>>>;
+    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Category>>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list

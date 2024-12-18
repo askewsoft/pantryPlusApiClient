@@ -19,7 +19,6 @@ __exportStar(require("./items-body"), exports);
 __exportStar(require("./items-item-id-body"), exports);
 __exportStar(require("./list"), exports);
 __exportStar(require("./location"), exports);
-__exportStar(require("./pick-category-id-or-name_"), exports);
 __exportStar(require("./pick-group-id-or-members_"), exports);
 __exportStar(require("./pick-group-id-or-name-or-owner-id_"), exports);
 __exportStar(require("./pick-list-id_"), exports);
