@@ -6,6 +6,7 @@ export * from './item';
 export * from './items-body';
 export * from './items-item-id-body';
 export * from './list';
+export * from './lists-list-id-body';
 export * from './location';
 export * from './pick-group-id-or-members_';
 export * from './pick-group-id-or-name-or-owner-id_';

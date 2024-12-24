@@ -44,4 +44,11 @@ export interface List {
      * @memberof List
      */
     groupId?: string;
+    /**
+     * The ordinal of the list
+     *
+     * @type {number}
+     * @memberof List
+     */
+    ordinal: number;
 }

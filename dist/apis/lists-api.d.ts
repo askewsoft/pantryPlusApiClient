@@ -15,6 +15,7 @@ import { RequestArgs, BaseAPI } from '../base';
 import { Category } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
+import { ListsListIdBody } from '../models';
 import { PickListId_ } from '../models';
 /**
  * ListsApi - axios parameter creator
@@ -123,13 +124,13 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Updates a list
-     * @param {List} body the updated list
+     * @param {ListsListIdBody} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateList: (body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateList: (body: ListsListIdBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ListsApi - functional programming interface
@@ -238,13 +239,13 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Updates a list
-     * @param {List} body the updated list
+     * @param {ListsListIdBody} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateList(body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    updateList(body: ListsListIdBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * ListsApi - factory interface
@@ -353,13 +354,13 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Updates a list
-     * @param {List} body the updated list
+     * @param {ListsListIdBody} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateList(body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateList(body: ListsListIdBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * ListsApi - object-oriented interface
@@ -480,12 +481,12 @@ export declare class ListsApi extends BaseAPI {
     /**
      *
      * @summary Updates a list
-     * @param {List} body the updated list
+     * @param {ListsListIdBody} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    updateList(body: List, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateList(body: ListsListIdBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

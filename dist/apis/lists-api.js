@@ -652,7 +652,7 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates a list
-         * @param {List} body the updated list
+         * @param {ListsListIdBody} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -987,7 +987,7 @@ exports.ListsApiFp = function (configuration) {
         /**
          *
          * @summary Updates a list
-         * @param {List} body the updated list
+         * @param {ListsListIdBody} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -1181,7 +1181,7 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates a list
-         * @param {List} body the updated list
+         * @param {ListsListIdBody} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -1389,7 +1389,7 @@ var ListsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates a list
-     * @param {List} body the updated list
+     * @param {ListsListIdBody} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
