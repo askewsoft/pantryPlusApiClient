@@ -25,11 +25,6 @@ export interface ListsListIdBody {
      * @type {string}
      * @memberof ListsListIdBody
      */
-    shopperId: string;
-    /**
-     * @type {string}
-     * @memberof ListsListIdBody
-     */
     groupId: string;
     /**
      * @type {string}

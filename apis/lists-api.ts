@@ -21,7 +21,6 @@ import { Category } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
 import { ListsListIdBody } from '../models';
-import { PickListId_ } from '../models';
 /**
  * ListsApi - axios parameter creator
  * @export
@@ -694,7 +693,7 @@ export const ListsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickListId_>>> {
+        async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).createList(body, xAuthUser, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -870,7 +869,7 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>> {
+        async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ListsApiFp(configuration).createList(body, xAuthUser, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1014,7 +1013,7 @@ export class ListsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickListId_>> {
+    public async createList(body: List, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ListsApiFp(this.configuration).createList(body, xAuthUser, options).then((request) => request(this.axios, this.basePath));
     }
     /**

@@ -10,7 +10,6 @@ export * from './lists-list-id-body';
 export * from './location';
 export * from './pick-group-id-or-members_';
 export * from './pick-group-id-or-name-or-owner-id_';
-export * from './pick-list-id_';
 export * from './pick-location-id_';
 export * from './pick-shopper-id_';
 export * from './shopper';

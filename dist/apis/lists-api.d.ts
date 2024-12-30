@@ -16,7 +16,6 @@ import { Category } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
 import { ListsListIdBody } from '../models';
-import { PickListId_ } from '../models';
 /**
  * ListsApi - axios parameter creator
  * @export
@@ -165,7 +164,7 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickListId_>>>;
+    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Deletes a list of items
@@ -280,7 +279,7 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>>;
+    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Deletes a list of items
@@ -400,7 +399,7 @@ export declare class ListsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickListId_>>;
+    createList(body: List, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Deletes a list of items

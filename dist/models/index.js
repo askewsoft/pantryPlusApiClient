@@ -22,7 +22,6 @@ __exportStar(require("./lists-list-id-body"), exports);
 __exportStar(require("./location"), exports);
 __exportStar(require("./pick-group-id-or-members_"), exports);
 __exportStar(require("./pick-group-id-or-name-or-owner-id_"), exports);
-__exportStar(require("./pick-list-id_"), exports);
 __exportStar(require("./pick-location-id_"), exports);
 __exportStar(require("./pick-shopper-id_"), exports);
 __exportStar(require("./shopper"), exports);
