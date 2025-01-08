@@ -13,6 +13,7 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { PickGroupIdOrNameOrOwnerId_ } from '../models';
+import { PickGroupNameOrId_ } from '../models';
 import { Shopper } from '../models';
 /**
  * GroupsApi - axios parameter creator
@@ -32,12 +33,12 @@ export declare const GroupsApiAxiosParamCreator: (configuration?: Configuration)
     /**
      *
      * @summary Creates a new group of shoppers
-     * @param {string} body the group to create
+     * @param {PickGroupNameOrId_} body
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createGroup: (body: string, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createGroup: (body: PickGroupNameOrId_, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Deletes an existing group
@@ -78,7 +79,7 @@ export declare const GroupsApiAxiosParamCreator: (configuration?: Configuration)
     /**
      *
      * @summary Updates an existing group name
-     * @param {string} body the name of the group to update
+     * @param {string} body the new name of the group
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.
@@ -104,12 +105,12 @@ export declare const GroupsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Creates a new group of shoppers
-     * @param {string} body the group to create
+     * @param {PickGroupNameOrId_} body
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createGroup(body: string, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    createGroup(body: PickGroupNameOrId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Deletes an existing group
@@ -150,7 +151,7 @@ export declare const GroupsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Updates an existing group name
-     * @param {string} body the name of the group to update
+     * @param {string} body the new name of the group
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.
@@ -176,12 +177,12 @@ export declare const GroupsApiFactory: (configuration?: Configuration, basePath?
     /**
      *
      * @summary Creates a new group of shoppers
-     * @param {string} body the group to create
+     * @param {PickGroupNameOrId_} body
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createGroup(body: string, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    createGroup(body: PickGroupNameOrId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Deletes an existing group
@@ -222,7 +223,7 @@ export declare const GroupsApiFactory: (configuration?: Configuration, basePath?
     /**
      *
      * @summary Updates an existing group name
-     * @param {string} body the name of the group to update
+     * @param {string} body the new name of the group
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.
@@ -251,13 +252,13 @@ export declare class GroupsApi extends BaseAPI {
     /**
      *
      * @summary Creates a new group of shoppers
-     * @param {string} body the group to create
+     * @param {PickGroupNameOrId_} body
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    createGroup(body: string, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    createGroup(body: PickGroupNameOrId_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Deletes an existing group
@@ -302,7 +303,7 @@ export declare class GroupsApi extends BaseAPI {
     /**
      *
      * @summary Updates an existing group name
-     * @param {string} body the name of the group to update
+     * @param {string} body the new name of the group
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.

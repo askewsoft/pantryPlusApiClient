@@ -7,6 +7,7 @@ export * from './list';
 export * from './lists-list-id-body';
 export * from './location';
 export * from './pick-group-id-or-name-or-owner-id_';
+export * from './pick-group-name-or-id_';
 export * from './pick-location-id_';
 export * from './pick-shopper-id_';
 export * from './shopper';
