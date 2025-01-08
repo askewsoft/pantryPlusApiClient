@@ -12,15 +12,12 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./categories-category-id-body"), exports);
 __exportStar(require("./category"), exports);
-__exportStar(require("./group"), exports);
-__exportStar(require("./group-members"), exports);
 __exportStar(require("./item"), exports);
 __exportStar(require("./items-body"), exports);
 __exportStar(require("./items-item-id-body"), exports);
 __exportStar(require("./list"), exports);
 __exportStar(require("./lists-list-id-body"), exports);
 __exportStar(require("./location"), exports);
-__exportStar(require("./pick-group-id-or-members_"), exports);
 __exportStar(require("./pick-group-id-or-name-or-owner-id_"), exports);
 __exportStar(require("./pick-location-id_"), exports);
 __exportStar(require("./pick-shopper-id_"), exports);
