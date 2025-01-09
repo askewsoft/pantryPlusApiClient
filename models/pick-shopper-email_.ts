@@ -13,28 +13,18 @@
  */
 
  /**
- * 
+ * From T, pick a set of properties whose keys are in the union K
  *
  * @export
- * @interface ListsListIdBody
+ * @interface PickShopperEmail_
  */
-export interface ListsListIdBody {
+export interface PickShopperEmail_ {
 
     /**
-     * @type {number}
-     * @memberof ListsListIdBody
-     */
-    ordinal: number;
-
-    /**
+     * The email of the shopper
+     *
      * @type {string}
-     * @memberof ListsListIdBody
+     * @memberof PickShopperEmail_
      */
-    groupId: string;
-
-    /**
-     * @type {string}
-     * @memberof ListsListIdBody
-     */
-    name: string;
+    email: string;
 }

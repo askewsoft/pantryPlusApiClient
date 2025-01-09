@@ -19,6 +19,7 @@ import { Configuration } from '../configuration';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { Location } from '../models';
 import { PickLocationId_ } from '../models';
+import { PickLocationName_ } from '../models';
 /**
  * LocationsApi - axios parameter creator
  * @export
@@ -80,13 +81,13 @@ export const LocationsApiAxiosParamCreator = function (configuration?: Configura
         /**
          * 
          * @summary Updates an existing location name
-         * @param {string} body the new name of the location
+         * @param {PickLocationName_} body 
          * @param {string} xAuthUser the email address of the user
          * @param {string} locationId the ID of the location to be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateLocation: async (body: string, xAuthUser: string, locationId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateLocation: async (body: PickLocationName_, xAuthUser: string, locationId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateLocation.');
@@ -162,13 +163,13 @@ export const LocationsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Updates an existing location name
-         * @param {string} body the new name of the location
+         * @param {PickLocationName_} body 
          * @param {string} xAuthUser the email address of the user
          * @param {string} locationId the ID of the location to be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateLocation(body: string, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async updateLocation(body: PickLocationName_, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await LocationsApiAxiosParamCreator(configuration).updateLocation(body, xAuthUser, locationId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -198,13 +199,13 @@ export const LocationsApiFactory = function (configuration?: Configuration, base
         /**
          * 
          * @summary Updates an existing location name
-         * @param {string} body the new name of the location
+         * @param {PickLocationName_} body 
          * @param {string} xAuthUser the email address of the user
          * @param {string} locationId the ID of the location to be updated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateLocation(body: string, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async updateLocation(body: PickLocationName_, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return LocationsApiFp(configuration).updateLocation(body, xAuthUser, locationId, options).then((request) => request(axios, basePath));
         },
     };
@@ -232,14 +233,14 @@ export class LocationsApi extends BaseAPI {
     /**
      * 
      * @summary Updates an existing location name
-     * @param {string} body the new name of the location
+     * @param {PickLocationName_} body 
      * @param {string} xAuthUser the email address of the user
      * @param {string} locationId the ID of the location to be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LocationsApi
      */
-    public async updateLocation(body: string, xAuthUser: string, locationId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async updateLocation(body: PickLocationName_, xAuthUser: string, locationId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return LocationsApiFp(this.configuration).updateLocation(body, xAuthUser, locationId, options).then((request) => request(this.axios, this.basePath));
     }
 }

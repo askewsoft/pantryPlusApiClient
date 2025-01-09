@@ -13,22 +13,18 @@
  */
 
  /**
- * the body of the request
+ * From T, pick a set of properties whose keys are in the union K
  *
  * @export
- * @interface ItemsItemIdBody
+ * @interface PickGroupName_
  */
-export interface ItemsItemIdBody {
+export interface PickGroupName_ {
 
     /**
+     * The name of the group
+     *
      * @type {string}
-     * @memberof ItemsItemIdBody
-     */
-    upc: string;
-
-    /**
-     * @type {string}
-     * @memberof ItemsItemIdBody
+     * @memberof PickGroupName_
      */
     name: string;
 }

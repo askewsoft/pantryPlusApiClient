@@ -17,8 +17,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { CategoriesCategoryIdBody } from '../models';
 import { Item } from '../models';
+import { PickCategoryNameOrOrdinal_ } from '../models';
 /**
  * CategoriesApi - axios parameter creator
  * @export
@@ -187,13 +187,13 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Updates a category
-         * @param {CategoriesCategoryIdBody} body the body of the request
+         * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCategory: async (body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateCategory: async (body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateCategory.');
@@ -301,13 +301,13 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Updates a category
-         * @param {CategoriesCategoryIdBody} body the body of the request
+         * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateCategory(body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await CategoriesApiAxiosParamCreator(configuration).updateCategory(body, xAuthUser, categoryId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -361,13 +361,13 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Updates a category
-         * @param {CategoriesCategoryIdBody} body the body of the request
+         * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateCategory(body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return CategoriesApiFp(configuration).updateCategory(body, xAuthUser, categoryId, options).then((request) => request(axios, basePath));
         },
     };
@@ -421,14 +421,14 @@ export class CategoriesApi extends BaseAPI {
     /**
      * 
      * @summary Updates a category
-     * @param {CategoriesCategoryIdBody} body the body of the request
+     * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    public async updateCategory(body: CategoriesCategoryIdBody, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return CategoriesApiFp(this.configuration).updateCategory(body, xAuthUser, categoryId, options).then((request) => request(this.axios, this.basePath));
     }
 }

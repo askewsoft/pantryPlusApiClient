@@ -580,7 +580,7 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Removes the purchase of an item from purchase history
-         * @param {string} body the date of purchase
+         * @param {ItemIdPurchaseBody} body an object containing the date of purchase
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
          * @param {string} listId the ID of the list
@@ -652,7 +652,7 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates a list
-         * @param {ListsListIdBody} body
+         * @param {PickListNameOrGroupIdOrOrdinal_} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -958,7 +958,7 @@ exports.ListsApiFp = function (configuration) {
         /**
          *
          * @summary Removes the purchase of an item from purchase history
-         * @param {string} body the date of purchase
+         * @param {ItemIdPurchaseBody} body an object containing the date of purchase
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
          * @param {string} listId the ID of the list
@@ -987,7 +987,7 @@ exports.ListsApiFp = function (configuration) {
         /**
          *
          * @summary Updates a list
-         * @param {ListsListIdBody} body
+         * @param {PickListNameOrGroupIdOrOrdinal_} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -1163,7 +1163,7 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Removes the purchase of an item from purchase history
-         * @param {string} body the date of purchase
+         * @param {ItemIdPurchaseBody} body an object containing the date of purchase
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
          * @param {string} listId the ID of the list
@@ -1181,7 +1181,7 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates a list
-         * @param {ListsListIdBody} body
+         * @param {PickListNameOrGroupIdOrOrdinal_} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
@@ -1369,7 +1369,7 @@ var ListsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Removes the purchase of an item from purchase history
-     * @param {string} body the date of purchase
+     * @param {ItemIdPurchaseBody} body an object containing the date of purchase
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
      * @param {string} listId the ID of the list
@@ -1389,7 +1389,7 @@ var ListsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates a list
-     * @param {ListsListIdBody} body
+     * @param {PickListNameOrGroupIdOrOrdinal_} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.

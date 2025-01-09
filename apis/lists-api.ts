@@ -19,8 +19,9 @@ import { Configuration } from '../configuration';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { Category } from '../models';
 import { Item } from '../models';
+import { ItemIdPurchaseBody } from '../models';
 import { List } from '../models';
-import { ListsListIdBody } from '../models';
+import { PickListNameOrGroupIdOrOrdinal_ } from '../models';
 /**
  * ListsApi - axios parameter creator
  * @export
@@ -516,7 +517,7 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Removes the purchase of an item from purchase history
-         * @param {string} body the date of purchase
+         * @param {ItemIdPurchaseBody} body an object containing the date of purchase
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
          * @param {string} listId the ID of the list
@@ -524,7 +525,7 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unpurchaseItem: async (body: string, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        unpurchaseItem: async (body: ItemIdPurchaseBody, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling unpurchaseItem.');
@@ -589,13 +590,13 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Updates a list
-         * @param {ListsListIdBody} body 
+         * @param {PickListNameOrGroupIdOrOrdinal_} body 
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateList: async (body: ListsListIdBody, xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateList: async (body: PickListNameOrGroupIdOrOrdinal_, xAuthUser: string, listId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateList.');
@@ -797,7 +798,7 @@ export const ListsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Removes the purchase of an item from purchase history
-         * @param {string} body the date of purchase
+         * @param {ItemIdPurchaseBody} body an object containing the date of purchase
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
          * @param {string} listId the ID of the list
@@ -805,7 +806,7 @@ export const ListsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async unpurchaseItem(body: string, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async unpurchaseItem(body: ItemIdPurchaseBody, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).unpurchaseItem(body, xAuthUser, xAuthLocation, listId, itemId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -815,13 +816,13 @@ export const ListsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Updates a list
-         * @param {ListsListIdBody} body 
+         * @param {PickListNameOrGroupIdOrOrdinal_} body 
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateList(body: ListsListIdBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async updateList(body: PickListNameOrGroupIdOrOrdinal_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ListsApiAxiosParamCreator(configuration).updateList(body, xAuthUser, listId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -945,7 +946,7 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Removes the purchase of an item from purchase history
-         * @param {string} body the date of purchase
+         * @param {ItemIdPurchaseBody} body an object containing the date of purchase
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
          * @param {string} listId the ID of the list
@@ -953,19 +954,19 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async unpurchaseItem(body: string, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async unpurchaseItem(body: ItemIdPurchaseBody, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ListsApiFp(configuration).unpurchaseItem(body, xAuthUser, xAuthLocation, listId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Updates a list
-         * @param {ListsListIdBody} body 
+         * @param {PickListNameOrGroupIdOrOrdinal_} body 
          * @param {string} xAuthUser the email address of the user
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateList(body: ListsListIdBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async updateList(body: PickListNameOrGroupIdOrOrdinal_, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ListsApiFp(configuration).updateList(body, xAuthUser, listId, options).then((request) => request(axios, basePath));
         },
     };
@@ -1095,7 +1096,7 @@ export class ListsApi extends BaseAPI {
     /**
      * 
      * @summary Removes the purchase of an item from purchase history
-     * @param {string} body the date of purchase
+     * @param {ItemIdPurchaseBody} body an object containing the date of purchase
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
      * @param {string} listId the ID of the list
@@ -1104,20 +1105,20 @@ export class ListsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async unpurchaseItem(body: string, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async unpurchaseItem(body: ItemIdPurchaseBody, xAuthUser: string, xAuthLocation: string, listId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ListsApiFp(this.configuration).unpurchaseItem(body, xAuthUser, xAuthLocation, listId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @summary Updates a list
-     * @param {ListsListIdBody} body 
+     * @param {PickListNameOrGroupIdOrOrdinal_} body 
      * @param {string} xAuthUser the email address of the user
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    public async updateList(body: ListsListIdBody, xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async updateList(body: PickListNameOrGroupIdOrOrdinal_, xAuthUser: string, listId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ListsApiFp(this.configuration).updateList(body, xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
     }
 }

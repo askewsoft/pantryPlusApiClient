@@ -88,7 +88,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Adds a shopper to a group
-         * @param {string} body the ID of the shopper to be added
+         * @param {PickShopperId_} body an object containing the ID of the shopper to be added
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -146,7 +146,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrId_} body
+         * @param {PickGroupNameOrId_} body an object containing the name and ID of the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -348,7 +348,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Invites a shopper to join a group
-         * @param {string} body the email address of the shopper to be invited
+         * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -462,7 +462,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Uninvites a shopper from a group
-         * @param {string} body the email address of the shopper to be uninvited
+         * @param {PickShopperEmail_} body an object containing the email address of the shopper to be uninvited
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -520,7 +520,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates an existing group name
-         * @param {string} body the new name of the group
+         * @param {PickGroupName_} body an object containing the new name of the group
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -586,7 +586,7 @@ exports.GroupsApiFp = function (configuration) {
         /**
          *
          * @summary Adds a shopper to a group
-         * @param {string} body the ID of the shopper to be added
+         * @param {PickShopperId_} body an object containing the ID of the shopper to be added
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -613,7 +613,7 @@ exports.GroupsApiFp = function (configuration) {
         /**
          *
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrId_} body
+         * @param {PickGroupNameOrId_} body an object containing the name and ID of the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -717,7 +717,7 @@ exports.GroupsApiFp = function (configuration) {
         /**
          *
          * @summary Invites a shopper to join a group
-         * @param {string} body the email address of the shopper to be invited
+         * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -771,7 +771,7 @@ exports.GroupsApiFp = function (configuration) {
         /**
          *
          * @summary Uninvites a shopper from a group
-         * @param {string} body the email address of the shopper to be uninvited
+         * @param {PickShopperEmail_} body an object containing the email address of the shopper to be uninvited
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -798,7 +798,7 @@ exports.GroupsApiFp = function (configuration) {
         /**
          *
          * @summary Updates an existing group name
-         * @param {string} body the new name of the group
+         * @param {PickGroupName_} body an object containing the new name of the group
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -833,7 +833,7 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Adds a shopper to a group
-         * @param {string} body the ID of the shopper to be added
+         * @param {PickShopperId_} body an object containing the ID of the shopper to be added
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -849,7 +849,7 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates a new group of shoppers
-         * @param {PickGroupNameOrId_} body
+         * @param {PickGroupNameOrId_} body an object containing the name and ID of the group to create
          * @param {string} xAuthUser the email address of the user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -909,7 +909,7 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Invites a shopper to join a group
-         * @param {string} body the email address of the shopper to be invited
+         * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -941,7 +941,7 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Uninvites a shopper from a group
-         * @param {string} body the email address of the shopper to be uninvited
+         * @param {PickShopperEmail_} body an object containing the email address of the shopper to be uninvited
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -957,7 +957,7 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates an existing group name
-         * @param {string} body the new name of the group
+         * @param {PickGroupName_} body an object containing the new name of the group
          * @param {string} xAuthUser the email address of the user
          * @param {string} groupId the ID of the group to be updated
          * @param {*} [options] Override http request option.
@@ -986,7 +986,7 @@ var GroupsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Adds a shopper to a group
-     * @param {string} body the ID of the shopper to be added
+     * @param {PickShopperId_} body an object containing the ID of the shopper to be added
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.
@@ -1004,7 +1004,7 @@ var GroupsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Creates a new group of shoppers
-     * @param {PickGroupNameOrId_} body
+     * @param {PickGroupNameOrId_} body an object containing the name and ID of the group to create
      * @param {string} xAuthUser the email address of the user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1072,7 +1072,7 @@ var GroupsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Invites a shopper to join a group
-     * @param {string} body the email address of the shopper to be invited
+     * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.
@@ -1108,7 +1108,7 @@ var GroupsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Uninvites a shopper from a group
-     * @param {string} body the email address of the shopper to be uninvited
+     * @param {PickShopperEmail_} body an object containing the email address of the shopper to be uninvited
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.
@@ -1126,7 +1126,7 @@ var GroupsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates an existing group name
-     * @param {string} body the new name of the group
+     * @param {PickGroupName_} body an object containing the new name of the group
      * @param {string} xAuthUser the email address of the user
      * @param {string} groupId the ID of the group to be updated
      * @param {*} [options] Override http request option.

@@ -140,7 +140,7 @@ exports.LocationsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates an existing location name
-         * @param {string} body the new name of the location
+         * @param {PickLocationName_} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} locationId the ID of the location to be updated
          * @param {*} [options] Override http request option.
@@ -232,7 +232,7 @@ exports.LocationsApiFp = function (configuration) {
         /**
          *
          * @summary Updates an existing location name
-         * @param {string} body the new name of the location
+         * @param {PickLocationName_} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} locationId the ID of the location to be updated
          * @param {*} [options] Override http request option.
@@ -282,7 +282,7 @@ exports.LocationsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates an existing location name
-         * @param {string} body the new name of the location
+         * @param {PickLocationName_} body
          * @param {string} xAuthUser the email address of the user
          * @param {string} locationId the ID of the location to be updated
          * @param {*} [options] Override http request option.
@@ -328,7 +328,7 @@ var LocationsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates an existing location name
-     * @param {string} body the new name of the location
+     * @param {PickLocationName_} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} locationId the ID of the location to be updated
      * @param {*} [options] Override http request option.

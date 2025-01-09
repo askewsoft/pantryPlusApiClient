@@ -250,7 +250,7 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates a category
-         * @param {CategoriesCategoryIdBody} body the body of the request
+         * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
@@ -396,7 +396,7 @@ exports.CategoriesApiFp = function (configuration) {
         /**
          *
          * @summary Updates a category
-         * @param {CategoriesCategoryIdBody} body the body of the request
+         * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
@@ -478,7 +478,7 @@ exports.CategoriesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates a category
-         * @param {CategoriesCategoryIdBody} body the body of the request
+         * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
@@ -560,7 +560,7 @@ var CategoriesApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates a category
-     * @param {CategoriesCategoryIdBody} body the body of the request
+     * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.

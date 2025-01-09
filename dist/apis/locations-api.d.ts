@@ -14,6 +14,7 @@ import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { Location } from '../models';
 import { PickLocationId_ } from '../models';
+import { PickLocationName_ } from '../models';
 /**
  * LocationsApi - axios parameter creator
  * @export
@@ -31,13 +32,13 @@ export declare const LocationsApiAxiosParamCreator: (configuration?: Configurati
     /**
      *
      * @summary Updates an existing location name
-     * @param {string} body the new name of the location
+     * @param {PickLocationName_} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} locationId the ID of the location to be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateLocation: (body: string, xAuthUser: string, locationId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateLocation: (body: PickLocationName_, xAuthUser: string, locationId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * LocationsApi - functional programming interface
@@ -56,13 +57,13 @@ export declare const LocationsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Updates an existing location name
-     * @param {string} body the new name of the location
+     * @param {PickLocationName_} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} locationId the ID of the location to be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateLocation(body: string, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    updateLocation(body: PickLocationName_, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * LocationsApi - factory interface
@@ -81,13 +82,13 @@ export declare const LocationsApiFactory: (configuration?: Configuration, basePa
     /**
      *
      * @summary Updates an existing location name
-     * @param {string} body the new name of the location
+     * @param {PickLocationName_} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} locationId the ID of the location to be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateLocation(body: string, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateLocation(body: PickLocationName_, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * LocationsApi - object-oriented interface
@@ -109,12 +110,12 @@ export declare class LocationsApi extends BaseAPI {
     /**
      *
      * @summary Updates an existing location name
-     * @param {string} body the new name of the location
+     * @param {PickLocationName_} body
      * @param {string} xAuthUser the email address of the user
      * @param {string} locationId the ID of the location to be updated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LocationsApi
      */
-    updateLocation(body: string, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateLocation(body: PickLocationName_, xAuthUser: string, locationId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

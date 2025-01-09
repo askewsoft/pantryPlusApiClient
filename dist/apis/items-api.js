@@ -88,7 +88,7 @@ exports.ItemsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Creates an item
-         * @param {ItemsBody} body the body of the request
+         * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
          * @param {string} xAuthUser
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -140,7 +140,7 @@ exports.ItemsApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Updates an item
-         * @param {ItemsItemIdBody} body the body of the request
+         * @param {PickItemNameOrUpc_} body an object containing the new name and UPC of the item
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -206,7 +206,7 @@ exports.ItemsApiFp = function (configuration) {
         /**
          *
          * @summary Creates an item
-         * @param {ItemsBody} body the body of the request
+         * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
          * @param {string} xAuthUser
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -232,7 +232,7 @@ exports.ItemsApiFp = function (configuration) {
         /**
          *
          * @summary Updates an item
-         * @param {ItemsItemIdBody} body the body of the request
+         * @param {PickItemNameOrUpc_} body an object containing the new name and UPC of the item
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -267,7 +267,7 @@ exports.ItemsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Creates an item
-         * @param {ItemsBody} body the body of the request
+         * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
          * @param {string} xAuthUser
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -282,7 +282,7 @@ exports.ItemsApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Updates an item
-         * @param {ItemsItemIdBody} body the body of the request
+         * @param {PickItemNameOrUpc_} body an object containing the new name and UPC of the item
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -311,7 +311,7 @@ var ItemsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Creates an item
-     * @param {ItemsBody} body the body of the request
+     * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
      * @param {string} xAuthUser
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -328,7 +328,7 @@ var ItemsApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Updates an item
-     * @param {ItemsItemIdBody} body the body of the request
+     * @param {PickItemNameOrUpc_} body an object containing the new name and UPC of the item
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
