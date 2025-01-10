@@ -347,6 +347,56 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Gets all invitees for a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} groupId the ID of the group to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInvitees: function (xAuthUser, groupId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_a) {
+                    // verify required parameter 'xAuthUser' is not null or undefined
+                    if (xAuthUser === null || xAuthUser === undefined) {
+                        throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling getInvitees.');
+                    }
+                    // verify required parameter 'groupId' is not null or undefined
+                    if (groupId === null || groupId === undefined) {
+                        throw new base_1.RequiredError('groupId', 'Required parameter groupId was null or undefined when calling getInvitees.');
+                    }
+                    localVarPath = "/groups/{groupId}/invitees"
+                        .replace("{" + "groupId" + "}", encodeURIComponent(String(groupId)));
+                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                    if (configuration) {
+                        baseOptions = configuration.baseOptions;
+                    }
+                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                    localVarHeaderParameter = {};
+                    localVarQueryParameter = {};
+                    if (xAuthUser !== undefined && xAuthUser !== null) {
+                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                    }
+                    query = new URLSearchParams(localVarUrlObj.search);
+                    for (key in localVarQueryParameter) {
+                        query.set(key, localVarQueryParameter[key]);
+                    }
+                    for (key in options.params) {
+                        query.set(key, options.params[key]);
+                    }
+                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                    return [2 /*return*/, {
+                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                            options: localVarRequestOptions,
+                        }];
+                });
+            });
+        },
+        /**
+         *
          * @summary Invites a shopper to join a group
          * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
@@ -371,7 +421,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
                     if (groupId === null || groupId === undefined) {
                         throw new base_1.RequiredError('groupId', 'Required parameter groupId was null or undefined when calling inviteShopper.');
                     }
-                    localVarPath = "/groups/{groupId}/invite"
+                    localVarPath = "/groups/{groupId}/invitees"
                         .replace("{" + "groupId" + "}", encodeURIComponent(String(groupId)));
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
@@ -485,7 +535,7 @@ exports.GroupsApiAxiosParamCreator = function (configuration) {
                     if (groupId === null || groupId === undefined) {
                         throw new base_1.RequiredError('groupId', 'Required parameter groupId was null or undefined when calling uninviteShopper.');
                     }
-                    localVarPath = "/groups/{groupId}/invite"
+                    localVarPath = "/groups/{groupId}/invitees"
                         .replace("{" + "groupId" + "}", encodeURIComponent(String(groupId)));
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
@@ -716,6 +766,32 @@ exports.GroupsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Gets all invitees for a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} groupId the ID of the group to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInvitees: function (xAuthUser, groupId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.GroupsApiAxiosParamCreator(configuration).getInvitees(xAuthUser, groupId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Invites a shopper to join a group
          * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
@@ -908,6 +984,21 @@ exports.GroupsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Gets all invitees for a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} groupId the ID of the group to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInvitees: function (xAuthUser, groupId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, exports.GroupsApiFp(configuration).getInvitees(xAuthUser, groupId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
          * @summary Invites a shopper to join a group
          * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
@@ -1066,6 +1157,23 @@ var GroupsApi = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, exports.GroupsApiFp(this.configuration).getGroupShoppers(xAuthUser, groupId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Gets all invitees for a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} groupId the ID of the group to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    GroupsApi.prototype.getInvitees = function (xAuthUser, groupId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, exports.GroupsApiFp(this.configuration).getInvitees(xAuthUser, groupId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

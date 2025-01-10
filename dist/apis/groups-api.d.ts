@@ -71,6 +71,15 @@ export declare const GroupsApiAxiosParamCreator: (configuration?: Configuration)
     getGroupShoppers: (xAuthUser: string, groupId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Gets all invitees for a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} groupId the ID of the group to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInvitees: (xAuthUser: string, groupId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Invites a shopper to join a group
      * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
      * @param {string} xAuthUser the email address of the user
@@ -163,6 +172,15 @@ export declare const GroupsApiFp: (configuration?: Configuration) => {
     getGroupShoppers(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Shopper>>>>;
     /**
      *
+     * @summary Gets all invitees for a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} groupId the ID of the group to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInvitees(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickShopperEmail_>>>>;
+    /**
+     *
      * @summary Invites a shopper to join a group
      * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
      * @param {string} xAuthUser the email address of the user
@@ -253,6 +271,15 @@ export declare const GroupsApiFactory: (configuration?: Configuration, basePath?
      * @throws {RequiredError}
      */
     getGroupShoppers(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Shopper>>>;
+    /**
+     *
+     * @summary Gets all invitees for a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} groupId the ID of the group to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInvitees(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickShopperEmail_>>>;
     /**
      *
      * @summary Invites a shopper to join a group
@@ -352,6 +379,16 @@ export declare class GroupsApi extends BaseAPI {
      * @memberof GroupsApi
      */
     getGroupShoppers(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Shopper>>>;
+    /**
+     *
+     * @summary Gets all invitees for a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} groupId the ID of the group to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    getInvitees(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickShopperEmail_>>>;
     /**
      *
      * @summary Invites a shopper to join a group

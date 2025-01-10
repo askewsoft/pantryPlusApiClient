@@ -288,6 +288,55 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
+         * @summary Gets all invitees for a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} groupId the ID of the group to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInvitees: async (xAuthUser: string, groupId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling getInvitees.');
+            }
+            // verify required parameter 'groupId' is not null or undefined
+            if (groupId === null || groupId === undefined) {
+                throw new RequiredError('groupId','Required parameter groupId was null or undefined when calling getInvitees.');
+            }
+            const localVarPath = `/groups/{groupId}/invitees`
+                .replace(`{${"groupId"}}`, encodeURIComponent(String(groupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Invites a shopper to join a group
          * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
@@ -308,7 +357,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             if (groupId === null || groupId === undefined) {
                 throw new RequiredError('groupId','Required parameter groupId was null or undefined when calling inviteShopper.');
             }
-            const localVarPath = `/groups/{groupId}/invite`
+            const localVarPath = `/groups/{groupId}/invitees`
                 .replace(`{${"groupId"}}`, encodeURIComponent(String(groupId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -421,7 +470,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             if (groupId === null || groupId === undefined) {
                 throw new RequiredError('groupId','Required parameter groupId was null or undefined when calling uninviteShopper.');
             }
-            const localVarPath = `/groups/{groupId}/invite`
+            const localVarPath = `/groups/{groupId}/invitees`
                 .replace(`{${"groupId"}}`, encodeURIComponent(String(groupId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -602,6 +651,21 @@ export const GroupsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Gets all invitees for a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} groupId the ID of the group to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInvitees(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickShopperEmail_>>>> {
+            const localVarAxiosArgs = await GroupsApiAxiosParamCreator(configuration).getInvitees(xAuthUser, groupId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Invites a shopper to join a group
          * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
@@ -731,6 +795,17 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
+         * @summary Gets all invitees for a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} groupId the ID of the group to be updated
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInvitees(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickShopperEmail_>>> {
+            return GroupsApiFp(configuration).getInvitees(xAuthUser, groupId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Invites a shopper to join a group
          * @param {PickShopperEmail_} body an object containing the email address of the shopper to be invited
          * @param {string} xAuthUser the email address of the user
@@ -847,6 +922,18 @@ export class GroupsApi extends BaseAPI {
      */
     public async getGroupShoppers(xAuthUser: string, groupId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Shopper>>> {
         return GroupsApiFp(this.configuration).getGroupShoppers(xAuthUser, groupId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Gets all invitees for a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} groupId the ID of the group to be updated
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public async getInvitees(xAuthUser: string, groupId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<PickShopperEmail_>>> {
+        return GroupsApiFp(this.configuration).getInvitees(xAuthUser, groupId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
