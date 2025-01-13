@@ -12,7 +12,7 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
-import { PickGroupIdOrNameOrOwnerId_ } from '../models';
+import { PickGroupIdOrNameOrOwner_ } from '../models';
 import { PickGroupNameOrId_ } from '../models';
 import { PickGroupName_ } from '../models';
 import { PickShopperEmail_ } from '../models';
@@ -160,7 +160,7 @@ export declare const GroupsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickGroupIdOrNameOrOwnerId_>>>;
+    getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickGroupIdOrNameOrOwner_>>>;
     /**
      *
      * @summary Gets all shoppers in an existing group
@@ -261,7 +261,7 @@ export declare const GroupsApiFactory: (configuration?: Configuration, basePath?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickGroupIdOrNameOrOwnerId_>>;
+    getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickGroupIdOrNameOrOwner_>>;
     /**
      *
      * @summary Gets all shoppers in an existing group
@@ -368,7 +368,7 @@ export declare class GroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickGroupIdOrNameOrOwnerId_>>;
+    getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickGroupIdOrNameOrOwner_>>;
     /**
      *
      * @summary Gets all shoppers in an existing group

@@ -4,7 +4,7 @@ export * from './item-id-purchase-body';
 export * from './list';
 export * from './location';
 export * from './pick-category-name-or-ordinal_';
-export * from './pick-group-id-or-name-or-owner-id_';
+export * from './pick-group-id-or-name-or-owner_';
 export * from './pick-group-name-or-id_';
 export * from './pick-group-name_';
 export * from './pick-item-id-or-name-or-upc_';

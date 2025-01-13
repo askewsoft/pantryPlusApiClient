@@ -16,7 +16,7 @@ __exportStar(require("./item-id-purchase-body"), exports);
 __exportStar(require("./list"), exports);
 __exportStar(require("./location"), exports);
 __exportStar(require("./pick-category-name-or-ordinal_"), exports);
-__exportStar(require("./pick-group-id-or-name-or-owner-id_"), exports);
+__exportStar(require("./pick-group-id-or-name-or-owner_"), exports);
 __exportStar(require("./pick-group-name-or-id_"), exports);
 __exportStar(require("./pick-group-name_"), exports);
 __exportStar(require("./pick-item-id-or-name-or-upc_"), exports);

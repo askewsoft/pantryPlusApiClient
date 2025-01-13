@@ -15,7 +15,7 @@ import { RequestArgs, BaseAPI } from '../base';
 import { Item } from '../models';
 import { List } from '../models';
 import { Location } from '../models';
-import { PickGroupIdOrNameOrOwnerId_ } from '../models';
+import { PickGroupIdOrNameOrOwner_ } from '../models';
 import { PickShopperId_ } from '../models';
 import { Shopper } from '../models';
 /**
@@ -108,7 +108,7 @@ export declare const ShoppersApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwnerId_>>>>;
+    getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwner_>>>>;
     /**
      *
      * @summary Retrieves all previously purchased items associated with a Shopper
@@ -177,7 +177,7 @@ export declare const ShoppersApiFactory: (configuration?: Configuration, basePat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwnerId_>>>;
+    getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwner_>>>;
     /**
      *
      * @summary Retrieves all previously purchased items associated with a Shopper
@@ -250,7 +250,7 @@ export declare class ShoppersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwnerId_>>>;
+    getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwner_>>>;
     /**
      *
      * @summary Retrieves all previously purchased items associated with a Shopper

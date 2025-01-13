@@ -17,7 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { PickGroupIdOrNameOrOwnerId_ } from '../models';
+import { PickGroupIdOrNameOrOwner_ } from '../models';
 import { PickGroupNameOrId_ } from '../models';
 import { PickGroupName_ } from '../models';
 import { PickShopperEmail_ } from '../models';
@@ -627,7 +627,7 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickGroupIdOrNameOrOwnerId_>>> {
+        async getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickGroupIdOrNameOrOwner_>>> {
             const localVarAxiosArgs = await GroupsApiAxiosParamCreator(configuration).getGroup(xAuthUser, groupId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -779,7 +779,7 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickGroupIdOrNameOrOwnerId_>> {
+        async getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickGroupIdOrNameOrOwner_>> {
             return GroupsApiFp(configuration).getGroup(xAuthUser, groupId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -908,7 +908,7 @@ export class GroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public async getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickGroupIdOrNameOrOwnerId_>> {
+    public async getGroup(xAuthUser: string, groupId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PickGroupIdOrNameOrOwner_>> {
         return GroupsApiFp(this.configuration).getGroup(xAuthUser, groupId, options).then((request) => request(this.axios, this.basePath));
     }
     /**

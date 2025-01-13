@@ -12,19 +12,20 @@
  * Do not edit the class manually.
  */
 
+import { Shopper } from './shopper';
  /**
  * From T, pick a set of properties whose keys are in the union K
  *
  * @export
- * @interface PickGroupIdOrNameOrOwnerId_
+ * @interface PickGroupIdOrNameOrOwner_
  */
-export interface PickGroupIdOrNameOrOwnerId_ {
+export interface PickGroupIdOrNameOrOwner_ {
 
     /**
      * UUID representation of the group's ID
      *
      * @type {string}
-     * @memberof PickGroupIdOrNameOrOwnerId_
+     * @memberof PickGroupIdOrNameOrOwner_
      */
     id: string;
 
@@ -32,15 +33,13 @@ export interface PickGroupIdOrNameOrOwnerId_ {
      * The name of the group
      *
      * @type {string}
-     * @memberof PickGroupIdOrNameOrOwnerId_
+     * @memberof PickGroupIdOrNameOrOwner_
      */
     name: string;
 
     /**
-     * The shopper that originally created the group
-     *
-     * @type {string}
-     * @memberof PickGroupIdOrNameOrOwnerId_
+     * @type {Shopper}
+     * @memberof PickGroupIdOrNameOrOwner_
      */
-    ownerId: string;
+    owner: Shopper;
 }
