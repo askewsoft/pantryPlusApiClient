@@ -17,6 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { Group } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
 import { Location } from '../models';
@@ -90,6 +91,55 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
                 throw new RequiredError('shopperId','Required parameter shopperId was null or undefined when calling getGroups.');
             }
             const localVarPath = `/shoppers/{shopperId}/groups`
+                .replace(`{${"shopperId"}}`, encodeURIComponent(String(shopperId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Retrieves all groups that a Shopper has been invited to
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom invites will be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getInvites: async (xAuthUser: string, shopperId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling getInvites.');
+            }
+            // verify required parameter 'shopperId' is not null or undefined
+            if (shopperId === null || shopperId === undefined) {
+                throw new RequiredError('shopperId','Required parameter shopperId was null or undefined when calling getInvites.');
+            }
+            const localVarPath = `/shoppers/{shopperId}/invites`
                 .replace(`{${"shopperId"}}`, encodeURIComponent(String(shopperId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -415,6 +465,21 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
         },
         /**
          *
+         * @summary Retrieves all groups that a Shopper has been invited to
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom invites will be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInvites(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Group>>>> {
+            const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).getInvites(xAuthUser, shopperId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         *
          * @summary Retrieves all previously purchased items associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
@@ -521,6 +586,17 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          *
+         * @summary Retrieves all groups that a Shopper has been invited to
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom invites will be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getInvites(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Group>>> {
+            return ShoppersApiFp(configuration).getInvites(xAuthUser, shopperId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Retrieves all previously purchased items associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
@@ -607,6 +683,18 @@ export class ShoppersApi extends BaseAPI {
      */
     public async getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwner_>>> {
         return ShoppersApiFp(this.configuration).getGroups(xAuthUser, shopperId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Retrieves all groups that a Shopper has been invited to
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom invites will be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    public async getInvites(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Group>>> {
+        return ShoppersApiFp(this.configuration).getInvites(xAuthUser, shopperId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

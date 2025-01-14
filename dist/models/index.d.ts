@@ -1,4 +1,5 @@
 export * from './category';
+export * from './group';
 export * from './item';
 export * from './item-id-purchase-body';
 export * from './list';

@@ -12,6 +12,7 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
+import { Group } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
 import { Location } from '../models';
@@ -40,6 +41,15 @@ export declare const ShoppersApiAxiosParamCreator: (configuration?: Configuratio
      * @throws {RequiredError}
      */
     getGroups: (xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieves all groups that a Shopper has been invited to
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom invites will be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInvites: (xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves all previously purchased items associated with a Shopper
@@ -111,6 +121,15 @@ export declare const ShoppersApiFp: (configuration?: Configuration) => {
     getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwner_>>>>;
     /**
      *
+     * @summary Retrieves all groups that a Shopper has been invited to
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom invites will be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInvites(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Group>>>>;
+    /**
+     *
      * @summary Retrieves all previously purchased items associated with a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom items will be returned
@@ -178,6 +197,15 @@ export declare const ShoppersApiFactory: (configuration?: Configuration, basePat
      * @throws {RequiredError}
      */
     getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwner_>>>;
+    /**
+     *
+     * @summary Retrieves all groups that a Shopper has been invited to
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom invites will be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getInvites(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Group>>>;
     /**
      *
      * @summary Retrieves all previously purchased items associated with a Shopper
@@ -251,6 +279,16 @@ export declare class ShoppersApi extends BaseAPI {
      * @memberof ShoppersApi
      */
     getGroups(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<PickGroupIdOrNameOrOwner_>>>;
+    /**
+     *
+     * @summary Retrieves all groups that a Shopper has been invited to
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom invites will be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    getInvites(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Group>>>;
     /**
      *
      * @summary Retrieves all previously purchased items associated with a Shopper
