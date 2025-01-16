@@ -87,6 +87,62 @@ exports.ShoppersApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
+         * @summary Accepts an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+         * @param {string} inviteId the ID of the invite to be accepted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        acceptInvite: function (xAuthUser, shopperId, inviteId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_a) {
+                    // verify required parameter 'xAuthUser' is not null or undefined
+                    if (xAuthUser === null || xAuthUser === undefined) {
+                        throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling acceptInvite.');
+                    }
+                    // verify required parameter 'shopperId' is not null or undefined
+                    if (shopperId === null || shopperId === undefined) {
+                        throw new base_1.RequiredError('shopperId', 'Required parameter shopperId was null or undefined when calling acceptInvite.');
+                    }
+                    // verify required parameter 'inviteId' is not null or undefined
+                    if (inviteId === null || inviteId === undefined) {
+                        throw new base_1.RequiredError('inviteId', 'Required parameter inviteId was null or undefined when calling acceptInvite.');
+                    }
+                    localVarPath = "/shoppers/{shopperId}/invites/{inviteId}"
+                        .replace("{" + "shopperId" + "}", encodeURIComponent(String(shopperId)))
+                        .replace("{" + "inviteId" + "}", encodeURIComponent(String(inviteId)));
+                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                    if (configuration) {
+                        baseOptions = configuration.baseOptions;
+                    }
+                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                    localVarHeaderParameter = {};
+                    localVarQueryParameter = {};
+                    if (xAuthUser !== undefined && xAuthUser !== null) {
+                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                    }
+                    query = new URLSearchParams(localVarUrlObj.search);
+                    for (key in localVarQueryParameter) {
+                        query.set(key, localVarQueryParameter[key]);
+                    }
+                    for (key in options.params) {
+                        query.set(key, options.params[key]);
+                    }
+                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                    return [2 /*return*/, {
+                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                            options: localVarRequestOptions,
+                        }];
+                });
+            });
+        },
+        /**
+         *
          * @summary Creates a new shopper
          * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
@@ -122,6 +178,62 @@ exports.ShoppersApiAxiosParamCreator = function (configuration) {
                     localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                     needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
                     localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                    return [2 /*return*/, {
+                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                            options: localVarRequestOptions,
+                        }];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Declines an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+         * @param {string} inviteId the ID of the invite to be declined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        declineInvite: function (xAuthUser, shopperId, inviteId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_a) {
+                    // verify required parameter 'xAuthUser' is not null or undefined
+                    if (xAuthUser === null || xAuthUser === undefined) {
+                        throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling declineInvite.');
+                    }
+                    // verify required parameter 'shopperId' is not null or undefined
+                    if (shopperId === null || shopperId === undefined) {
+                        throw new base_1.RequiredError('shopperId', 'Required parameter shopperId was null or undefined when calling declineInvite.');
+                    }
+                    // verify required parameter 'inviteId' is not null or undefined
+                    if (inviteId === null || inviteId === undefined) {
+                        throw new base_1.RequiredError('inviteId', 'Required parameter inviteId was null or undefined when calling declineInvite.');
+                    }
+                    localVarPath = "/shoppers/{shopperId}/invites/{inviteId}"
+                        .replace("{" + "shopperId" + "}", encodeURIComponent(String(shopperId)))
+                        .replace("{" + "inviteId" + "}", encodeURIComponent(String(inviteId)));
+                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                    if (configuration) {
+                        baseOptions = configuration.baseOptions;
+                    }
+                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                    localVarHeaderParameter = {};
+                    localVarQueryParameter = {};
+                    if (xAuthUser !== undefined && xAuthUser !== null) {
+                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                    }
+                    query = new URLSearchParams(localVarUrlObj.search);
+                    for (key in localVarQueryParameter) {
+                        query.set(key, localVarQueryParameter[key]);
+                    }
+                    for (key in options.params) {
+                        query.set(key, options.params[key]);
+                    }
+                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
                     return [2 /*return*/, {
                             url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
                             options: localVarRequestOptions,
@@ -497,6 +609,33 @@ exports.ShoppersApiFp = function (configuration) {
     return {
         /**
          *
+         * @summary Accepts an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+         * @param {string} inviteId the ID of the invite to be accepted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        acceptInvite: function (xAuthUser, shopperId, inviteId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.ShoppersApiAxiosParamCreator(configuration).acceptInvite(xAuthUser, shopperId, inviteId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Creates a new shopper
          * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
@@ -508,6 +647,33 @@ exports.ShoppersApiFp = function (configuration) {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, exports.ShoppersApiAxiosParamCreator(configuration).createShopper(body, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Declines an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+         * @param {string} inviteId the ID of the invite to be declined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        declineInvite: function (xAuthUser, shopperId, inviteId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, exports.ShoppersApiAxiosParamCreator(configuration).declineInvite(xAuthUser, shopperId, inviteId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -713,6 +879,22 @@ exports.ShoppersApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
+         * @summary Accepts an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+         * @param {string} inviteId the ID of the invite to be accepted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        acceptInvite: function (xAuthUser, shopperId, inviteId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, exports.ShoppersApiFp(configuration).acceptInvite(xAuthUser, shopperId, inviteId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
          * @summary Creates a new shopper
          * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
@@ -722,6 +904,22 @@ exports.ShoppersApiFactory = function (configuration, basePath, axios) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     return [2 /*return*/, exports.ShoppersApiFp(configuration).createShopper(body, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Declines an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+         * @param {string} inviteId the ID of the invite to be declined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        declineInvite: function (xAuthUser, shopperId, inviteId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, exports.ShoppersApiFp(configuration).declineInvite(xAuthUser, shopperId, inviteId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -846,6 +1044,24 @@ var ShoppersApi = /** @class */ (function (_super) {
     }
     /**
      *
+     * @summary Accepts an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+     * @param {string} inviteId the ID of the invite to be accepted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    ShoppersApi.prototype.acceptInvite = function (xAuthUser, shopperId, inviteId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, exports.ShoppersApiFp(this.configuration).acceptInvite(xAuthUser, shopperId, inviteId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
      * @summary Creates a new shopper
      * @param {Shopper} body the shopper to be created
      * @param {*} [options] Override http request option.
@@ -857,6 +1073,24 @@ var ShoppersApi = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, exports.ShoppersApiFp(this.configuration).createShopper(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Declines an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+     * @param {string} inviteId the ID of the invite to be declined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    ShoppersApi.prototype.declineInvite = function (xAuthUser, shopperId, inviteId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, exports.ShoppersApiFp(this.configuration).declineInvite(xAuthUser, shopperId, inviteId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

@@ -32,6 +32,61 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          *
+         * @summary Accepts an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+         * @param {string} inviteId the ID of the invite to be accepted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        acceptInvite: async (xAuthUser: string, shopperId: string, inviteId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling acceptInvite.');
+            }
+            // verify required parameter 'shopperId' is not null or undefined
+            if (shopperId === null || shopperId === undefined) {
+                throw new RequiredError('shopperId','Required parameter shopperId was null or undefined when calling acceptInvite.');
+            }
+            // verify required parameter 'inviteId' is not null or undefined
+            if (inviteId === null || inviteId === undefined) {
+                throw new RequiredError('inviteId','Required parameter inviteId was null or undefined when calling acceptInvite.');
+            }
+            const localVarPath = `/shoppers/{shopperId}/invites/{inviteId}`
+                .replace(`{${"shopperId"}}`, encodeURIComponent(String(shopperId)))
+                .replace(`{${"inviteId"}}`, encodeURIComponent(String(inviteId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Creates a new shopper
          * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
@@ -67,6 +122,61 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Declines an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+         * @param {string} inviteId the ID of the invite to be declined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        declineInvite: async (xAuthUser: string, shopperId: string, inviteId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            if (xAuthUser === null || xAuthUser === undefined) {
+                throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling declineInvite.');
+            }
+            // verify required parameter 'shopperId' is not null or undefined
+            if (shopperId === null || shopperId === undefined) {
+                throw new RequiredError('shopperId','Required parameter shopperId was null or undefined when calling declineInvite.');
+            }
+            // verify required parameter 'inviteId' is not null or undefined
+            if (inviteId === null || inviteId === undefined) {
+                throw new RequiredError('inviteId','Required parameter inviteId was null or undefined when calling declineInvite.');
+            }
+            const localVarPath = `/shoppers/{shopperId}/invites/{inviteId}`
+                .replace(`{${"shopperId"}}`, encodeURIComponent(String(shopperId)))
+                .replace(`{${"inviteId"}}`, encodeURIComponent(String(inviteId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (xAuthUser !== undefined && xAuthUser !== null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -436,6 +546,22 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
     return {
         /**
          *
+         * @summary Accepts an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+         * @param {string} inviteId the ID of the invite to be accepted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async acceptInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).acceptInvite(xAuthUser, shopperId, inviteId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         *
          * @summary Creates a new shopper
          * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
@@ -443,6 +569,22 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
          */
         async createShopper(body: Shopper, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Shopper>>> {
             const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).createShopper(body, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         *
+         * @summary Declines an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+         * @param {string} inviteId the ID of the invite to be declined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async declineInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).declineInvite(xAuthUser, shopperId, inviteId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -565,6 +707,18 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          *
+         * @summary Accepts an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+         * @param {string} inviteId the ID of the invite to be accepted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async acceptInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return ShoppersApiFp(configuration).acceptInvite(xAuthUser, shopperId, inviteId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Creates a new shopper
          * @param {Shopper} body the shopper to be created
          * @param {*} [options] Override http request option.
@@ -572,6 +726,18 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
          */
         async createShopper(body: Shopper, options?: AxiosRequestConfig): Promise<AxiosResponse<Shopper>> {
             return ShoppersApiFp(configuration).createShopper(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Declines an invite to a group
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+         * @param {string} inviteId the ID of the invite to be declined
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async declineInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return ShoppersApiFp(configuration).declineInvite(xAuthUser, shopperId, inviteId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -663,6 +829,19 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
 export class ShoppersApi extends BaseAPI {
     /**
      *
+     * @summary Accepts an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+     * @param {string} inviteId the ID of the invite to be accepted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    public async acceptInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return ShoppersApiFp(this.configuration).acceptInvite(xAuthUser, shopperId, inviteId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
      * @summary Creates a new shopper
      * @param {Shopper} body the shopper to be created
      * @param {*} [options] Override http request option.
@@ -671,6 +850,19 @@ export class ShoppersApi extends BaseAPI {
      */
     public async createShopper(body: Shopper, options?: AxiosRequestConfig) : Promise<AxiosResponse<Shopper>> {
         return ShoppersApiFp(this.configuration).createShopper(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     *
+     * @summary Declines an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+     * @param {string} inviteId the ID of the invite to be declined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    public async declineInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return ShoppersApiFp(this.configuration).declineInvite(xAuthUser, shopperId, inviteId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

@@ -26,12 +26,32 @@ import { Shopper } from '../models';
 export declare const ShoppersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Accepts an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+     * @param {string} inviteId the ID of the invite to be accepted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    acceptInvite: (xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Creates a new shopper
      * @param {Shopper} body the shopper to be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createShopper: (body: Shopper, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Declines an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+     * @param {string} inviteId the ID of the invite to be declined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    declineInvite: (xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves all of the groups associated with a Shopper
@@ -104,12 +124,32 @@ export declare const ShoppersApiAxiosParamCreator: (configuration?: Configuratio
 export declare const ShoppersApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Accepts an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+     * @param {string} inviteId the ID of the invite to be accepted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    acceptInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
      * @summary Creates a new shopper
      * @param {Shopper} body the shopper to be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createShopper(body: Shopper, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Shopper>>>;
+    /**
+     *
+     * @summary Declines an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+     * @param {string} inviteId the ID of the invite to be declined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    declineInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Retrieves all of the groups associated with a Shopper
@@ -182,12 +222,32 @@ export declare const ShoppersApiFp: (configuration?: Configuration) => {
 export declare const ShoppersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Accepts an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+     * @param {string} inviteId the ID of the invite to be accepted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    acceptInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
      * @summary Creates a new shopper
      * @param {Shopper} body the shopper to be created
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createShopper(body: Shopper, options?: AxiosRequestConfig): Promise<AxiosResponse<Shopper>>;
+    /**
+     *
+     * @summary Declines an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+     * @param {string} inviteId the ID of the invite to be declined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    declineInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Retrieves all of the groups associated with a Shopper
@@ -262,6 +322,17 @@ export declare const ShoppersApiFactory: (configuration?: Configuration, basePat
 export declare class ShoppersApi extends BaseAPI {
     /**
      *
+     * @summary Accepts an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be accepted
+     * @param {string} inviteId the ID of the invite to be accepted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    acceptInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
      * @summary Creates a new shopper
      * @param {Shopper} body the shopper to be created
      * @param {*} [options] Override http request option.
@@ -269,6 +340,17 @@ export declare class ShoppersApi extends BaseAPI {
      * @memberof ShoppersApi
      */
     createShopper(body: Shopper, options?: AxiosRequestConfig): Promise<AxiosResponse<Shopper>>;
+    /**
+     *
+     * @summary Declines an invite to a group
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} shopperId the ID of the shopper for whom the invite will be declined
+     * @param {string} inviteId the ID of the invite to be declined
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ShoppersApi
+     */
+    declineInvite(xAuthUser: string, shopperId: string, inviteId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Retrieves all of the groups associated with a Shopper
