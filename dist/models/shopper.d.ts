@@ -29,7 +29,7 @@ export interface Shopper {
      * @type {string}
      * @memberof Shopper
      */
-    nickName: string;
+    nickname: string;
     /**
      * The email of the shopper
      *
