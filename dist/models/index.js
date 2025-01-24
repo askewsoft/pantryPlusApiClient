@@ -20,7 +20,6 @@ __exportStar(require("./pick-category-name-or-ordinal_"), exports);
 __exportStar(require("./pick-group-id-or-name-or-owner_"), exports);
 __exportStar(require("./pick-group-name-or-id_"), exports);
 __exportStar(require("./pick-group-name_"), exports);
-__exportStar(require("./pick-item-id-or-name-or-upc_"), exports);
 __exportStar(require("./pick-item-name-or-upc_"), exports);
 __exportStar(require("./pick-list-name-or-group-id-or-ordinal_"), exports);
 __exportStar(require("./pick-location-id_"), exports);

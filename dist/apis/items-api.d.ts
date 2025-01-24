@@ -12,7 +12,7 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
-import { PickItemIdOrNameOrUpc_ } from '../models';
+import { Item } from '../models';
 import { PickItemNameOrUpc_ } from '../models';
 /**
  * ItemsApi - axios parameter creator
@@ -22,12 +22,12 @@ export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Creates an item
-     * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+     * @param {Item} body an object containing the ID, name, and UPC of the item
      * @param {string} xAuthUser
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createItem: (body: PickItemIdOrNameOrUpc_, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createItem: (body: Item, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates an item
@@ -47,12 +47,12 @@ export declare const ItemsApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Creates an item
-     * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+     * @param {Item} body an object containing the ID, name, and UPC of the item
      * @param {string} xAuthUser
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createItem(body: PickItemIdOrNameOrUpc_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    createItem(body: Item, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Updates an item
@@ -72,12 +72,12 @@ export declare const ItemsApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Creates an item
-     * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+     * @param {Item} body an object containing the ID, name, and UPC of the item
      * @param {string} xAuthUser
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createItem(body: PickItemIdOrNameOrUpc_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    createItem(body: Item, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Updates an item
@@ -99,13 +99,13 @@ export declare class ItemsApi extends BaseAPI {
     /**
      *
      * @summary Creates an item
-     * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+     * @param {Item} body an object containing the ID, name, and UPC of the item
      * @param {string} xAuthUser
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    createItem(body: PickItemIdOrNameOrUpc_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    createItem(body: Item, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Updates an item

@@ -43,12 +43,4 @@ export interface Item {
      * @memberof Item
      */
     upc?: string;
-
-    /**
-     * The ID of the category to which this item belongs
-     *
-     * @type {string}
-     * @memberof Item
-     */
-    categoryId?: string;
 }

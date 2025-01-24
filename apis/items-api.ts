@@ -17,7 +17,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { PickItemIdOrNameOrUpc_ } from '../models';
+import { Item } from '../models';
 import { PickItemNameOrUpc_ } from '../models';
 /**
  * ItemsApi - axios parameter creator
@@ -28,12 +28,12 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Creates an item
-         * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+         * @param {Item} body an object containing the ID, name, and UPC of the item
          * @param {string} xAuthUser 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createItem: async (body: PickItemIdOrNameOrUpc_, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createItem: async (body: Item, xAuthUser: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createItem.');
@@ -147,12 +147,12 @@ export const ItemsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Creates an item
-         * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+         * @param {Item} body an object containing the ID, name, and UPC of the item
          * @param {string} xAuthUser 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createItem(body: PickItemIdOrNameOrUpc_, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async createItem(body: Item, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await ItemsApiAxiosParamCreator(configuration).createItem(body, xAuthUser, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -187,12 +187,12 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Creates an item
-         * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+         * @param {Item} body an object containing the ID, name, and UPC of the item
          * @param {string} xAuthUser 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createItem(body: PickItemIdOrNameOrUpc_, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async createItem(body: Item, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return ItemsApiFp(configuration).createItem(body, xAuthUser, options).then((request) => request(axios, basePath));
         },
         /**
@@ -220,13 +220,13 @@ export class ItemsApi extends BaseAPI {
     /**
      * 
      * @summary Creates an item
-     * @param {PickItemIdOrNameOrUpc_} body an object containing the ID, name, and UPC of the item
+     * @param {Item} body an object containing the ID, name, and UPC of the item
      * @param {string} xAuthUser 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public async createItem(body: PickItemIdOrNameOrUpc_, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async createItem(body: Item, xAuthUser: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return ItemsApiFp(this.configuration).createItem(body, xAuthUser, options).then((request) => request(this.axios, this.basePath));
     }
     /**

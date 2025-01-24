@@ -8,7 +8,6 @@ export * from './pick-category-name-or-ordinal_';
 export * from './pick-group-id-or-name-or-owner_';
 export * from './pick-group-name-or-id_';
 export * from './pick-group-name_';
-export * from './pick-item-id-or-name-or-upc_';
 export * from './pick-item-name-or-upc_';
 export * from './pick-list-name-or-group-id-or-ordinal_';
 export * from './pick-location-id_';
