@@ -13,18 +13,18 @@
  */
 
  /**
- * The location of a store at which items may be purchased. GEO_LOCATION is a POINT(longitude, latitude) example: POINT(-71.44508663777015, 42.71299408793443)
+ * 
  *
  * @export
- * @interface Location
+ * @interface RecentLocation
  */
-export interface Location {
+export interface RecentLocation {
 
     /**
      * UUID representation of the location's ID
      *
      * @type {string}
-     * @memberof Location
+     * @memberof RecentLocation
      */
     id: string;
 
@@ -32,7 +32,7 @@ export interface Location {
      * The name of the location
      *
      * @type {string}
-     * @memberof Location
+     * @memberof RecentLocation
      */
     name: string;
 
@@ -40,7 +40,7 @@ export interface Location {
      * The latitude of the user's current location
      *
      * @type {number}
-     * @memberof Location
+     * @memberof RecentLocation
      */
     latitude: number;
 
@@ -48,7 +48,15 @@ export interface Location {
      * The longitude of the user's current location
      *
      * @type {number}
-     * @memberof Location
+     * @memberof RecentLocation
      */
     longitude: number;
+
+    /**
+     * The date of the purchase
+     *
+     * @type {string}
+     * @memberof RecentLocation
+     */
+    lastPurchaseDate: string;
 }

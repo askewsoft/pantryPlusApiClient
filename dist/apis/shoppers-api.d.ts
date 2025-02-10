@@ -15,9 +15,9 @@ import { RequestArgs, BaseAPI } from '../base';
 import { Group } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
-import { Location } from '../models';
 import { PickGroupIdOrNameOrOwner_ } from '../models';
 import { PickShopperId_ } from '../models';
+import { RecentLocation } from '../models';
 import { Shopper } from '../models';
 /**
  * ShoppersApi - axios parameter creator
@@ -93,10 +93,11 @@ export declare const ShoppersApiAxiosParamCreator: (configuration?: Configuratio
      * @summary Retrieves all locations associated with a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
+     * @param {number} lookBackDays the number of days to look back for purchases
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getLocations: (xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getLocations: (xAuthUser: string, shopperId: string, lookBackDays: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -191,10 +192,11 @@ export declare const ShoppersApiFp: (configuration?: Configuration) => {
      * @summary Retrieves all locations associated with a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
+     * @param {number} lookBackDays the number of days to look back for purchases
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getLocations(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Location>>>>;
+    getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<RecentLocation>>>>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -289,10 +291,11 @@ export declare const ShoppersApiFactory: (configuration?: Configuration, basePat
      * @summary Retrieves all locations associated with a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
+     * @param {number} lookBackDays the number of days to look back for purchases
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getLocations(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Location>>>;
+    getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<RecentLocation>>>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -396,11 +399,12 @@ export declare class ShoppersApi extends BaseAPI {
      * @summary Retrieves all locations associated with a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
+     * @param {number} lookBackDays the number of days to look back for purchases
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    getLocations(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Location>>>;
+    getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<RecentLocation>>>;
     /**
      *
      * @summary Retrieves a shopper by ID

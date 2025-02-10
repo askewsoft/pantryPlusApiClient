@@ -13,6 +13,8 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { Location } from '../models';
+import { LocationArea } from '../models';
+import { NearbyLocation } from '../models';
 import { PickLocationId_ } from '../models';
 import { PickLocationName_ } from '../models';
 /**
@@ -29,6 +31,15 @@ export declare const LocationsApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     createLocation: (body: Location, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Retrieves all locations within a radius of the current location
+     * @param {LocationArea} body
+     * @param {string} xAuthUser the email address of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getNearbyLocations: (body: LocationArea, xAuthUser: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates an existing location name
@@ -56,6 +67,15 @@ export declare const LocationsApiFp: (configuration?: Configuration) => {
     createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PickLocationId_>>>;
     /**
      *
+     * @summary Retrieves all locations within a radius of the current location
+     * @param {LocationArea} body
+     * @param {string} xAuthUser the email address of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getNearbyLocations(body: LocationArea, xAuthUser: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<NearbyLocation>>>>;
+    /**
+     *
      * @summary Updates an existing location name
      * @param {PickLocationName_} body
      * @param {string} xAuthUser the email address of the user
@@ -79,6 +99,15 @@ export declare const LocationsApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>>;
+    /**
+     *
+     * @summary Retrieves all locations within a radius of the current location
+     * @param {LocationArea} body
+     * @param {string} xAuthUser the email address of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getNearbyLocations(body: LocationArea, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<NearbyLocation>>>;
     /**
      *
      * @summary Updates an existing location name
@@ -107,6 +136,16 @@ export declare class LocationsApi extends BaseAPI {
      * @memberof LocationsApi
      */
     createLocation(body: Location, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PickLocationId_>>;
+    /**
+     *
+     * @summary Retrieves all locations within a radius of the current location
+     * @param {LocationArea} body
+     * @param {string} xAuthUser the email address of the user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof LocationsApi
+     */
+    getNearbyLocations(body: LocationArea, xAuthUser: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<NearbyLocation>>>;
     /**
      *
      * @summary Updates an existing location name

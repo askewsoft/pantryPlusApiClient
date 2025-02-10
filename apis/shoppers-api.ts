@@ -20,9 +20,9 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { Group } from '../models';
 import { Item } from '../models';
 import { List } from '../models';
-import { Location } from '../models';
 import { PickGroupIdOrNameOrOwner_ } from '../models';
 import { PickShopperId_ } from '../models';
+import { RecentLocation } from '../models';
 import { Shopper } from '../models';
 /**
  * ShoppersApi - axios parameter creator
@@ -384,10 +384,11 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
          * @summary Retrieves all locations associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
+         * @param {number} lookBackDays the number of days to look back for purchases
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLocations: async (xAuthUser: string, shopperId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getLocations: async (xAuthUser: string, shopperId: string, lookBackDays: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xAuthUser' is not null or undefined
             if (xAuthUser === null || xAuthUser === undefined) {
                 throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling getLocations.');
@@ -395,6 +396,10 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'shopperId' is not null or undefined
             if (shopperId === null || shopperId === undefined) {
                 throw new RequiredError('shopperId','Required parameter shopperId was null or undefined when calling getLocations.');
+            }
+            // verify required parameter 'lookBackDays' is not null or undefined
+            if (lookBackDays === null || lookBackDays === undefined) {
+                throw new RequiredError('lookBackDays','Required parameter lookBackDays was null or undefined when calling getLocations.');
             }
             const localVarPath = `/shoppers/{shopperId}/locations`
                 .replace(`{${"shopperId"}}`, encodeURIComponent(String(shopperId)));
@@ -407,6 +412,10 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (lookBackDays !== undefined) {
+                localVarQueryParameter['lookBackDays'] = lookBackDays;
+            }
 
             if (xAuthUser !== undefined && xAuthUser !== null) {
                 localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
@@ -655,11 +664,12 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
          * @summary Retrieves all locations associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
+         * @param {number} lookBackDays the number of days to look back for purchases
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLocations(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Location>>>> {
-            const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).getLocations(xAuthUser, shopperId, options);
+        async getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<RecentLocation>>>> {
+            const localVarAxiosArgs = await ShoppersApiAxiosParamCreator(configuration).getLocations(xAuthUser, shopperId, lookBackDays, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -788,11 +798,12 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
          * @summary Retrieves all locations associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
+         * @param {number} lookBackDays the number of days to look back for purchases
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLocations(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Location>>> {
-            return ShoppersApiFp(configuration).getLocations(xAuthUser, shopperId, options).then((request) => request(axios, basePath));
+        async getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<RecentLocation>>> {
+            return ShoppersApiFp(configuration).getLocations(xAuthUser, shopperId, lookBackDays, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -917,12 +928,13 @@ export class ShoppersApi extends BaseAPI {
      * @summary Retrieves all locations associated with a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
+     * @param {number} lookBackDays the number of days to look back for purchases
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    public async getLocations(xAuthUser: string, shopperId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Location>>> {
-        return ShoppersApiFp(this.configuration).getLocations(xAuthUser, shopperId, options).then((request) => request(this.axios, this.basePath));
+    public async getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<RecentLocation>>> {
+        return ShoppersApiFp(this.configuration).getLocations(xAuthUser, shopperId, lookBackDays, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      *

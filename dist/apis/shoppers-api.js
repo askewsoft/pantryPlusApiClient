@@ -446,10 +446,11 @@ exports.ShoppersApiAxiosParamCreator = function (configuration) {
          * @summary Retrieves all locations associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
+         * @param {number} lookBackDays the number of days to look back for purchases
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLocations: function (xAuthUser, shopperId, options) {
+        getLocations: function (xAuthUser, shopperId, lookBackDays, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
@@ -462,6 +463,10 @@ exports.ShoppersApiAxiosParamCreator = function (configuration) {
                     if (shopperId === null || shopperId === undefined) {
                         throw new base_1.RequiredError('shopperId', 'Required parameter shopperId was null or undefined when calling getLocations.');
                     }
+                    // verify required parameter 'lookBackDays' is not null or undefined
+                    if (lookBackDays === null || lookBackDays === undefined) {
+                        throw new base_1.RequiredError('lookBackDays', 'Required parameter lookBackDays was null or undefined when calling getLocations.');
+                    }
                     localVarPath = "/shoppers/{shopperId}/locations"
                         .replace("{" + "shopperId" + "}", encodeURIComponent(String(shopperId)));
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -471,6 +476,9 @@ exports.ShoppersApiAxiosParamCreator = function (configuration) {
                     localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
                     localVarHeaderParameter = {};
                     localVarQueryParameter = {};
+                    if (lookBackDays !== undefined) {
+                        localVarQueryParameter['lookBackDays'] = lookBackDays;
+                    }
                     if (xAuthUser !== undefined && xAuthUser !== null) {
                         localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
                     }
@@ -795,15 +803,16 @@ exports.ShoppersApiFp = function (configuration) {
          * @summary Retrieves all locations associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
+         * @param {number} lookBackDays the number of days to look back for purchases
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLocations: function (xAuthUser, shopperId, options) {
+        getLocations: function (xAuthUser, shopperId, lookBackDays, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.ShoppersApiAxiosParamCreator(configuration).getLocations(xAuthUser, shopperId, options)];
+                        case 0: return [4 /*yield*/, exports.ShoppersApiAxiosParamCreator(configuration).getLocations(xAuthUser, shopperId, lookBackDays, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -988,13 +997,14 @@ exports.ShoppersApiFactory = function (configuration, basePath, axios) {
          * @summary Retrieves all locations associated with a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
+         * @param {number} lookBackDays the number of days to look back for purchases
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLocations: function (xAuthUser, shopperId, options) {
+        getLocations: function (xAuthUser, shopperId, lookBackDays, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.ShoppersApiFp(configuration).getLocations(xAuthUser, shopperId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, exports.ShoppersApiFp(configuration).getLocations(xAuthUser, shopperId, lookBackDays, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -1167,15 +1177,16 @@ var ShoppersApi = /** @class */ (function (_super) {
      * @summary Retrieves all locations associated with a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
+     * @param {number} lookBackDays the number of days to look back for purchases
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    ShoppersApi.prototype.getLocations = function (xAuthUser, shopperId, options) {
+    ShoppersApi.prototype.getLocations = function (xAuthUser, shopperId, lookBackDays, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.ShoppersApiFp(this.configuration).getLocations(xAuthUser, shopperId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, exports.ShoppersApiFp(this.configuration).getLocations(xAuthUser, shopperId, lookBackDays, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
