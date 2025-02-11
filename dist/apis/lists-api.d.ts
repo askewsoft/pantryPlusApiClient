@@ -64,11 +64,12 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
      *
      * @summary Retrieves the categories for a list
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategories: (xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    getCategories: (xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -179,11 +180,12 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
      *
      * @summary Retrieves the categories for a list
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Category>>>>;
+    getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Category>>>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -294,11 +296,12 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      *
      * @summary Retrieves the categories for a list
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Category>>>;
+    getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Category>>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -415,12 +418,13 @@ export declare class ListsApi extends BaseAPI {
      *
      * @summary Retrieves the categories for a list
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    getCategories(xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Category>>>;
+    getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Category>>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
