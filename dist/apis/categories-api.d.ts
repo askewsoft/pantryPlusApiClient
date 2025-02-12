@@ -32,7 +32,7 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
     /**
      *
      * @summary Gets the items in a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -41,7 +41,7 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
     /**
      *
      * @summary Removes an item from a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -53,11 +53,12 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
      * @summary Updates a category
      * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateCategory: (body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    updateCategory: (body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * CategoriesApi - functional programming interface
@@ -77,7 +78,7 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Gets the items in a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -86,7 +87,7 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Removes an item from a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -98,11 +99,12 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
      * @summary Updates a category
      * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * CategoriesApi - factory interface
@@ -122,7 +124,7 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
     /**
      *
      * @summary Gets the items in a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -131,7 +133,7 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
     /**
      *
      * @summary Removes an item from a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -143,11 +145,12 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
      * @summary Updates a category
      * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * CategoriesApi - object-oriented interface
@@ -170,7 +173,7 @@ export declare class CategoriesApi extends BaseAPI {
     /**
      *
      * @summary Gets the items in a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -180,7 +183,7 @@ export declare class CategoriesApi extends BaseAPI {
     /**
      *
      * @summary Removes an item from a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -193,10 +196,11 @@ export declare class CategoriesApi extends BaseAPI {
      * @summary Updates a category
      * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

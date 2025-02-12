@@ -146,11 +146,12 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
          * @summary Adds a category to a list
          * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCategory: function (body, xAuthUser, listId, options) {
+        createCategory: function (body, xAuthUser, xAuthLocation, listId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -162,6 +163,10 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
                     // verify required parameter 'xAuthUser' is not null or undefined
                     if (xAuthUser === null || xAuthUser === undefined) {
                         throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling createCategory.');
+                    }
+                    // verify required parameter 'xAuthLocation' is not null or undefined
+                    if (xAuthLocation === null || xAuthLocation === undefined) {
+                        throw new base_1.RequiredError('xAuthLocation', 'Required parameter xAuthLocation was null or undefined when calling createCategory.');
                     }
                     // verify required parameter 'listId' is not null or undefined
                     if (listId === null || listId === undefined) {
@@ -178,6 +183,9 @@ exports.ListsApiAxiosParamCreator = function (configuration) {
                     localVarQueryParameter = {};
                     if (xAuthUser !== undefined && xAuthUser !== null) {
                         localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                    }
+                    if (xAuthLocation !== undefined && xAuthLocation !== null) {
+                        localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
                     }
                     localVarHeaderParameter['Content-Type'] = 'application/json';
                     query = new URLSearchParams(localVarUrlObj.search);
@@ -755,16 +763,17 @@ exports.ListsApiFp = function (configuration) {
          * @summary Adds a category to a list
          * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCategory: function (body, xAuthUser, listId, options) {
+        createCategory: function (body, xAuthUser, xAuthLocation, listId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.ListsApiAxiosParamCreator(configuration).createCategory(body, xAuthUser, listId, options)];
+                        case 0: return [4 /*yield*/, exports.ListsApiAxiosParamCreator(configuration).createCategory(body, xAuthUser, xAuthLocation, listId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1049,14 +1058,15 @@ exports.ListsApiFactory = function (configuration, basePath, axios) {
          * @summary Adds a category to a list
          * @param {Category} body the category to add
          * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} listId the ID of the list
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCategory: function (body, xAuthUser, listId, options) {
+        createCategory: function (body, xAuthUser, xAuthLocation, listId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.ListsApiFp(configuration).createCategory(body, xAuthUser, listId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, exports.ListsApiFp(configuration).createCategory(body, xAuthUser, xAuthLocation, listId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -1240,16 +1250,17 @@ var ListsApi = /** @class */ (function (_super) {
      * @summary Adds a category to a list
      * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    ListsApi.prototype.createCategory = function (body, xAuthUser, listId, options) {
+    ListsApi.prototype.createCategory = function (body, xAuthUser, xAuthLocation, listId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.ListsApiFp(this.configuration).createCategory(body, xAuthUser, listId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, exports.ListsApiFp(this.configuration).createCategory(body, xAuthUser, xAuthLocation, listId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

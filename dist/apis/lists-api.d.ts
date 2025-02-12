@@ -37,11 +37,12 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
      * @summary Adds a category to a list
      * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createCategory: (body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    createCategory: (body: Category, xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Creates a new list of items
@@ -153,11 +154,12 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
      * @summary Adds a category to a list
      * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    createCategory(body: Category, xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Creates a new list of items
@@ -269,11 +271,12 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @summary Adds a category to a list
      * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    createCategory(body: Category, xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Creates a new list of items
@@ -388,12 +391,13 @@ export declare class ListsApi extends BaseAPI {
      * @summary Adds a category to a list
      * @param {Category} body the category to add
      * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} listId the ID of the list
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ListsApi
      */
-    createCategory(body: Category, xAuthUser: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    createCategory(body: Category, xAuthUser: string, xAuthLocation: string, listId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Creates a new list of items

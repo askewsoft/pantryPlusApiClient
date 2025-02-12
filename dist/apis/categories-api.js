@@ -144,7 +144,7 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Gets the items in a category
-         * @param {string} xAuthUser
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -194,7 +194,7 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Removes an item from a category
-         * @param {string} xAuthUser
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -252,11 +252,12 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
          * @summary Updates a category
          * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCategory: function (body, xAuthUser, categoryId, options) {
+        updateCategory: function (body, xAuthUser, xAuthLocation, categoryId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -268,6 +269,10 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
                     // verify required parameter 'xAuthUser' is not null or undefined
                     if (xAuthUser === null || xAuthUser === undefined) {
                         throw new base_1.RequiredError('xAuthUser', 'Required parameter xAuthUser was null or undefined when calling updateCategory.');
+                    }
+                    // verify required parameter 'xAuthLocation' is not null or undefined
+                    if (xAuthLocation === null || xAuthLocation === undefined) {
+                        throw new base_1.RequiredError('xAuthLocation', 'Required parameter xAuthLocation was null or undefined when calling updateCategory.');
                     }
                     // verify required parameter 'categoryId' is not null or undefined
                     if (categoryId === null || categoryId === undefined) {
@@ -284,6 +289,9 @@ exports.CategoriesApiAxiosParamCreator = function (configuration) {
                     localVarQueryParameter = {};
                     if (xAuthUser !== undefined && xAuthUser !== null) {
                         localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                    }
+                    if (xAuthLocation !== undefined && xAuthLocation !== null) {
+                        localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
                     }
                     localVarHeaderParameter['Content-Type'] = 'application/json';
                     query = new URLSearchParams(localVarUrlObj.search);
@@ -343,7 +351,7 @@ exports.CategoriesApiFp = function (configuration) {
         /**
          *
          * @summary Gets the items in a category
-         * @param {string} xAuthUser
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -369,7 +377,7 @@ exports.CategoriesApiFp = function (configuration) {
         /**
          *
          * @summary Removes an item from a category
-         * @param {string} xAuthUser
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -398,16 +406,17 @@ exports.CategoriesApiFp = function (configuration) {
          * @summary Updates a category
          * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCategory: function (body, xAuthUser, categoryId, options) {
+        updateCategory: function (body, xAuthUser, xAuthLocation, categoryId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, exports.CategoriesApiAxiosParamCreator(configuration).updateCategory(body, xAuthUser, categoryId, options)];
+                        case 0: return [4 /*yield*/, exports.CategoriesApiAxiosParamCreator(configuration).updateCategory(body, xAuthUser, xAuthLocation, categoryId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -447,7 +456,7 @@ exports.CategoriesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Gets the items in a category
-         * @param {string} xAuthUser
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -462,7 +471,7 @@ exports.CategoriesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Removes an item from a category
-         * @param {string} xAuthUser
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -480,14 +489,15 @@ exports.CategoriesApiFactory = function (configuration, basePath, axios) {
          * @summary Updates a category
          * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCategory: function (body, xAuthUser, categoryId, options) {
+        updateCategory: function (body, xAuthUser, xAuthLocation, categoryId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, exports.CategoriesApiFp(configuration).updateCategory(body, xAuthUser, categoryId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, exports.CategoriesApiFp(configuration).updateCategory(body, xAuthUser, xAuthLocation, categoryId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -525,7 +535,7 @@ var CategoriesApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Gets the items in a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -542,7 +552,7 @@ var CategoriesApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Removes an item from a category
-     * @param {string} xAuthUser
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -562,16 +572,17 @@ var CategoriesApi = /** @class */ (function (_super) {
      * @summary Updates a category
      * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    CategoriesApi.prototype.updateCategory = function (body, xAuthUser, categoryId, options) {
+    CategoriesApi.prototype.updateCategory = function (body, xAuthUser, xAuthLocation, categoryId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, exports.CategoriesApiFp(this.configuration).updateCategory(body, xAuthUser, categoryId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, exports.CategoriesApiFp(this.configuration).updateCategory(body, xAuthUser, xAuthLocation, categoryId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

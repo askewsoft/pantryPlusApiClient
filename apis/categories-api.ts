@@ -83,7 +83,7 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Gets the items in a category
-         * @param {string} xAuthUser 
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -132,7 +132,7 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Removes an item from a category
-         * @param {string} xAuthUser 
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -189,11 +189,12 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
          * @summary Updates a category
          * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateCategory: async (body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateCategory: async (body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateCategory.');
@@ -201,6 +202,10 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
             // verify required parameter 'xAuthUser' is not null or undefined
             if (xAuthUser === null || xAuthUser === undefined) {
                 throw new RequiredError('xAuthUser','Required parameter xAuthUser was null or undefined when calling updateCategory.');
+            }
+            // verify required parameter 'xAuthLocation' is not null or undefined
+            if (xAuthLocation === null || xAuthLocation === undefined) {
+                throw new RequiredError('xAuthLocation','Required parameter xAuthLocation was null or undefined when calling updateCategory.');
             }
             // verify required parameter 'categoryId' is not null or undefined
             if (categoryId === null || categoryId === undefined) {
@@ -220,6 +225,10 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
 
             if (xAuthUser !== undefined && xAuthUser !== null) {
                 localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+
+            if (xAuthLocation !== undefined && xAuthLocation !== null) {
+                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -270,7 +279,7 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Gets the items in a category
-         * @param {string} xAuthUser 
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -285,7 +294,7 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Removes an item from a category
-         * @param {string} xAuthUser 
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -303,12 +312,13 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
          * @summary Updates a category
          * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await CategoriesApiAxiosParamCreator(configuration).updateCategory(body, xAuthUser, categoryId, options);
+        async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await CategoriesApiAxiosParamCreator(configuration).updateCategory(body, xAuthUser, xAuthLocation, categoryId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -338,7 +348,7 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Gets the items in a category
-         * @param {string} xAuthUser 
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -349,7 +359,7 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Removes an item from a category
-         * @param {string} xAuthUser 
+         * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
          * @param {*} [options] Override http request option.
@@ -363,12 +373,13 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
          * @summary Updates a category
          * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
          * @param {string} xAuthUser the email of the user
+         * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
          * @param {string} categoryId the ID of the category
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return CategoriesApiFp(configuration).updateCategory(body, xAuthUser, categoryId, options).then((request) => request(axios, basePath));
+        async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return CategoriesApiFp(configuration).updateCategory(body, xAuthUser, xAuthLocation, categoryId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -396,7 +407,7 @@ export class CategoriesApi extends BaseAPI {
     /**
      * 
      * @summary Gets the items in a category
-     * @param {string} xAuthUser 
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -408,7 +419,7 @@ export class CategoriesApi extends BaseAPI {
     /**
      * 
      * @summary Removes an item from a category
-     * @param {string} xAuthUser 
+     * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
      * @param {*} [options] Override http request option.
@@ -423,12 +434,13 @@ export class CategoriesApi extends BaseAPI {
      * @summary Updates a category
      * @param {PickCategoryNameOrOrdinal_} body an object containing the new name and ordinal of the category
      * @param {string} xAuthUser the email of the user
+     * @param {string} xAuthLocation the ID of the user&#x27;s nearest store location
      * @param {string} categoryId the ID of the category
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CategoriesApi
      */
-    public async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return CategoriesApiFp(this.configuration).updateCategory(body, xAuthUser, categoryId, options).then((request) => request(this.axios, this.basePath));
+    public async updateCategory(body: PickCategoryNameOrOrdinal_, xAuthUser: string, xAuthLocation: string, categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return CategoriesApiFp(this.configuration).updateCategory(body, xAuthUser, xAuthLocation, categoryId, options).then((request) => request(this.axios, this.basePath));
     }
 }
