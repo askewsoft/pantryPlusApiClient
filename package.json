@@ -1,5 +1,5 @@
 {
-  "name": "pantryPlusApiClient",
+  "name": "pantryplus-api-client",
   "version": "0.9.4",
   "description": "OpenAPI client for the pantryPlus REST API",
   "author": "OpenAPI-Generator Contributors",
@@ -18,7 +18,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^1.6.1"
   },
   "devDependencies": {
     "@types/node": "^12.11.5",
