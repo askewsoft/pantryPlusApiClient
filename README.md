@@ -29,7 +29,7 @@ import {
     GroupsApi,
     CategoriesApi,
     Configuration
-} from 'pantryPlusApiClient';
+} from 'pantryplus-api-client';
 
 const configuration = new Configuration({
   basePath: process.env.PUBLIC_API_URL,
@@ -49,7 +49,7 @@ export default api;
 Then in your consuming project, you can use the api as follows:
 
 ```typescript
-import api from './path/to/pantryPlusApiClient';
+import api from './path/to/api';
 
 const shopper = await api.shopper.createShopper({
     id: '123',
