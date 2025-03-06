@@ -29,7 +29,7 @@ import {
     GroupsApi,
     CategoriesApi,
     Configuration
-} from 'pantryplus-api-client';
+} from 'pantryplus-api-client/v1';
 
 const configuration = new Configuration({
   basePath: process.env.PUBLIC_API_URL,
