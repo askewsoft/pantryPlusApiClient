@@ -116,32 +116,42 @@ var CategoriesApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('addItemToCategory', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'categoryId' is not null or undefined
-                    (0, common_1.assertParamExists)('addItemToCategory', 'categoryId', categoryId);
-                    // verify required parameter 'itemId' is not null or undefined
-                    (0, common_1.assertParamExists)('addItemToCategory', 'itemId', itemId);
-                    localVarPath = "/categories/{categoryId}/items/{itemId}"
-                        .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)))
-                        .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('addItemToCategory', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'categoryId' is not null or undefined
+                            (0, common_1.assertParamExists)('addItemToCategory', 'categoryId', categoryId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('addItemToCategory', 'itemId', itemId);
+                            localVarPath = "/categories/{categoryId}/items/{itemId}"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -162,29 +172,39 @@ var CategoriesApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getCategoryItems', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'categoryId' is not null or undefined
-                    (0, common_1.assertParamExists)('getCategoryItems', 'categoryId', categoryId);
-                    localVarPath = "/categories/{categoryId}/items"
-                        .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getCategoryItems', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'categoryId' is not null or undefined
+                            (0, common_1.assertParamExists)('getCategoryItems', 'categoryId', categoryId);
+                            localVarPath = "/categories/{categoryId}/items"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -206,32 +226,42 @@ var CategoriesApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('removeItemFromCategory', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'categoryId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeItemFromCategory', 'categoryId', categoryId);
-                    // verify required parameter 'itemId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeItemFromCategory', 'itemId', itemId);
-                    localVarPath = "/categories/{categoryId}/items/{itemId}"
-                        .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)))
-                        .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('removeItemFromCategory', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'categoryId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeItemFromCategory', 'categoryId', categoryId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeItemFromCategory', 'itemId', itemId);
+                            localVarPath = "/categories/{categoryId}/items/{itemId}"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -254,38 +284,48 @@ var CategoriesApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('updateCategory', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'xAuthLocation' is not null or undefined
-                    (0, common_1.assertParamExists)('updateCategory', 'xAuthLocation', xAuthLocation);
-                    // verify required parameter 'categoryId' is not null or undefined
-                    (0, common_1.assertParamExists)('updateCategory', 'categoryId', categoryId);
-                    // verify required parameter 'pickCategoryNameOrOrdinal' is not null or undefined
-                    (0, common_1.assertParamExists)('updateCategory', 'pickCategoryNameOrOrdinal', pickCategoryNameOrOrdinal);
-                    localVarPath = "/categories/{categoryId}"
-                        .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('updateCategory', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'xAuthLocation' is not null or undefined
+                            (0, common_1.assertParamExists)('updateCategory', 'xAuthLocation', xAuthLocation);
+                            // verify required parameter 'categoryId' is not null or undefined
+                            (0, common_1.assertParamExists)('updateCategory', 'categoryId', categoryId);
+                            // verify required parameter 'pickCategoryNameOrOrdinal' is not null or undefined
+                            (0, common_1.assertParamExists)('updateCategory', 'pickCategoryNameOrOrdinal', pickCategoryNameOrOrdinal);
+                            localVarPath = "/categories/{categoryId}"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            if (xAuthLocation != null) {
+                                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickCategoryNameOrOrdinal, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    if (xAuthLocation != null) {
-                        localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickCategoryNameOrOrdinal, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -555,33 +595,43 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('addShopperToGroup', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('addShopperToGroup', 'groupId', groupId);
-                    // verify required parameter 'pickShopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('addShopperToGroup', 'pickShopperId', pickShopperId);
-                    localVarPath = "/groups/{groupId}/shoppers"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('addShopperToGroup', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('addShopperToGroup', 'groupId', groupId);
+                            // verify required parameter 'pickShopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('addShopperToGroup', 'pickShopperId', pickShopperId);
+                            localVarPath = "/groups/{groupId}/shoppers"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickShopperId, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickShopperId, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -602,30 +652,40 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('createGroup', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'pickGroupNameOrId' is not null or undefined
-                    (0, common_1.assertParamExists)('createGroup', 'pickGroupNameOrId', pickGroupNameOrId);
-                    localVarPath = "/groups";
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('createGroup', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'pickGroupNameOrId' is not null or undefined
+                            (0, common_1.assertParamExists)('createGroup', 'pickGroupNameOrId', pickGroupNameOrId);
+                            localVarPath = "/groups";
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickGroupNameOrId, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickGroupNameOrId, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -646,29 +706,39 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('deleteGroup', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('deleteGroup', 'groupId', groupId);
-                    localVarPath = "/groups/{groupId}"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('deleteGroup', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('deleteGroup', 'groupId', groupId);
+                            localVarPath = "/groups/{groupId}"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -689,29 +759,39 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getGroup', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('getGroup', 'groupId', groupId);
-                    localVarPath = "/groups/{groupId}"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getGroup', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('getGroup', 'groupId', groupId);
+                            localVarPath = "/groups/{groupId}"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -732,29 +812,39 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getGroupShoppers', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('getGroupShoppers', 'groupId', groupId);
-                    localVarPath = "/groups/{groupId}/shoppers"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getGroupShoppers', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('getGroupShoppers', 'groupId', groupId);
+                            localVarPath = "/groups/{groupId}/shoppers"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -775,29 +865,39 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getInvitees', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('getInvitees', 'groupId', groupId);
-                    localVarPath = "/groups/{groupId}/invitees"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getInvitees', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('getInvitees', 'groupId', groupId);
+                            localVarPath = "/groups/{groupId}/invitees"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -819,33 +919,43 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('inviteShopper', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('inviteShopper', 'groupId', groupId);
-                    // verify required parameter 'pickShopperEmail' is not null or undefined
-                    (0, common_1.assertParamExists)('inviteShopper', 'pickShopperEmail', pickShopperEmail);
-                    localVarPath = "/groups/{groupId}/invitees"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('inviteShopper', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('inviteShopper', 'groupId', groupId);
+                            // verify required parameter 'pickShopperEmail' is not null or undefined
+                            (0, common_1.assertParamExists)('inviteShopper', 'pickShopperEmail', pickShopperEmail);
+                            localVarPath = "/groups/{groupId}/invitees"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickShopperEmail, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickShopperEmail, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -867,32 +977,42 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('removeShopperFromGroup', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeShopperFromGroup', 'groupId', groupId);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeShopperFromGroup', 'shopperId', shopperId);
-                    localVarPath = "/groups/{groupId}/shoppers/{shopperId}"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)))
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('removeShopperFromGroup', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeShopperFromGroup', 'groupId', groupId);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeShopperFromGroup', 'shopperId', shopperId);
+                            localVarPath = "/groups/{groupId}/shoppers/{shopperId}"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)))
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -914,33 +1034,43 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('uninviteShopper', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('uninviteShopper', 'groupId', groupId);
-                    // verify required parameter 'pickShopperEmail' is not null or undefined
-                    (0, common_1.assertParamExists)('uninviteShopper', 'pickShopperEmail', pickShopperEmail);
-                    localVarPath = "/groups/{groupId}/invitees"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('uninviteShopper', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('uninviteShopper', 'groupId', groupId);
+                            // verify required parameter 'pickShopperEmail' is not null or undefined
+                            (0, common_1.assertParamExists)('uninviteShopper', 'pickShopperEmail', pickShopperEmail);
+                            localVarPath = "/groups/{groupId}/invitees"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickShopperEmail, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickShopperEmail, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -962,33 +1092,43 @@ var GroupsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('updateGroupName', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'groupId' is not null or undefined
-                    (0, common_1.assertParamExists)('updateGroupName', 'groupId', groupId);
-                    // verify required parameter 'pickGroupName' is not null or undefined
-                    (0, common_1.assertParamExists)('updateGroupName', 'pickGroupName', pickGroupName);
-                    localVarPath = "/groups/{groupId}"
-                        .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('updateGroupName', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'groupId' is not null or undefined
+                            (0, common_1.assertParamExists)('updateGroupName', 'groupId', groupId);
+                            // verify required parameter 'pickGroupName' is not null or undefined
+                            (0, common_1.assertParamExists)('updateGroupName', 'pickGroupName', pickGroupName);
+                            localVarPath = "/groups/{groupId}"
+                                .replace("{".concat("groupId", "}"), encodeURIComponent(String(groupId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickGroupName, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickGroupName, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -1548,30 +1688,40 @@ var ItemsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('createItem', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'item' is not null or undefined
-                    (0, common_1.assertParamExists)('createItem', 'item', item);
-                    localVarPath = "/items";
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('createItem', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'item' is not null or undefined
+                            (0, common_1.assertParamExists)('createItem', 'item', item);
+                            localVarPath = "/items";
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(item, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(item, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -1593,33 +1743,43 @@ var ItemsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('updateItem', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'itemId' is not null or undefined
-                    (0, common_1.assertParamExists)('updateItem', 'itemId', itemId);
-                    // verify required parameter 'pickItemNameOrUpc' is not null or undefined
-                    (0, common_1.assertParamExists)('updateItem', 'pickItemNameOrUpc', pickItemNameOrUpc);
-                    localVarPath = "/items/{itemId}"
-                        .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('updateItem', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('updateItem', 'itemId', itemId);
+                            // verify required parameter 'pickItemNameOrUpc' is not null or undefined
+                            (0, common_1.assertParamExists)('updateItem', 'pickItemNameOrUpc', pickItemNameOrUpc);
+                            localVarPath = "/items/{itemId}"
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickItemNameOrUpc, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickItemNameOrUpc, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -1784,32 +1944,42 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('addItem', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('addItem', 'listId', listId);
-                    // verify required parameter 'itemId' is not null or undefined
-                    (0, common_1.assertParamExists)('addItem', 'itemId', itemId);
-                    localVarPath = "/lists/{listId}/items/{itemId}"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
-                        .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('addItem', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('addItem', 'listId', listId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('addItem', 'itemId', itemId);
+                            localVarPath = "/lists/{listId}/items/{itemId}"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -1832,38 +2002,48 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('createCategory', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'xAuthLocation' is not null or undefined
-                    (0, common_1.assertParamExists)('createCategory', 'xAuthLocation', xAuthLocation);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('createCategory', 'listId', listId);
-                    // verify required parameter 'category' is not null or undefined
-                    (0, common_1.assertParamExists)('createCategory', 'category', category);
-                    localVarPath = "/lists/{listId}/categories"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('createCategory', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'xAuthLocation' is not null or undefined
+                            (0, common_1.assertParamExists)('createCategory', 'xAuthLocation', xAuthLocation);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('createCategory', 'listId', listId);
+                            // verify required parameter 'category' is not null or undefined
+                            (0, common_1.assertParamExists)('createCategory', 'category', category);
+                            localVarPath = "/lists/{listId}/categories"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            if (xAuthLocation != null) {
+                                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(category, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    if (xAuthLocation != null) {
-                        localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(category, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -1884,30 +2064,40 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('createList', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'list' is not null or undefined
-                    (0, common_1.assertParamExists)('createList', 'list', list);
-                    localVarPath = "/lists";
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('createList', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'list' is not null or undefined
+                            (0, common_1.assertParamExists)('createList', 'list', list);
+                            localVarPath = "/lists";
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(list, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(list, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -1928,29 +2118,39 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('deleteList', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('deleteList', 'listId', listId);
-                    localVarPath = "/lists/{listId}"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('deleteList', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('deleteList', 'listId', listId);
+                            localVarPath = "/lists/{listId}"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -1972,34 +2172,44 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getCategories', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'xAuthLocation' is not null or undefined
-                    (0, common_1.assertParamExists)('getCategories', 'xAuthLocation', xAuthLocation);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('getCategories', 'listId', listId);
-                    localVarPath = "/lists/{listId}/categories"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getCategories', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'xAuthLocation' is not null or undefined
+                            (0, common_1.assertParamExists)('getCategories', 'xAuthLocation', xAuthLocation);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('getCategories', 'listId', listId);
+                            localVarPath = "/lists/{listId}/categories"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            if (xAuthLocation != null) {
+                                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    if (xAuthLocation != null) {
-                        localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2020,29 +2230,39 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getListItems', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('getListItems', 'listId', listId);
-                    localVarPath = "/lists/{listId}/items"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getListItems', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('getListItems', 'listId', listId);
+                            localVarPath = "/lists/{listId}/items"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2065,37 +2285,47 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('purchaseItem', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'xAuthLocation' is not null or undefined
-                    (0, common_1.assertParamExists)('purchaseItem', 'xAuthLocation', xAuthLocation);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('purchaseItem', 'listId', listId);
-                    // verify required parameter 'itemId' is not null or undefined
-                    (0, common_1.assertParamExists)('purchaseItem', 'itemId', itemId);
-                    localVarPath = "/lists/{listId}/items/{itemId}/purchase"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
-                        .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('purchaseItem', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'xAuthLocation' is not null or undefined
+                            (0, common_1.assertParamExists)('purchaseItem', 'xAuthLocation', xAuthLocation);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('purchaseItem', 'listId', listId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('purchaseItem', 'itemId', itemId);
+                            localVarPath = "/lists/{listId}/items/{itemId}/purchase"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            if (xAuthLocation != null) {
+                                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    if (xAuthLocation != null) {
-                        localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2117,32 +2347,42 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('removeCategory', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeCategory', 'listId', listId);
-                    // verify required parameter 'categoryId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeCategory', 'categoryId', categoryId);
-                    localVarPath = "/lists/{listId}/categories/{categoryId}"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
-                        .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('removeCategory', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeCategory', 'listId', listId);
+                            // verify required parameter 'categoryId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeCategory', 'categoryId', categoryId);
+                            localVarPath = "/lists/{listId}/categories/{categoryId}"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2164,32 +2404,42 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('removeItem', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeItem', 'listId', listId);
-                    // verify required parameter 'itemId' is not null or undefined
-                    (0, common_1.assertParamExists)('removeItem', 'itemId', itemId);
-                    localVarPath = "/lists/{listId}/items/{itemId}"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
-                        .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('removeItem', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeItem', 'listId', listId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('removeItem', 'itemId', itemId);
+                            localVarPath = "/lists/{listId}/items/{itemId}"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2213,41 +2463,51 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('unpurchaseItem', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'xAuthLocation' is not null or undefined
-                    (0, common_1.assertParamExists)('unpurchaseItem', 'xAuthLocation', xAuthLocation);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('unpurchaseItem', 'listId', listId);
-                    // verify required parameter 'itemId' is not null or undefined
-                    (0, common_1.assertParamExists)('unpurchaseItem', 'itemId', itemId);
-                    // verify required parameter 'unpurchaseItemRequest' is not null or undefined
-                    (0, common_1.assertParamExists)('unpurchaseItem', 'unpurchaseItemRequest', unpurchaseItemRequest);
-                    localVarPath = "/lists/{listId}/items/{itemId}/purchase"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
-                        .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('unpurchaseItem', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'xAuthLocation' is not null or undefined
+                            (0, common_1.assertParamExists)('unpurchaseItem', 'xAuthLocation', xAuthLocation);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('unpurchaseItem', 'listId', listId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('unpurchaseItem', 'itemId', itemId);
+                            // verify required parameter 'unpurchaseItemRequest' is not null or undefined
+                            (0, common_1.assertParamExists)('unpurchaseItem', 'unpurchaseItemRequest', unpurchaseItemRequest);
+                            localVarPath = "/lists/{listId}/items/{itemId}/purchase"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            if (xAuthLocation != null) {
+                                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(unpurchaseItemRequest, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    if (xAuthLocation != null) {
-                        localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(unpurchaseItemRequest, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2269,33 +2529,43 @@ var ListsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('updateList', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'listId' is not null or undefined
-                    (0, common_1.assertParamExists)('updateList', 'listId', listId);
-                    // verify required parameter 'pickListNameOrGroupIdOrOrdinal' is not null or undefined
-                    (0, common_1.assertParamExists)('updateList', 'pickListNameOrGroupIdOrOrdinal', pickListNameOrGroupIdOrOrdinal);
-                    localVarPath = "/lists/{listId}"
-                        .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('updateList', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('updateList', 'listId', listId);
+                            // verify required parameter 'pickListNameOrGroupIdOrOrdinal' is not null or undefined
+                            (0, common_1.assertParamExists)('updateList', 'pickListNameOrGroupIdOrOrdinal', pickListNameOrGroupIdOrOrdinal);
+                            localVarPath = "/lists/{listId}"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickListNameOrGroupIdOrOrdinal, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickListNameOrGroupIdOrOrdinal, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2924,30 +3194,40 @@ var LocationsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('createLocation', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'location' is not null or undefined
-                    (0, common_1.assertParamExists)('createLocation', 'location', location);
-                    localVarPath = "/locations";
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('createLocation', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'location' is not null or undefined
+                            (0, common_1.assertParamExists)('createLocation', 'location', location);
+                            localVarPath = "/locations";
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(location, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(location, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -2968,30 +3248,40 @@ var LocationsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getNearbyLocations', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'locationArea' is not null or undefined
-                    (0, common_1.assertParamExists)('getNearbyLocations', 'locationArea', locationArea);
-                    localVarPath = "/locations/nearby";
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getNearbyLocations', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'locationArea' is not null or undefined
+                            (0, common_1.assertParamExists)('getNearbyLocations', 'locationArea', locationArea);
+                            localVarPath = "/locations/nearby";
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(locationArea, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(locationArea, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3013,33 +3303,43 @@ var LocationsApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('updateLocation', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'locationId' is not null or undefined
-                    (0, common_1.assertParamExists)('updateLocation', 'locationId', locationId);
-                    // verify required parameter 'pickLocationName' is not null or undefined
-                    (0, common_1.assertParamExists)('updateLocation', 'pickLocationName', pickLocationName);
-                    localVarPath = "/locations/{locationId}"
-                        .replace("{".concat("locationId", "}"), encodeURIComponent(String(locationId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('updateLocation', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'locationId' is not null or undefined
+                            (0, common_1.assertParamExists)('updateLocation', 'locationId', locationId);
+                            // verify required parameter 'pickLocationName' is not null or undefined
+                            (0, common_1.assertParamExists)('updateLocation', 'pickLocationName', pickLocationName);
+                            localVarPath = "/locations/{locationId}"
+                                .replace("{".concat("locationId", "}"), encodeURIComponent(String(locationId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickLocationName, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickLocationName, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3252,32 +3552,42 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('acceptInvite', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('acceptInvite', 'shopperId', shopperId);
-                    // verify required parameter 'inviteId' is not null or undefined
-                    (0, common_1.assertParamExists)('acceptInvite', 'inviteId', inviteId);
-                    localVarPath = "/shoppers/{shopperId}/invites/{inviteId}"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)))
-                        .replace("{".concat("inviteId", "}"), encodeURIComponent(String(inviteId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('acceptInvite', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('acceptInvite', 'shopperId', shopperId);
+                            // verify required parameter 'inviteId' is not null or undefined
+                            (0, common_1.assertParamExists)('acceptInvite', 'inviteId', inviteId);
+                            localVarPath = "/shoppers/{shopperId}/invites/{inviteId}"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)))
+                                .replace("{".concat("inviteId", "}"), encodeURIComponent(String(inviteId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3297,25 +3607,35 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'shopper' is not null or undefined
-                    (0, common_1.assertParamExists)('createShopper', 'shopper', shopper);
-                    localVarPath = "/shoppers";
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'shopper' is not null or undefined
+                            (0, common_1.assertParamExists)('createShopper', 'shopper', shopper);
+                            localVarPath = "/shoppers";
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(shopper, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(shopper, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3337,32 +3657,42 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('declineInvite', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('declineInvite', 'shopperId', shopperId);
-                    // verify required parameter 'inviteId' is not null or undefined
-                    (0, common_1.assertParamExists)('declineInvite', 'inviteId', inviteId);
-                    localVarPath = "/shoppers/{shopperId}/invites/{inviteId}"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)))
-                        .replace("{".concat("inviteId", "}"), encodeURIComponent(String(inviteId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('declineInvite', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('declineInvite', 'shopperId', shopperId);
+                            // verify required parameter 'inviteId' is not null or undefined
+                            (0, common_1.assertParamExists)('declineInvite', 'inviteId', inviteId);
+                            localVarPath = "/shoppers/{shopperId}/invites/{inviteId}"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)))
+                                .replace("{".concat("inviteId", "}"), encodeURIComponent(String(inviteId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3383,29 +3713,39 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getGroups', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('getGroups', 'shopperId', shopperId);
-                    localVarPath = "/shoppers/{shopperId}/groups"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getGroups', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('getGroups', 'shopperId', shopperId);
+                            localVarPath = "/shoppers/{shopperId}/groups"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3426,29 +3766,39 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getInvites', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('getInvites', 'shopperId', shopperId);
-                    localVarPath = "/shoppers/{shopperId}/invites"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getInvites', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('getInvites', 'shopperId', shopperId);
+                            localVarPath = "/shoppers/{shopperId}/invites"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3469,29 +3819,39 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getLists', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('getLists', 'shopperId', shopperId);
-                    localVarPath = "/shoppers/{shopperId}/lists"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getLists', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('getLists', 'shopperId', shopperId);
+                            localVarPath = "/shoppers/{shopperId}/lists"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3513,34 +3873,44 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getLocations', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('getLocations', 'shopperId', shopperId);
-                    // verify required parameter 'lookBackDays' is not null or undefined
-                    (0, common_1.assertParamExists)('getLocations', 'lookBackDays', lookBackDays);
-                    localVarPath = "/shoppers/{shopperId}/locations"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getLocations', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('getLocations', 'shopperId', shopperId);
+                            // verify required parameter 'lookBackDays' is not null or undefined
+                            (0, common_1.assertParamExists)('getLocations', 'lookBackDays', lookBackDays);
+                            localVarPath = "/shoppers/{shopperId}/locations"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (lookBackDays !== undefined) {
+                                localVarQueryParameter['lookBackDays'] = lookBackDays;
+                            }
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (lookBackDays !== undefined) {
-                        localVarQueryParameter['lookBackDays'] = lookBackDays;
-                    }
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3561,29 +3931,39 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('getPurchasedItems', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('getPurchasedItems', 'shopperId', shopperId);
-                    localVarPath = "/shoppers/{shopperId}/items"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getPurchasedItems', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('getPurchasedItems', 'shopperId', shopperId);
+                            localVarPath = "/shoppers/{shopperId}/items"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3604,29 +3984,39 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('retrieveShopper', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('retrieveShopper', 'shopperId', shopperId);
-                    localVarPath = "/shoppers/{shopperId}"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('retrieveShopper', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('retrieveShopper', 'shopperId', shopperId);
+                            localVarPath = "/shoppers/{shopperId}"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -3648,33 +4038,43 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
-                    // verify required parameter 'xAuthUser' is not null or undefined
-                    (0, common_1.assertParamExists)('updateShopper', 'xAuthUser', xAuthUser);
-                    // verify required parameter 'shopperId' is not null or undefined
-                    (0, common_1.assertParamExists)('updateShopper', 'shopperId', shopperId);
-                    // verify required parameter 'shopper' is not null or undefined
-                    (0, common_1.assertParamExists)('updateShopper', 'shopper', shopper);
-                    localVarPath = "/shoppers/{shopperId}"
-                        .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
-                    localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('updateShopper', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'shopperId' is not null or undefined
+                            (0, common_1.assertParamExists)('updateShopper', 'shopperId', shopperId);
+                            // verify required parameter 'shopper' is not null or undefined
+                            (0, common_1.assertParamExists)('updateShopper', 'shopper', shopper);
+                            localVarPath = "/shoppers/{shopperId}"
+                                .replace("{".concat("shopperId", "}"), encodeURIComponent(String(shopperId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(shopper, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    if (xAuthUser != null) {
-                        localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
-                    }
-                    (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(shopper, localVarRequestOptions, configuration);
-                    return [2 /*return*/, {
-                            url: (0, common_1.toPathString)(localVarUrlObj),
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
