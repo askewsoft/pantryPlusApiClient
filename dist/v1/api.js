@@ -2268,6 +2268,59 @@ var ListsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Retrieves the count of unpurchased items for a list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId the ID of the list
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getListItemsCount: function (xAuthUser_1, listId_1) {
+            var args_1 = [];
+            for (var _i = 2; _i < arguments.length; _i++) {
+                args_1[_i - 2] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, listId_1], args_1, true), void 0, function (xAuthUser, listId, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getListItemsCount', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('getListItemsCount', 'listId', listId);
+                            localVarPath = "/lists/{listId}/items/count"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -2729,6 +2782,30 @@ var ListsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Retrieves the count of unpurchased items for a list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId the ID of the list
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getListItemsCount: function (xAuthUser, listId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.getListItemsCount(xAuthUser, listId, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ListsApi.getListItemsCount']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -2937,6 +3014,17 @@ var ListsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Retrieves the count of unpurchased items for a list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId the ID of the list
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getListItemsCount: function (xAuthUser, listId, options) {
+            return localVarFp.getListItemsCount(xAuthUser, listId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -3093,6 +3181,19 @@ var ListsApi = /** @class */ (function (_super) {
     ListsApi.prototype.getListItems = function (xAuthUser, listId, options) {
         var _this = this;
         return (0, exports.ListsApiFp)(this.configuration).getListItems(xAuthUser, listId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
+     * @summary Retrieves the count of unpurchased items for a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    ListsApi.prototype.getListItemsCount = function (xAuthUser, listId, options) {
+        var _this = this;
+        return (0, exports.ListsApiFp)(this.configuration).getListItemsCount(xAuthUser, listId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      *

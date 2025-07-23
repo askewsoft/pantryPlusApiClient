@@ -35,7 +35,7 @@ var Configuration = /** @class */ (function () {
         this.accessToken = param.accessToken;
         this.basePath = param.basePath;
         this.serverIndex = param.serverIndex;
-        this.baseOptions = __assign({ headers: __assign(__assign({}, (_a = param.baseOptions) === null || _a === void 0 ? void 0 : _a.headers), { 'User-Agent': "OpenAPI-Generator/typescript-axios" }) }, param.baseOptions);
+        this.baseOptions = __assign(__assign({}, param.baseOptions), { headers: __assign({}, (_a = param.baseOptions) === null || _a === void 0 ? void 0 : _a.headers) });
         this.formDataCtor = param.formDataCtor;
     }
     /**

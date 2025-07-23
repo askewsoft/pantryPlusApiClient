@@ -45,6 +45,19 @@ export interface Category {
     'ordinal': number;
 }
 /**
+ *
+ * @export
+ * @interface GetListItemsCount200Response
+ */
+export interface GetListItemsCount200Response {
+    /**
+     *
+     * @type {number}
+     * @memberof GetListItemsCount200Response
+     */
+    'count': number;
+}
+/**
  * A Group is a user generated collection of Shoppers.
  * @export
  * @interface Group
@@ -1246,6 +1259,15 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
     getListItems: (xAuthUser: string, listId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Retrieves the count of unpurchased items for a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getListItemsCount: (xAuthUser: string, listId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Purchases an item on a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
@@ -1363,6 +1385,15 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     getListItems(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>>;
     /**
      *
+     * @summary Retrieves the count of unpurchased items for a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getListItemsCount(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetListItemsCount200Response>>;
+    /**
+     *
      * @summary Purchases an item on a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
@@ -1478,6 +1509,15 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getListItems(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>>;
+    /**
+     *
+     * @summary Retrieves the count of unpurchased items for a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getListItemsCount(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): AxiosPromise<GetListItemsCount200Response>;
     /**
      *
      * @summary Purchases an item on a list
@@ -1603,6 +1643,16 @@ export declare class ListsApi extends BaseAPI {
      * @memberof ListsApi
      */
     getListItems(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item[], any>>;
+    /**
+     *
+     * @summary Retrieves the count of unpurchased items for a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    getListItemsCount(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetListItemsCount200Response, any>>;
     /**
      *
      * @summary Purchases an item on a list
