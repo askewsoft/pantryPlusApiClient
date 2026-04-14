@@ -2498,6 +2498,70 @@ var ListsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Reorders all categories for a list at the given store location
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+         * @param {string} listId the ID of the list
+         * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        reorderCategoriesAtLocation: function (xAuthUser_1, xAuthLocation_1, listId_1, reorderCategoriesAtLocationRequest_1) {
+            var args_1 = [];
+            for (var _i = 4; _i < arguments.length; _i++) {
+                args_1[_i - 4] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, xAuthLocation_1, listId_1, reorderCategoriesAtLocationRequest_1], args_1, true), void 0, function (xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('reorderCategoriesAtLocation', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'xAuthLocation' is not null or undefined
+                            (0, common_1.assertParamExists)('reorderCategoriesAtLocation', 'xAuthLocation', xAuthLocation);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('reorderCategoriesAtLocation', 'listId', listId);
+                            // verify required parameter 'reorderCategoriesAtLocationRequest' is not null or undefined
+                            (0, common_1.assertParamExists)('reorderCategoriesAtLocation', 'reorderCategoriesAtLocationRequest', reorderCategoriesAtLocationRequest);
+                            localVarPath = "/lists/{listId}/categories/order"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            if (xAuthLocation != null) {
+                                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(reorderCategoriesAtLocationRequest, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Removes the purchase of an item from purchase history
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -2882,6 +2946,32 @@ var ListsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Reorders all categories for a list at the given store location
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+         * @param {string} listId the ID of the list
+         * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        reorderCategoriesAtLocation: function (xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.reorderCategoriesAtLocation(xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ListsApi.reorderCategoriesAtLocation']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Removes the purchase of an item from purchase history
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -3062,6 +3152,19 @@ var ListsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Reorders all categories for a list at the given store location
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+         * @param {string} listId the ID of the list
+         * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        reorderCategoriesAtLocation: function (xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options) {
+            return localVarFp.reorderCategoriesAtLocation(xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
          * @summary Removes the purchase of an item from purchase history
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -3237,6 +3340,21 @@ var ListsApi = /** @class */ (function (_super) {
     ListsApi.prototype.removeItem = function (xAuthUser, listId, itemId, options) {
         var _this = this;
         return (0, exports.ListsApiFp)(this.configuration).removeItem(xAuthUser, listId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
+     * @summary Reorders all categories for a list at the given store location
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+     * @param {string} listId the ID of the list
+     * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    ListsApi.prototype.reorderCategoriesAtLocation = function (xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options) {
+        var _this = this;
+        return (0, exports.ListsApiFp)(this.configuration).reorderCategoriesAtLocation(xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      *

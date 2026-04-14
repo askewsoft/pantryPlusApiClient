@@ -444,6 +444,19 @@ export interface RecentLocation {
     'lastPurchaseDate': string;
 }
 /**
+ * orderedCategoryIds — every category id on the list, in display order
+ * @export
+ * @interface ReorderCategoriesAtLocationRequest
+ */
+export interface ReorderCategoriesAtLocationRequest {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof ReorderCategoriesAtLocationRequest
+     */
+    'orderedCategoryIds': Array<string>;
+}
+/**
  * A Shopper is a user who has an account with us.
  * @export
  * @interface Shopper
@@ -2489,6 +2502,62 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Reorders all categories for a list at the given store location
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+         * @param {string} listId the ID of the list
+         * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        reorderCategoriesAtLocation: async (xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('reorderCategoriesAtLocation', 'xAuthUser', xAuthUser)
+            // verify required parameter 'xAuthLocation' is not null or undefined
+            assertParamExists('reorderCategoriesAtLocation', 'xAuthLocation', xAuthLocation)
+            // verify required parameter 'listId' is not null or undefined
+            assertParamExists('reorderCategoriesAtLocation', 'listId', listId)
+            // verify required parameter 'reorderCategoriesAtLocationRequest' is not null or undefined
+            assertParamExists('reorderCategoriesAtLocation', 'reorderCategoriesAtLocationRequest', reorderCategoriesAtLocationRequest)
+            const localVarPath = `/lists/{listId}/categories/order`
+                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+            if (xAuthLocation != null) {
+                localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(reorderCategoriesAtLocationRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Removes the purchase of an item from purchase history
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -2757,6 +2826,22 @@ export const ListsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Reorders all categories for a list at the given store location
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+         * @param {string} listId the ID of the list
+         * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async reorderCategoriesAtLocation(xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.reorderCategoriesAtLocation(xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ListsApi.reorderCategoriesAtLocation']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Removes the purchase of an item from purchase history
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -2914,6 +2999,19 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
          */
         removeItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.removeItem(xAuthUser, listId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Reorders all categories for a list at the given store location
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+         * @param {string} listId the ID of the list
+         * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        reorderCategoriesAtLocation(xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.reorderCategoriesAtLocation(xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3087,6 +3185,21 @@ export class ListsApi extends BaseAPI {
      */
     public removeItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) {
         return ListsApiFp(this.configuration).removeItem(xAuthUser, listId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Reorders all categories for a list at the given store location
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+     * @param {string} listId the ID of the list
+     * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    public reorderCategoriesAtLocation(xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options?: RawAxiosRequestConfig) {
+        return ListsApiFp(this.configuration).reorderCategoriesAtLocation(xAuthUser, xAuthLocation, listId, reorderCategoriesAtLocationRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

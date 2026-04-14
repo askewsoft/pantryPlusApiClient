@@ -434,6 +434,19 @@ export interface RecentLocation {
     'lastPurchaseDate': string;
 }
 /**
+ * orderedCategoryIds — every category id on the list, in display order
+ * @export
+ * @interface ReorderCategoriesAtLocationRequest
+ */
+export interface ReorderCategoriesAtLocationRequest {
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof ReorderCategoriesAtLocationRequest
+     */
+    'orderedCategoryIds': Array<string>;
+}
+/**
  * A Shopper is a user who has an account with us.
  * @export
  * @interface Shopper
@@ -1286,6 +1299,17 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
     removeItem: (xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Reorders all categories for a list at the given store location
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+     * @param {string} listId the ID of the list
+     * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    reorderCategoriesAtLocation: (xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Removes the purchase of an item from purchase history
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
@@ -1412,6 +1436,17 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     removeItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Reorders all categories for a list at the given store location
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+     * @param {string} listId the ID of the list
+     * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    reorderCategoriesAtLocation(xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary Removes the purchase of an item from purchase history
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
@@ -1536,6 +1571,17 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     removeItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary Reorders all categories for a list at the given store location
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+     * @param {string} listId the ID of the list
+     * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    reorderCategoriesAtLocation(xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
      * @summary Removes the purchase of an item from purchase history
@@ -1674,6 +1720,18 @@ export declare class ListsApi extends BaseAPI {
      * @memberof ListsApi
      */
     removeItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Reorders all categories for a list at the given store location
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} xAuthLocation the ID of the store location (CATEGORY_ORDER is per location)
+     * @param {string} listId the ID of the list
+     * @param {ReorderCategoriesAtLocationRequest} reorderCategoriesAtLocationRequest orderedCategoryIds — every category id on the list, in display order
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    reorderCategoriesAtLocation(xAuthUser: string, xAuthLocation: string, listId: string, reorderCategoriesAtLocationRequest: ReorderCategoriesAtLocationRequest, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Removes the purchase of an item from purchase history
