@@ -427,11 +427,11 @@ export interface RecentLocation {
      */
     'longitude': number;
     /**
-     * The date of the purchase
+     * Most recent purchase at this location on an accessible list, if any
      * @type {string}
      * @memberof RecentLocation
      */
-    'lastPurchaseDate': string;
+    'lastPurchaseDate'?: string;
 }
 /**
  * orderedCategoryIds — every category id on the list, in display order
@@ -1764,9 +1764,9 @@ export declare class ListsApi extends BaseAPI {
 export declare const LocationsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Creates a new location
+     * @summary Find or create a location
      * @param {string} xAuthUser the email address of the user
-     * @param {Location} location the location to create
+     * @param {Location} location the location to create (or match within ~50m)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1798,9 +1798,9 @@ export declare const LocationsApiAxiosParamCreator: (configuration?: Configurati
 export declare const LocationsApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Creates a new location
+     * @summary Find or create a location
      * @param {string} xAuthUser the email address of the user
-     * @param {Location} location the location to create
+     * @param {Location} location the location to create (or match within ~50m)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1832,9 +1832,9 @@ export declare const LocationsApiFp: (configuration?: Configuration) => {
 export declare const LocationsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Creates a new location
+     * @summary Find or create a location
      * @param {string} xAuthUser the email address of the user
-     * @param {Location} location the location to create
+     * @param {Location} location the location to create (or match within ~50m)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1868,9 +1868,9 @@ export declare const LocationsApiFactory: (configuration?: Configuration, basePa
 export declare class LocationsApi extends BaseAPI {
     /**
      *
-     * @summary Creates a new location
+     * @summary Find or create a location
      * @param {string} xAuthUser the email address of the user
-     * @param {Location} location the location to create
+     * @param {Location} location the location to create (or match within ~50m)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LocationsApi
@@ -1960,10 +1960,10 @@ export declare const ShoppersApiAxiosParamCreator: (configuration?: Configuratio
     getLists: (xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Retrieves all locations associated with a Shopper
+     * @summary Retrieves known locations for a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
-     * @param {number} lookBackDays the number of days to look back for purchases
+     * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2059,10 +2059,10 @@ export declare const ShoppersApiFp: (configuration?: Configuration) => {
     getLists(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<List>>>;
     /**
      *
-     * @summary Retrieves all locations associated with a Shopper
+     * @summary Retrieves known locations for a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
-     * @param {number} lookBackDays the number of days to look back for purchases
+     * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2158,10 +2158,10 @@ export declare const ShoppersApiFactory: (configuration?: Configuration, basePat
     getLists(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<List>>;
     /**
      *
-     * @summary Retrieves all locations associated with a Shopper
+     * @summary Retrieves known locations for a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
-     * @param {number} lookBackDays the number of days to look back for purchases
+     * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -2265,10 +2265,10 @@ export declare class ShoppersApi extends BaseAPI {
     getLists(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<List[], any>>;
     /**
      *
-     * @summary Retrieves all locations associated with a Shopper
+     * @summary Retrieves known locations for a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
-     * @param {number} lookBackDays the number of days to look back for purchases
+     * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi

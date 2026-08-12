@@ -3398,9 +3398,9 @@ var LocationsApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Creates a new location
+         * @summary Find or create a location
          * @param {string} xAuthUser the email address of the user
-         * @param {Location} location the location to create
+         * @param {Location} location the location to create (or match within ~50m)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3574,9 +3574,9 @@ var LocationsApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Creates a new location
+         * @summary Find or create a location
          * @param {string} xAuthUser the email address of the user
-         * @param {Location} location the location to create
+         * @param {Location} location the location to create (or match within ~50m)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3657,9 +3657,9 @@ var LocationsApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Creates a new location
+         * @summary Find or create a location
          * @param {string} xAuthUser the email address of the user
-         * @param {Location} location the location to create
+         * @param {Location} location the location to create (or match within ~50m)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3705,9 +3705,9 @@ var LocationsApi = /** @class */ (function (_super) {
     }
     /**
      *
-     * @summary Creates a new location
+     * @summary Find or create a location
      * @param {string} xAuthUser the email address of the user
-     * @param {Location} location the location to create
+     * @param {Location} location the location to create (or match within ~50m)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LocationsApi
@@ -4076,10 +4076,10 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Retrieves all locations associated with a Shopper
+         * @summary Retrieves known locations for a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
-         * @param {number} lookBackDays the number of days to look back for purchases
+         * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4454,10 +4454,10 @@ var ShoppersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Retrieves all locations associated with a Shopper
+         * @summary Retrieves known locations for a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
-         * @param {number} lookBackDays the number of days to look back for purchases
+         * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4629,10 +4629,10 @@ var ShoppersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Retrieves all locations associated with a Shopper
+         * @summary Retrieves known locations for a Shopper
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom locations will be returned
-         * @param {number} lookBackDays the number of days to look back for purchases
+         * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4768,10 +4768,10 @@ var ShoppersApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Retrieves all locations associated with a Shopper
+     * @summary Retrieves known locations for a Shopper
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom locations will be returned
-     * @param {number} lookBackDays the number of days to look back for purchases
+     * @param {number} lookBackDays the number of days to look back for purchases (purchase-history half only)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
