@@ -595,7 +595,7 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          *
-         * @summary Removes an item from a category
+         * @summary Removes an item from a category and from the list
          * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
@@ -610,6 +610,54 @@ export const CategoriesApiAxiosParamCreator = function (configuration?: Configur
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('removeItemFromCategory', 'itemId', itemId)
             const localVarPath = `/categories/{categoryId}/items/{itemId}`
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Unlinks an item from a category without removing it from the list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        unlinkItemFromCategory: async (xAuthUser: string, categoryId: string, itemId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('unlinkItemFromCategory', 'xAuthUser', xAuthUser)
+            // verify required parameter 'categoryId' is not null or undefined
+            assertParamExists('unlinkItemFromCategory', 'categoryId', categoryId)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('unlinkItemFromCategory', 'itemId', itemId)
+            const localVarPath = `/categories/{categoryId}/items/{itemId}/link`
                 .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)))
                 .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -738,7 +786,7 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
         },
         /**
          *
-         * @summary Removes an item from a category
+         * @summary Removes an item from a category and from the list
          * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
@@ -749,6 +797,21 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.removeItemFromCategory(xAuthUser, categoryId, itemId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CategoriesApi.removeItemFromCategory']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Unlinks an item from a category without removing it from the list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async unlinkItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.unlinkItemFromCategory(xAuthUser, categoryId, itemId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CategoriesApi.unlinkItemFromCategory']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -802,7 +865,7 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          *
-         * @summary Removes an item from a category
+         * @summary Removes an item from a category and from the list
          * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
@@ -811,6 +874,18 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
          */
         removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.removeItemFromCategory(xAuthUser, categoryId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Unlinks an item from a category without removing it from the list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        unlinkItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.unlinkItemFromCategory(xAuthUser, categoryId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -864,7 +939,7 @@ export class CategoriesApi extends BaseAPI {
 
     /**
      *
-     * @summary Removes an item from a category
+     * @summary Removes an item from a category and from the list
      * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
@@ -874,6 +949,20 @@ export class CategoriesApi extends BaseAPI {
      */
     public removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig) {
         return CategoriesApiFp(this.configuration).removeItemFromCategory(xAuthUser, categoryId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @summary Unlinks an item from a category without removing it from the list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    public unlinkItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig) {
+        return CategoriesApiFp(this.configuration).unlinkItemFromCategory(xAuthUser, categoryId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1806,9 +1895,9 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
     return {
         /**
          *
-         * @summary Creates an item
+         * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
          * @param {string} xAuthUser
-         * @param {Item} item an object containing the ID, name, and UPC of the item
+         * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1912,13 +2001,13 @@ export const ItemsApiFp = function(configuration?: Configuration) {
     return {
         /**
          *
-         * @summary Creates an item
+         * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
          * @param {string} xAuthUser
-         * @param {Item} item an object containing the ID, name, and UPC of the item
+         * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createItem(xAuthUser, item, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ItemsApi.createItem']?.[localVarOperationServerIndex]?.url;
@@ -1951,13 +2040,13 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          *
-         * @summary Creates an item
+         * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
          * @param {string} xAuthUser
-         * @param {Item} item an object containing the ID, name, and UPC of the item
+         * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): AxiosPromise<Item> {
             return localVarFp.createItem(xAuthUser, item, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1984,9 +2073,9 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
 export class ItemsApi extends BaseAPI {
     /**
      *
-     * @summary Creates an item
+     * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
      * @param {string} xAuthUser
-     * @param {Item} item an object containing the ID, name, and UPC of the item
+     * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
@@ -3401,7 +3490,7 @@ export const LocationsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createLocation(xAuthUser, location, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LocationsApi.createLocation']?.[localVarOperationServerIndex]?.url;
@@ -3454,7 +3543,7 @@ export const LocationsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): AxiosPromise<Location> {
             return localVarFp.createLocation(xAuthUser, location, options).then((request) => request(axios, basePath));
         },
         /**

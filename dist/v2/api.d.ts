@@ -510,7 +510,7 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
     getCategoryItems: (xAuthUser: string, categoryId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Removes an item from a category
+     * @summary Removes an item from a category and from the list
      * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
@@ -518,6 +518,16 @@ export declare const CategoriesApiAxiosParamCreator: (configuration?: Configurat
      * @throws {RequiredError}
      */
     removeItemFromCategory: (xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Unlinks an item from a category without removing it from the list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unlinkItemFromCategory: (xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Updates a category
@@ -556,7 +566,7 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
     getCategoryItems(xAuthUser: string, categoryId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>>;
     /**
      *
-     * @summary Removes an item from a category
+     * @summary Removes an item from a category and from the list
      * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
@@ -564,6 +574,16 @@ export declare const CategoriesApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary Unlinks an item from a category without removing it from the list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unlinkItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
      * @summary Updates a category
@@ -602,7 +622,7 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
     getCategoryItems(xAuthUser: string, categoryId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>>;
     /**
      *
-     * @summary Removes an item from a category
+     * @summary Removes an item from a category and from the list
      * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
@@ -610,6 +630,16 @@ export declare const CategoriesApiFactory: (configuration?: Configuration, baseP
      * @throws {RequiredError}
      */
     removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary Unlinks an item from a category without removing it from the list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    unlinkItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
      * @summary Updates a category
@@ -652,7 +682,7 @@ export declare class CategoriesApi extends BaseAPI {
     getCategoryItems(xAuthUser: string, categoryId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item[], any>>;
     /**
      *
-     * @summary Removes an item from a category
+     * @summary Removes an item from a category and from the list
      * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
@@ -661,6 +691,17 @@ export declare class CategoriesApi extends BaseAPI {
      * @memberof CategoriesApi
      */
     removeItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary Unlinks an item from a category without removing it from the list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    unlinkItemFromCategory(xAuthUser: string, categoryId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
      * @summary Updates a category
@@ -1097,9 +1138,9 @@ export declare class GroupsApi extends BaseAPI {
 export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
-     * @summary Creates an item
+     * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
      * @param {string} xAuthUser
-     * @param {Item} item an object containing the ID, name, and UPC of the item
+     * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -1122,13 +1163,13 @@ export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) 
 export declare const ItemsApiFp: (configuration?: Configuration) => {
     /**
      *
-     * @summary Creates an item
+     * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
      * @param {string} xAuthUser
-     * @param {Item} item an object containing the ID, name, and UPC of the item
+     * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>>;
     /**
      *
      * @summary Updates an item
@@ -1147,13 +1188,13 @@ export declare const ItemsApiFp: (configuration?: Configuration) => {
 export declare const ItemsApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
-     * @summary Creates an item
+     * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
      * @param {string} xAuthUser
-     * @param {Item} item an object containing the ID, name, and UPC of the item
+     * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): AxiosPromise<Item>;
     /**
      *
      * @summary Updates an item
@@ -1174,14 +1215,14 @@ export declare const ItemsApiFactory: (configuration?: Configuration, basePath?:
 export declare class ItemsApi extends BaseAPI {
     /**
      *
-     * @summary Creates an item
+     * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
      * @param {string} xAuthUser
-     * @param {Item} item an object containing the ID, name, and UPC of the item
+     * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item, any>>;
     /**
      *
      * @summary Updates an item
@@ -1804,7 +1845,7 @@ export declare const LocationsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Location>>;
     /**
      *
      * @summary Retrieves all locations within a radius of the current location
@@ -1838,7 +1879,7 @@ export declare const LocationsApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): AxiosPromise<Location>;
     /**
      *
      * @summary Retrieves all locations within a radius of the current location
@@ -1875,7 +1916,7 @@ export declare class LocationsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof LocationsApi
      */
-    createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    createLocation(xAuthUser: string, location: Location, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Location, any>>;
     /**
      *
      * @summary Retrieves all locations within a radius of the current location

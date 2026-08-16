@@ -210,7 +210,7 @@ var CategoriesApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Removes an item from a category
+         * @summary Removes an item from a category and from the list
          * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
@@ -235,6 +235,63 @@ var CategoriesApiAxiosParamCreator = function (configuration) {
                             // verify required parameter 'itemId' is not null or undefined
                             (0, common_1.assertParamExists)('removeItemFromCategory', 'itemId', itemId);
                             localVarPath = "/categories/{categoryId}/items/{itemId}"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Unlinks an item from a category without removing it from the list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        unlinkItemFromCategory: function (xAuthUser_1, categoryId_1, itemId_1) {
+            var args_1 = [];
+            for (var _i = 3; _i < arguments.length; _i++) {
+                args_1[_i - 3] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, categoryId_1, itemId_1], args_1, true), void 0, function (xAuthUser, categoryId, itemId, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('unlinkItemFromCategory', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'categoryId' is not null or undefined
+                            (0, common_1.assertParamExists)('unlinkItemFromCategory', 'categoryId', categoryId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('unlinkItemFromCategory', 'itemId', itemId);
+                            localVarPath = "/categories/{categoryId}/items/{itemId}/link"
                                 .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)))
                                 .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
                             localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -390,7 +447,7 @@ var CategoriesApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Removes an item from a category
+         * @summary Removes an item from a category and from the list
          * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
@@ -408,6 +465,31 @@ var CategoriesApiFp = function (configuration) {
                             localVarAxiosArgs = _d.sent();
                             localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                             localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CategoriesApi.removeItemFromCategory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Unlinks an item from a category without removing it from the list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        unlinkItemFromCategory: function (xAuthUser, categoryId, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.unlinkItemFromCategory(xAuthUser, categoryId, itemId, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['CategoriesApi.unlinkItemFromCategory']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                             return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
                     }
                 });
@@ -474,7 +556,7 @@ var CategoriesApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Removes an item from a category
+         * @summary Removes an item from a category and from the list
          * @param {string} xAuthUser the email address of the user
          * @param {string} categoryId the ID of the category
          * @param {string} itemId the ID of the item
@@ -483,6 +565,18 @@ var CategoriesApiFactory = function (configuration, basePath, axios) {
          */
         removeItemFromCategory: function (xAuthUser, categoryId, itemId, options) {
             return localVarFp.removeItemFromCategory(xAuthUser, categoryId, itemId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
+         * @summary Unlinks an item from a category without removing it from the list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} categoryId the ID of the category
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        unlinkItemFromCategory: function (xAuthUser, categoryId, itemId, options) {
+            return localVarFp.unlinkItemFromCategory(xAuthUser, categoryId, itemId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          *
@@ -540,7 +634,7 @@ var CategoriesApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Removes an item from a category
+     * @summary Removes an item from a category and from the list
      * @param {string} xAuthUser the email address of the user
      * @param {string} categoryId the ID of the category
      * @param {string} itemId the ID of the item
@@ -551,6 +645,20 @@ var CategoriesApi = /** @class */ (function (_super) {
     CategoriesApi.prototype.removeItemFromCategory = function (xAuthUser, categoryId, itemId, options) {
         var _this = this;
         return (0, exports.CategoriesApiFp)(this.configuration).removeItemFromCategory(xAuthUser, categoryId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
+     * @summary Unlinks an item from a category without removing it from the list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} categoryId the ID of the category
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CategoriesApi
+     */
+    CategoriesApi.prototype.unlinkItemFromCategory = function (xAuthUser, categoryId, itemId, options) {
+        var _this = this;
+        return (0, exports.CategoriesApiFp)(this.configuration).unlinkItemFromCategory(xAuthUser, categoryId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      *
@@ -1673,9 +1781,9 @@ var ItemsApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Creates an item
+         * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
          * @param {string} xAuthUser
-         * @param {Item} item an object containing the ID, name, and UPC of the item
+         * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1795,9 +1903,9 @@ var ItemsApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Creates an item
+         * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
          * @param {string} xAuthUser
-         * @param {Item} item an object containing the ID, name, and UPC of the item
+         * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1854,9 +1962,9 @@ var ItemsApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Creates an item
+         * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
          * @param {string} xAuthUser
-         * @param {Item} item an object containing the ID, name, and UPC of the item
+         * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1891,9 +1999,9 @@ var ItemsApi = /** @class */ (function (_super) {
     }
     /**
      *
-     * @summary Creates an item
+     * @summary Find or create an item by normalized name. Returns the canonical item (existing or newly created).
      * @param {string} xAuthUser
-     * @param {Item} item an object containing the ID, name, and UPC of the item
+     * @param {Item} item an object containing a candidate ID, name, and optional UPC. The returned id may differ from the candidate when a match already exists.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
