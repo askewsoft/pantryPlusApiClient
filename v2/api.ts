@@ -1941,7 +1941,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
-         * @summary Updates an item
+         * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item
          * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
@@ -2015,7 +2015,7 @@ export const ItemsApiFp = function(configuration?: Configuration) {
         },
         /**
          *
-         * @summary Updates an item
+         * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item
          * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
@@ -2051,7 +2051,7 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          *
-         * @summary Updates an item
+         * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item
          * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
@@ -2086,7 +2086,7 @@ export class ItemsApi extends BaseAPI {
 
     /**
      *
-     * @summary Updates an item
+     * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item
      * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
