@@ -118,6 +118,31 @@ export interface Item {
     'upc'?: string;
 }
 /**
+ * Payload for renaming an item on a specific list. The returned item id may differ from the path id (find-existing or fork).
+ * @export
+ * @interface ItemUpdate
+ */
+export interface ItemUpdate {
+    /**
+     * The display name to apply
+     * @type {string}
+     * @memberof ItemUpdate
+     */
+    'name': string;
+    /**
+     * The universal product code of the item
+     * @type {string}
+     * @memberof ItemUpdate
+     */
+    'upc'?: string;
+    /**
+     * List whose membership should be re-pointed on find-existing or fork.
+     * @type {string}
+     * @memberof ItemUpdate
+     */
+    'listId': string;
+}
+/**
  * A List is a grouping of items.
  * @export
  * @interface List
@@ -322,25 +347,6 @@ export interface PickGroupNameOrId {
      * @memberof PickGroupNameOrId
      */
     'name': string;
-}
-/**
- * From T, pick a set of properties whose keys are in the union K
- * @export
- * @interface PickItemNameOrUpc
- */
-export interface PickItemNameOrUpc {
-    /**
-     * The name of the item
-     * @type {string}
-     * @memberof PickItemNameOrUpc
-     */
-    'name': string;
-    /**
-     * The universal product code of the item
-     * @type {string}
-     * @memberof PickItemNameOrUpc
-     */
-    'upc'?: string;
 }
 /**
  * From T, pick a set of properties whose keys are in the union K
@@ -1941,20 +1947,20 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
-         * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
-         * @param {string} itemId the ID of the item
-         * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+         * @param {string} itemId the ID of the item currently on the list
+         * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem: async (xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateItem: async (xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xAuthUser' is not null or undefined
             assertParamExists('updateItem', 'xAuthUser', xAuthUser)
             // verify required parameter 'itemId' is not null or undefined
             assertParamExists('updateItem', 'itemId', itemId)
-            // verify required parameter 'pickItemNameOrUpc' is not null or undefined
-            assertParamExists('updateItem', 'pickItemNameOrUpc', pickItemNameOrUpc)
+            // verify required parameter 'itemUpdate' is not null or undefined
+            assertParamExists('updateItem', 'itemUpdate', itemUpdate)
             const localVarPath = `/items/{itemId}`
                 .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1982,7 +1988,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(pickItemNameOrUpc, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(itemUpdate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2015,15 +2021,15 @@ export const ItemsApiFp = function(configuration?: Configuration) {
         },
         /**
          *
-         * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
-         * @param {string} itemId the ID of the item
-         * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+         * @param {string} itemId the ID of the item currently on the list
+         * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateItem(xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateItem(xAuthUser, itemId, pickItemNameOrUpc, options);
+        async updateItem(xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateItem(xAuthUser, itemId, itemUpdate, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ItemsApi.updateItem']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -2051,15 +2057,15 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          *
-         * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
-         * @param {string} itemId the ID of the item
-         * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+         * @param {string} itemId the ID of the item currently on the list
+         * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem(xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options?: RawAxiosRequestConfig): AxiosPromise<void> {
-            return localVarFp.updateItem(xAuthUser, itemId, pickItemNameOrUpc, options).then((request) => request(axios, basePath));
+        updateItem(xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig): AxiosPromise<Item> {
+            return localVarFp.updateItem(xAuthUser, itemId, itemUpdate, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2086,16 +2092,16 @@ export class ItemsApi extends BaseAPI {
 
     /**
      *
-     * @summary Updates an item\'s display name. Case-only changes (e.g. \"Aaa batteries\" → \"AAA batteries\") update the existing item in place. Semantic renames are not applied here.
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
-     * @param {string} itemId the ID of the item
-     * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+     * @param {string} itemId the ID of the item currently on the list
+     * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    public updateItem(xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options?: RawAxiosRequestConfig) {
-        return ItemsApiFp(this.configuration).updateItem(xAuthUser, itemId, pickItemNameOrUpc, options).then((request) => request(this.axios, this.basePath));
+    public updateItem(xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig) {
+        return ItemsApiFp(this.configuration).updateItem(xAuthUser, itemId, itemUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
