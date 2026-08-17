@@ -3955,13 +3955,15 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          *
-         * @summary Retrieves all previously purchased items associated with a Shopper
+         * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
+         * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+         * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: async (xAuthUser: string, shopperId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getPurchasedItems: async (xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xAuthUser' is not null or undefined
             assertParamExists('getPurchasedItems', 'xAuthUser', xAuthUser)
             // verify required parameter 'shopperId' is not null or undefined
@@ -3982,6 +3984,14 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (lookBackDays !== undefined) {
+                localVarQueryParameter['lookBackDays'] = lookBackDays;
+            }
+
+            if (cohortId !== undefined) {
+                localVarQueryParameter['cohortId'] = cohortId;
+            }
 
 
 
@@ -4203,14 +4213,16 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
         },
         /**
          *
-         * @summary Retrieves all previously purchased items associated with a Shopper
+         * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
+         * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+         * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPurchasedItems(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, options);
+        async getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ShoppersApi.getPurchasedItems']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -4335,14 +4347,16 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          *
-         * @summary Retrieves all previously purchased items associated with a Shopper
+         * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
+         * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+         * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>> {
-            return localVarFp.getPurchasedItems(xAuthUser, shopperId, options).then((request) => request(axios, basePath));
+        getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>> {
+            return localVarFp.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -4472,15 +4486,17 @@ export class ShoppersApi extends BaseAPI {
 
     /**
      *
-     * @summary Retrieves all previously purchased items associated with a Shopper
+     * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom items will be returned
+     * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+     * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    public getPurchasedItems(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig) {
-        return ShoppersApiFp(this.configuration).getPurchasedItems(xAuthUser, shopperId, options).then((request) => request(this.axios, this.basePath));
+    public getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig) {
+        return ShoppersApiFp(this.configuration).getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

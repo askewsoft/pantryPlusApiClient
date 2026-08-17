@@ -108,6 +108,31 @@ export interface Item {
     'upc'?: string;
 }
 /**
+ * Payload for renaming an item on a specific list. The returned item id may differ from the path id (find-existing or fork).
+ * @export
+ * @interface ItemUpdate
+ */
+export interface ItemUpdate {
+    /**
+     * The display name to apply
+     * @type {string}
+     * @memberof ItemUpdate
+     */
+    'name': string;
+    /**
+     * The universal product code of the item
+     * @type {string}
+     * @memberof ItemUpdate
+     */
+    'upc'?: string;
+    /**
+     * List whose membership should be re-pointed on find-existing or fork.
+     * @type {string}
+     * @memberof ItemUpdate
+     */
+    'listId': string;
+}
+/**
  * A List is a grouping of items.
  * @export
  * @interface List
@@ -312,25 +337,6 @@ export interface PickGroupNameOrId {
      * @memberof PickGroupNameOrId
      */
     'name': string;
-}
-/**
- * From T, pick a set of properties whose keys are in the union K
- * @export
- * @interface PickItemNameOrUpc
- */
-export interface PickItemNameOrUpc {
-    /**
-     * The name of the item
-     * @type {string}
-     * @memberof PickItemNameOrUpc
-     */
-    'name': string;
-    /**
-     * The universal product code of the item
-     * @type {string}
-     * @memberof PickItemNameOrUpc
-     */
-    'upc'?: string;
 }
 /**
  * From T, pick a set of properties whose keys are in the union K
@@ -1147,14 +1153,14 @@ export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) 
     createItem: (xAuthUser: string, item: Item, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Updates an item
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
-     * @param {string} itemId the ID of the item
-     * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+     * @param {string} itemId the ID of the item currently on the list
+     * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateItem: (xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    updateItem: (xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ItemsApi - functional programming interface
@@ -1172,14 +1178,14 @@ export declare const ItemsApiFp: (configuration?: Configuration) => {
     createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>>;
     /**
      *
-     * @summary Updates an item
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
-     * @param {string} itemId the ID of the item
-     * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+     * @param {string} itemId the ID of the item currently on the list
+     * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateItem(xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    updateItem(xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>>;
 };
 /**
  * ItemsApi - factory interface
@@ -1197,14 +1203,14 @@ export declare const ItemsApiFactory: (configuration?: Configuration, basePath?:
     createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): AxiosPromise<Item>;
     /**
      *
-     * @summary Updates an item
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
-     * @param {string} itemId the ID of the item
-     * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+     * @param {string} itemId the ID of the item currently on the list
+     * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    updateItem(xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    updateItem(xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig): AxiosPromise<Item>;
 };
 /**
  * ItemsApi - object-oriented interface
@@ -1225,15 +1231,15 @@ export declare class ItemsApi extends BaseAPI {
     createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item, any>>;
     /**
      *
-     * @summary Updates an item
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
-     * @param {string} itemId the ID of the item
-     * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+     * @param {string} itemId the ID of the item currently on the list
+     * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    updateItem(xAuthUser: string, itemId: string, pickItemNameOrUpc: PickItemNameOrUpc, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    updateItem(xAuthUser: string, itemId: string, itemUpdate: ItemUpdate, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item, any>>;
 }
 /**
  * ListsApi - axios parameter creator
@@ -2011,13 +2017,15 @@ export declare const ShoppersApiAxiosParamCreator: (configuration?: Configuratio
     getLocations: (xAuthUser: string, shopperId: string, lookBackDays: number, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Retrieves all previously purchased items associated with a Shopper
+     * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom items will be returned
+     * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+     * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPurchasedItems: (xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getPurchasedItems: (xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -2110,13 +2118,15 @@ export declare const ShoppersApiFp: (configuration?: Configuration) => {
     getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RecentLocation>>>;
     /**
      *
-     * @summary Retrieves all previously purchased items associated with a Shopper
+     * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom items will be returned
+     * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+     * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPurchasedItems(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>>;
+    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -2209,13 +2219,15 @@ export declare const ShoppersApiFactory: (configuration?: Configuration, basePat
     getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<RecentLocation>>;
     /**
      *
-     * @summary Retrieves all previously purchased items associated with a Shopper
+     * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom items will be returned
+     * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+     * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPurchasedItems(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>>;
+    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -2317,14 +2329,16 @@ export declare class ShoppersApi extends BaseAPI {
     getLocations(xAuthUser: string, shopperId: string, lookBackDays: number, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<RecentLocation[], any>>;
     /**
      *
-     * @summary Retrieves all previously purchased items associated with a Shopper
+     * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom items will be returned
+     * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+     * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    getPurchasedItems(xAuthUser: string, shopperId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item[], any>>;
+    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item[], any>>;
     /**
      *
      * @summary Retrieves a shopper by ID

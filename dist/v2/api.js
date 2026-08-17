@@ -1835,19 +1835,19 @@ var ItemsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Updates an item
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
-         * @param {string} itemId the ID of the item
-         * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+         * @param {string} itemId the ID of the item currently on the list
+         * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem: function (xAuthUser_1, itemId_1, pickItemNameOrUpc_1) {
+        updateItem: function (xAuthUser_1, itemId_1, itemUpdate_1) {
             var args_1 = [];
             for (var _i = 3; _i < arguments.length; _i++) {
                 args_1[_i - 3] = arguments[_i];
             }
-            return __awaiter(_this, __spreadArray([xAuthUser_1, itemId_1, pickItemNameOrUpc_1], args_1, true), void 0, function (xAuthUser, itemId, pickItemNameOrUpc, options) {
+            return __awaiter(_this, __spreadArray([xAuthUser_1, itemId_1, itemUpdate_1], args_1, true), void 0, function (xAuthUser, itemId, itemUpdate, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
@@ -1857,8 +1857,8 @@ var ItemsApiAxiosParamCreator = function (configuration) {
                             (0, common_1.assertParamExists)('updateItem', 'xAuthUser', xAuthUser);
                             // verify required parameter 'itemId' is not null or undefined
                             (0, common_1.assertParamExists)('updateItem', 'itemId', itemId);
-                            // verify required parameter 'pickItemNameOrUpc' is not null or undefined
-                            (0, common_1.assertParamExists)('updateItem', 'pickItemNameOrUpc', pickItemNameOrUpc);
+                            // verify required parameter 'itemUpdate' is not null or undefined
+                            (0, common_1.assertParamExists)('updateItem', 'itemUpdate', itemUpdate);
                             localVarPath = "/items/{itemId}"
                                 .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
                             localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
@@ -1882,7 +1882,7 @@ var ItemsApiAxiosParamCreator = function (configuration) {
                             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
                             localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(pickItemNameOrUpc, localVarRequestOptions, configuration);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(itemUpdate, localVarRequestOptions, configuration);
                             return [2 /*return*/, {
                                     url: (0, common_1.toPathString)(localVarUrlObj),
                                     options: localVarRequestOptions,
@@ -1927,20 +1927,20 @@ var ItemsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Updates an item
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
-         * @param {string} itemId the ID of the item
-         * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+         * @param {string} itemId the ID of the item currently on the list
+         * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem: function (xAuthUser, itemId, pickItemNameOrUpc, options) {
+        updateItem: function (xAuthUser, itemId, itemUpdate, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
                 var _a, _b, _c;
                 return __generator(this, function (_d) {
                     switch (_d.label) {
-                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.updateItem(xAuthUser, itemId, pickItemNameOrUpc, options)];
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.updateItem(xAuthUser, itemId, itemUpdate, options)];
                         case 1:
                             localVarAxiosArgs = _d.sent();
                             localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
@@ -1973,15 +1973,15 @@ var ItemsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Updates an item
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
-         * @param {string} itemId the ID of the item
-         * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+         * @param {string} itemId the ID of the item currently on the list
+         * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateItem: function (xAuthUser, itemId, pickItemNameOrUpc, options) {
-            return localVarFp.updateItem(xAuthUser, itemId, pickItemNameOrUpc, options).then(function (request) { return request(axios, basePath); });
+        updateItem: function (xAuthUser, itemId, itemUpdate, options) {
+            return localVarFp.updateItem(xAuthUser, itemId, itemUpdate, options).then(function (request) { return request(axios, basePath); });
         },
     };
 };
@@ -2012,17 +2012,17 @@ var ItemsApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Updates an item
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
-     * @param {string} itemId the ID of the item
-     * @param {PickItemNameOrUpc} pickItemNameOrUpc an object containing the new name and UPC of the item
+     * @param {string} itemId the ID of the item currently on the list
+     * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ItemsApi
      */
-    ItemsApi.prototype.updateItem = function (xAuthUser, itemId, pickItemNameOrUpc, options) {
+    ItemsApi.prototype.updateItem = function (xAuthUser, itemId, itemUpdate, options) {
         var _this = this;
-        return (0, exports.ItemsApiFp)(this.configuration).updateItem(xAuthUser, itemId, pickItemNameOrUpc, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return (0, exports.ItemsApiFp)(this.configuration).updateItem(xAuthUser, itemId, itemUpdate, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     return ItemsApi;
 }(base_1.BaseAPI));
@@ -4243,18 +4243,20 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Retrieves all previously purchased items associated with a Shopper
+         * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
+         * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+         * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: function (xAuthUser_1, shopperId_1) {
+        getPurchasedItems: function (xAuthUser_1, shopperId_1, lookBackDays_1, cohortId_1) {
             var args_1 = [];
-            for (var _i = 2; _i < arguments.length; _i++) {
-                args_1[_i - 2] = arguments[_i];
+            for (var _i = 4; _i < arguments.length; _i++) {
+                args_1[_i - 4] = arguments[_i];
             }
-            return __awaiter(_this, __spreadArray([xAuthUser_1, shopperId_1], args_1, true), void 0, function (xAuthUser, shopperId, options) {
+            return __awaiter(_this, __spreadArray([xAuthUser_1, shopperId_1, lookBackDays_1, cohortId_1], args_1, true), void 0, function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
@@ -4280,6 +4282,12 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                             // authentication bearerAuth required
                             // http bearer authentication required
                             _a.sent();
+                            if (lookBackDays !== undefined) {
+                                localVarQueryParameter['lookBackDays'] = lookBackDays;
+                            }
+                            if (cohortId !== undefined) {
+                                localVarQueryParameter['cohortId'] = cohortId;
+                            }
                             if (xAuthUser != null) {
                                 localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
                             }
@@ -4587,19 +4595,21 @@ var ShoppersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Retrieves all previously purchased items associated with a Shopper
+         * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
+         * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+         * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: function (xAuthUser, shopperId, options) {
+        getPurchasedItems: function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
                 var _a, _b, _c;
                 return __generator(this, function (_d) {
                     switch (_d.label) {
-                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, options)];
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options)];
                         case 1:
                             localVarAxiosArgs = _d.sent();
                             localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
@@ -4749,14 +4759,16 @@ var ShoppersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Retrieves all previously purchased items associated with a Shopper
+         * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
          * @param {string} xAuthUser the email address of the user
          * @param {string} shopperId the ID of the shopper for whom items will be returned
+         * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+         * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: function (xAuthUser, shopperId, options) {
-            return localVarFp.getPurchasedItems(xAuthUser, shopperId, options).then(function (request) { return request(axios, basePath); });
+        getPurchasedItems: function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
+            return localVarFp.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          *
@@ -4890,16 +4902,18 @@ var ShoppersApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Retrieves all previously purchased items associated with a Shopper
+     * @summary Retrieves cohort-scoped items for typeahead: purchase history plus items on household lists
      * @param {string} xAuthUser the email address of the user
      * @param {string} shopperId the ID of the shopper for whom items will be returned
+     * @param {number} [lookBackDays] how far back to include purchase history (default 365)
+     * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    ShoppersApi.prototype.getPurchasedItems = function (xAuthUser, shopperId, options) {
+    ShoppersApi.prototype.getPurchasedItems = function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
         var _this = this;
-        return (0, exports.ShoppersApiFp)(this.configuration).getPurchasedItems(xAuthUser, shopperId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return (0, exports.ShoppersApiFp)(this.configuration).getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      *
