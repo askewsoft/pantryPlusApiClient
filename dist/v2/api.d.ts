@@ -83,6 +83,19 @@ export interface Group {
     'id': string;
 }
 /**
+ *
+ * @export
+ * @interface IsItemOnList200Response
+ */
+export interface IsItemOnList200Response {
+    /**
+     *
+     * @type {boolean}
+     * @memberof IsItemOnList200Response
+     */
+    'onList': boolean;
+}
+/**
  * An Item is something a user may purchase.
  * @export
  * @interface Item
@@ -1460,6 +1473,16 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
     getListItemsCount: (xAuthUser: string, listId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Returns whether an item is currently a member of a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    isItemOnList: (xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Purchases an item on a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
@@ -1597,6 +1620,16 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     getListItemsCount(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetListItemsCount200Response>>;
     /**
      *
+     * @summary Returns whether an item is currently a member of a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    isItemOnList(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IsItemOnList200Response>>;
+    /**
+     *
      * @summary Purchases an item on a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the location
@@ -1732,6 +1765,16 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getListItemsCount(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): AxiosPromise<GetListItemsCount200Response>;
+    /**
+     *
+     * @summary Returns whether an item is currently a member of a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    isItemOnList(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<IsItemOnList200Response>;
     /**
      *
      * @summary Purchases an item on a list
@@ -1878,6 +1921,17 @@ export declare class ListsApi extends BaseAPI {
      * @memberof ListsApi
      */
     getListItemsCount(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<GetListItemsCount200Response, any>>;
+    /**
+     *
+     * @summary Returns whether an item is currently a member of a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    isItemOnList(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<IsItemOnList200Response, any>>;
     /**
      *
      * @summary Purchases an item on a list

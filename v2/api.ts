@@ -93,6 +93,19 @@ export interface Group {
     'id': string;
 }
 /**
+ *
+ * @export
+ * @interface IsItemOnList200Response
+ */
+export interface IsItemOnList200Response {
+    /**
+     *
+     * @type {boolean}
+     * @memberof IsItemOnList200Response
+     */
+    'onList': boolean;
+}
+/**
  * An Item is something a user may purchase.
  * @export
  * @interface Item
@@ -2735,6 +2748,54 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
+         * @summary Returns whether an item is currently a member of a list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        isItemOnList: async (xAuthUser: string, listId: string, itemId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('isItemOnList', 'xAuthUser', xAuthUser)
+            // verify required parameter 'listId' is not null or undefined
+            assertParamExists('isItemOnList', 'listId', listId)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('isItemOnList', 'itemId', itemId)
+            const localVarPath = `/lists/{listId}/items/{itemId}/onList`
+                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -3163,6 +3224,21 @@ export const ListsApiFp = function(configuration?: Configuration) {
         },
         /**
          *
+         * @summary Returns whether an item is currently a member of a list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async isItemOnList(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IsItemOnList200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.isItemOnList(xAuthUser, listId, itemId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ListsApi.isItemOnList']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -3348,6 +3424,18 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          *
+         * @summary Returns whether an item is currently a member of a list
+         * @param {string} xAuthUser the email address of the user
+         * @param {string} listId the ID of the list
+         * @param {string} itemId the ID of the item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        isItemOnList(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<IsItemOnList200Response> {
+            return localVarFp.isItemOnList(xAuthUser, listId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Purchases an item on a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the location
@@ -3525,6 +3613,20 @@ export class ListsApi extends BaseAPI {
      */
     public getListItemsCount(xAuthUser: string, listId: string, options?: RawAxiosRequestConfig) {
         return ListsApiFp(this.configuration).getListItemsCount(xAuthUser, listId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @summary Returns whether an item is currently a member of a list
+     * @param {string} xAuthUser the email address of the user
+     * @param {string} listId the ID of the list
+     * @param {string} itemId the ID of the item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    public isItemOnList(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) {
+        return ListsApiFp(this.configuration).isItemOnList(xAuthUser, listId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
