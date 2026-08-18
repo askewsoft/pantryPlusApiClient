@@ -118,6 +118,32 @@ export interface Item {
     'upc'?: string;
 }
 /**
+ * An alternate search name that resolves to an ITEM without merging rows.
+ * @export
+ * @interface ItemAlias
+ */
+export interface ItemAlias {
+    /**
+     * Display form of the alias (e.g. \"coke\")
+     * @type {string}
+     * @memberof ItemAlias
+     */
+    'name': string;
+}
+/**
+ * Body for registering a new alias on an item.
+ * @export
+ * @interface ItemAliasCreate
+ */
+export interface ItemAliasCreate {
+    /**
+     * The alias text shoppers may type or speak
+     * @type {string}
+     * @memberof ItemAliasCreate
+     */
+    'name': string;
+}
+/**
  * Payload for renaming an item on a specific list. The returned item id may differ from the path id (find-existing or fork).
  * @export
  * @interface ItemUpdate
@@ -1947,6 +1973,148 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
+         * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {ItemAliasCreate} itemAliasCreate
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createItemAlias: async (xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('createItemAlias', 'xAuthUser', xAuthUser)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('createItemAlias', 'itemId', itemId)
+            // verify required parameter 'itemAliasCreate' is not null or undefined
+            assertParamExists('createItemAlias', 'itemAliasCreate', itemAliasCreate)
+            const localVarPath = `/items/{itemId}/aliases`
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(itemAliasCreate, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {string} aliasName
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteItemAlias: async (xAuthUser: string, itemId: string, aliasName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('deleteItemAlias', 'xAuthUser', xAuthUser)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('deleteItemAlias', 'itemId', itemId)
+            // verify required parameter 'aliasName' is not null or undefined
+            assertParamExists('deleteItemAlias', 'aliasName', aliasName)
+            const localVarPath = `/items/{itemId}/aliases/{aliasName}`
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)))
+                .replace(`{${"aliasName"}}`, encodeURIComponent(String(aliasName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary List reviewed alternate names that resolve to this item
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listItemAliases: async (xAuthUser: string, itemId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('listItemAliases', 'xAuthUser', xAuthUser)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('listItemAliases', 'itemId', itemId)
+            const localVarPath = `/items/{itemId}/aliases`
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
@@ -2021,6 +2189,50 @@ export const ItemsApiFp = function(configuration?: Configuration) {
         },
         /**
          *
+         * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {ItemAliasCreate} itemAliasCreate
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createItemAlias(xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ItemAlias>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createItemAlias(xAuthUser, itemId, itemAliasCreate, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.createItemAlias']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {string} aliasName
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteItemAlias(xAuthUser: string, itemId: string, aliasName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteItemAlias(xAuthUser, itemId, aliasName, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.deleteItemAlias']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary List reviewed alternate names that resolve to this item
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ItemAlias>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listItemAliases(xAuthUser, itemId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ItemsApi.listItemAliases']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
@@ -2057,6 +2269,41 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          *
+         * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {ItemAliasCreate} itemAliasCreate
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createItemAlias(xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options?: RawAxiosRequestConfig): AxiosPromise<ItemAlias> {
+            return localVarFp.createItemAlias(xAuthUser, itemId, itemAliasCreate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {string} aliasName
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteItemAlias(xAuthUser: string, itemId: string, aliasName: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deleteItemAlias(xAuthUser, itemId, aliasName, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary List reviewed alternate names that resolve to this item
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<ItemAlias>> {
+            return localVarFp.listItemAliases(xAuthUser, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
@@ -2088,6 +2335,47 @@ export class ItemsApi extends BaseAPI {
      */
     public createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig) {
         return ItemsApiFp(this.configuration).createItem(xAuthUser, item, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {ItemAliasCreate} itemAliasCreate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    public createItemAlias(xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options?: RawAxiosRequestConfig) {
+        return ItemsApiFp(this.configuration).createItemAlias(xAuthUser, itemId, itemAliasCreate, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {string} aliasName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    public deleteItemAlias(xAuthUser: string, itemId: string, aliasName: string, options?: RawAxiosRequestConfig) {
+        return ItemsApiFp(this.configuration).deleteItemAlias(xAuthUser, itemId, aliasName, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @summary List reviewed alternate names that resolve to this item
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    public listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig) {
+        return ItemsApiFp(this.configuration).listItemAliases(xAuthUser, itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

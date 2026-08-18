@@ -1835,6 +1835,174 @@ var ItemsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {ItemAliasCreate} itemAliasCreate
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createItemAlias: function (xAuthUser_1, itemId_1, itemAliasCreate_1) {
+            var args_1 = [];
+            for (var _i = 3; _i < arguments.length; _i++) {
+                args_1[_i - 3] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, itemId_1, itemAliasCreate_1], args_1, true), void 0, function (xAuthUser, itemId, itemAliasCreate, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('createItemAlias', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('createItemAlias', 'itemId', itemId);
+                            // verify required parameter 'itemAliasCreate' is not null or undefined
+                            (0, common_1.assertParamExists)('createItemAlias', 'itemAliasCreate', itemAliasCreate);
+                            localVarPath = "/items/{itemId}/aliases"
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            localVarRequestOptions.data = (0, common_1.serializeDataIfNeeded)(itemAliasCreate, localVarRequestOptions, configuration);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {string} aliasName
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteItemAlias: function (xAuthUser_1, itemId_1, aliasName_1) {
+            var args_1 = [];
+            for (var _i = 3; _i < arguments.length; _i++) {
+                args_1[_i - 3] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, itemId_1, aliasName_1], args_1, true), void 0, function (xAuthUser, itemId, aliasName, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('deleteItemAlias', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('deleteItemAlias', 'itemId', itemId);
+                            // verify required parameter 'aliasName' is not null or undefined
+                            (0, common_1.assertParamExists)('deleteItemAlias', 'aliasName', aliasName);
+                            localVarPath = "/items/{itemId}/aliases/{aliasName}"
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)))
+                                .replace("{".concat("aliasName", "}"), encodeURIComponent(String(aliasName)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary List reviewed alternate names that resolve to this item
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listItemAliases: function (xAuthUser_1, itemId_1) {
+            var args_1 = [];
+            for (var _i = 2; _i < arguments.length; _i++) {
+                args_1[_i - 2] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, itemId_1], args_1, true), void 0, function (xAuthUser, itemId, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('listItemAliases', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('listItemAliases', 'itemId', itemId);
+                            localVarPath = "/items/{itemId}/aliases"
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
@@ -1927,6 +2095,80 @@ var ItemsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {ItemAliasCreate} itemAliasCreate
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createItemAlias: function (xAuthUser, itemId, itemAliasCreate, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.createItemAlias(xAuthUser, itemId, itemAliasCreate, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ItemsApi.createItemAlias']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {string} aliasName
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteItemAlias: function (xAuthUser, itemId, aliasName, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.deleteItemAlias(xAuthUser, itemId, aliasName, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ItemsApi.deleteItemAlias']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary List reviewed alternate names that resolve to this item
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listItemAliases: function (xAuthUser, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.listItemAliases(xAuthUser, itemId, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ItemsApi.listItemAliases']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
@@ -1973,6 +2215,41 @@ var ItemsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {ItemAliasCreate} itemAliasCreate
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createItemAlias: function (xAuthUser, itemId, itemAliasCreate, options) {
+            return localVarFp.createItemAlias(xAuthUser, itemId, itemAliasCreate, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
+         * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {string} aliasName
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteItemAlias: function (xAuthUser, itemId, aliasName, options) {
+            return localVarFp.deleteItemAlias(xAuthUser, itemId, aliasName, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
+         * @summary List reviewed alternate names that resolve to this item
+         * @param {string} xAuthUser
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listItemAliases: function (xAuthUser, itemId, options) {
+            return localVarFp.listItemAliases(xAuthUser, itemId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
          * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
@@ -2009,6 +2286,47 @@ var ItemsApi = /** @class */ (function (_super) {
     ItemsApi.prototype.createItem = function (xAuthUser, item, options) {
         var _this = this;
         return (0, exports.ItemsApiFp)(this.configuration).createItem(xAuthUser, item, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
+     * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {ItemAliasCreate} itemAliasCreate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    ItemsApi.prototype.createItemAlias = function (xAuthUser, itemId, itemAliasCreate, options) {
+        var _this = this;
+        return (0, exports.ItemsApiFp)(this.configuration).createItemAlias(xAuthUser, itemId, itemAliasCreate, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
+     * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {string} aliasName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    ItemsApi.prototype.deleteItemAlias = function (xAuthUser, itemId, aliasName, options) {
+        var _this = this;
+        return (0, exports.ItemsApiFp)(this.configuration).deleteItemAlias(xAuthUser, itemId, aliasName, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
+     * @summary List reviewed alternate names that resolve to this item
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    ItemsApi.prototype.listItemAliases = function (xAuthUser, itemId, options) {
+        var _this = this;
+        return (0, exports.ItemsApiFp)(this.configuration).listItemAliases(xAuthUser, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      *

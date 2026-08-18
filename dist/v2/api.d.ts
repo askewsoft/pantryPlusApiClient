@@ -108,6 +108,32 @@ export interface Item {
     'upc'?: string;
 }
 /**
+ * An alternate search name that resolves to an ITEM without merging rows.
+ * @export
+ * @interface ItemAlias
+ */
+export interface ItemAlias {
+    /**
+     * Display form of the alias (e.g. \"coke\")
+     * @type {string}
+     * @memberof ItemAlias
+     */
+    'name': string;
+}
+/**
+ * Body for registering a new alias on an item.
+ * @export
+ * @interface ItemAliasCreate
+ */
+export interface ItemAliasCreate {
+    /**
+     * The alias text shoppers may type or speak
+     * @type {string}
+     * @memberof ItemAliasCreate
+     */
+    'name': string;
+}
+/**
  * Payload for renaming an item on a specific list. The returned item id may differ from the path id (find-existing or fork).
  * @export
  * @interface ItemUpdate
@@ -1153,6 +1179,35 @@ export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) 
     createItem: (xAuthUser: string, item: Item, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {ItemAliasCreate} itemAliasCreate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createItemAlias: (xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {string} aliasName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteItemAlias: (xAuthUser: string, itemId: string, aliasName: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary List reviewed alternate names that resolve to this item
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listItemAliases: (xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
@@ -1178,6 +1233,35 @@ export declare const ItemsApiFp: (configuration?: Configuration) => {
     createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Item>>;
     /**
      *
+     * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {ItemAliasCreate} itemAliasCreate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createItemAlias(xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ItemAlias>>;
+    /**
+     *
+     * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {string} aliasName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteItemAlias(xAuthUser: string, itemId: string, aliasName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
+     * @summary List reviewed alternate names that resolve to this item
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ItemAlias>>>;
+    /**
+     *
      * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
@@ -1201,6 +1285,35 @@ export declare const ItemsApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): AxiosPromise<Item>;
+    /**
+     *
+     * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {ItemAliasCreate} itemAliasCreate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createItemAlias(xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options?: RawAxiosRequestConfig): AxiosPromise<ItemAlias>;
+    /**
+     *
+     * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {string} aliasName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteItemAlias(xAuthUser: string, itemId: string, aliasName: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
+     * @summary List reviewed alternate names that resolve to this item
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<ItemAlias>>;
     /**
      *
      * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
@@ -1229,6 +1342,38 @@ export declare class ItemsApi extends BaseAPI {
      * @memberof ItemsApi
      */
     createItem(xAuthUser: string, item: Item, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item, any>>;
+    /**
+     *
+     * @summary Register an alternate name for find-or-create and typeahead (not a merge)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {ItemAliasCreate} itemAliasCreate
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    createItemAlias(xAuthUser: string, itemId: string, itemAliasCreate: ItemAliasCreate, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ItemAlias, any>>;
+    /**
+     *
+     * @summary Remove an alias from an item (path segment is normalized form of the alias name)
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {string} aliasName
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    deleteItemAlias(xAuthUser: string, itemId: string, aliasName: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
+     * @summary List reviewed alternate names that resolve to this item
+     * @param {string} xAuthUser
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ItemsApi
+     */
+    listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ItemAlias[], any>>;
     /**
      *
      * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
