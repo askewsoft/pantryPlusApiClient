@@ -119,6 +119,12 @@ export interface Item {
      * @memberof Item
      */
     'upc'?: string;
+    /**
+     * Category on the target list to auto-assign when re-adding; omitted when unknown
+     * @type {string}
+     * @memberof Item
+     */
+    'categoryId'?: string;
 }
 /**
  * An alternate search name that resolves to an ITEM without merging rows.
@@ -2221,10 +2227,11 @@ export declare const ShoppersApiAxiosParamCreator: (configuration?: Configuratio
      * @param {string} shopperId the ID of the shopper for whom items will be returned
      * @param {number} [lookBackDays] how far back to include purchase history (default 365)
      * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+     * @param {string} [listId] optional target list id for category auto-assign hints
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPurchasedItems: (xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    getPurchasedItems: (xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -2322,10 +2329,11 @@ export declare const ShoppersApiFp: (configuration?: Configuration) => {
      * @param {string} shopperId the ID of the shopper for whom items will be returned
      * @param {number} [lookBackDays] how far back to include purchase history (default 365)
      * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+     * @param {string} [listId] optional target list id for category auto-assign hints
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>>;
+    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -2423,10 +2431,11 @@ export declare const ShoppersApiFactory: (configuration?: Configuration, basePat
      * @param {string} shopperId the ID of the shopper for whom items will be returned
      * @param {number} [lookBackDays] how far back to include purchase history (default 365)
      * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+     * @param {string} [listId] optional target list id for category auto-assign hints
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>>;
+    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>>;
     /**
      *
      * @summary Retrieves a shopper by ID
@@ -2533,11 +2542,12 @@ export declare class ShoppersApi extends BaseAPI {
      * @param {string} shopperId the ID of the shopper for whom items will be returned
      * @param {number} [lookBackDays] how far back to include purchase history (default 365)
      * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+     * @param {string} [listId] optional target list id for category auto-assign hints
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item[], any>>;
+    getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Item[], any>>;
     /**
      *
      * @summary Retrieves a shopper by ID

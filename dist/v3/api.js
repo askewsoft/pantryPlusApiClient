@@ -4674,15 +4674,16 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
          * @param {string} shopperId the ID of the shopper for whom items will be returned
          * @param {number} [lookBackDays] how far back to include purchase history (default 365)
          * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+         * @param {string} [listId] optional target list id for category auto-assign hints
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: function (xAuthUser_1, shopperId_1, lookBackDays_1, cohortId_1) {
+        getPurchasedItems: function (xAuthUser_1, shopperId_1, lookBackDays_1, cohortId_1, listId_1) {
             var args_1 = [];
-            for (var _i = 4; _i < arguments.length; _i++) {
-                args_1[_i - 4] = arguments[_i];
+            for (var _i = 5; _i < arguments.length; _i++) {
+                args_1[_i - 5] = arguments[_i];
             }
-            return __awaiter(_this, __spreadArray([xAuthUser_1, shopperId_1, lookBackDays_1, cohortId_1], args_1, true), void 0, function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
+            return __awaiter(_this, __spreadArray([xAuthUser_1, shopperId_1, lookBackDays_1, cohortId_1, listId_1], args_1, true), void 0, function (xAuthUser, shopperId, lookBackDays, cohortId, listId, options) {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
                 if (options === void 0) { options = {}; }
                 return __generator(this, function (_a) {
@@ -4713,6 +4714,9 @@ var ShoppersApiAxiosParamCreator = function (configuration) {
                             }
                             if (cohortId !== undefined) {
                                 localVarQueryParameter['cohortId'] = cohortId;
+                            }
+                            if (listId !== undefined) {
+                                localVarQueryParameter['listId'] = listId;
                             }
                             if (xAuthUser != null) {
                                 localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
@@ -5026,16 +5030,17 @@ var ShoppersApiFp = function (configuration) {
          * @param {string} shopperId the ID of the shopper for whom items will be returned
          * @param {number} [lookBackDays] how far back to include purchase history (default 365)
          * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+         * @param {string} [listId] optional target list id for category auto-assign hints
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
+        getPurchasedItems: function (xAuthUser, shopperId, lookBackDays, cohortId, listId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
                 var _a, _b, _c;
                 return __generator(this, function (_d) {
                     switch (_d.label) {
-                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options)];
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, listId, options)];
                         case 1:
                             localVarAxiosArgs = _d.sent();
                             localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
@@ -5190,11 +5195,12 @@ var ShoppersApiFactory = function (configuration, basePath, axios) {
          * @param {string} shopperId the ID of the shopper for whom items will be returned
          * @param {number} [lookBackDays] how far back to include purchase history (default 365)
          * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+         * @param {string} [listId] optional target list id for category auto-assign hints
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
-            return localVarFp.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then(function (request) { return request(axios, basePath); });
+        getPurchasedItems: function (xAuthUser, shopperId, lookBackDays, cohortId, listId, options) {
+            return localVarFp.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, listId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          *
@@ -5333,13 +5339,14 @@ var ShoppersApi = /** @class */ (function (_super) {
      * @param {string} shopperId the ID of the shopper for whom items will be returned
      * @param {number} [lookBackDays] how far back to include purchase history (default 365)
      * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+     * @param {string} [listId] optional target list id for category auto-assign hints
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    ShoppersApi.prototype.getPurchasedItems = function (xAuthUser, shopperId, lookBackDays, cohortId, options) {
+    ShoppersApi.prototype.getPurchasedItems = function (xAuthUser, shopperId, lookBackDays, cohortId, listId, options) {
         var _this = this;
-        return (0, exports.ShoppersApiFp)(this.configuration).getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+        return (0, exports.ShoppersApiFp)(this.configuration).getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, listId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      *

@@ -129,6 +129,12 @@ export interface Item {
      * @memberof Item
      */
     'upc'?: string;
+    /**
+     * Category on the target list to auto-assign when re-adding; omitted when unknown
+     * @type {string}
+     * @memberof Item
+     */
+    'categoryId'?: string;
 }
 /**
  * An alternate search name that resolves to an ITEM without merging rows.
@@ -4350,10 +4356,11 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
          * @param {string} shopperId the ID of the shopper for whom items will be returned
          * @param {number} [lookBackDays] how far back to include purchase history (default 365)
          * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+         * @param {string} [listId] optional target list id for category auto-assign hints
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems: async (xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getPurchasedItems: async (xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xAuthUser' is not null or undefined
             assertParamExists('getPurchasedItems', 'xAuthUser', xAuthUser)
             // verify required parameter 'shopperId' is not null or undefined
@@ -4381,6 +4388,10 @@ export const ShoppersApiAxiosParamCreator = function (configuration?: Configurat
 
             if (cohortId !== undefined) {
                 localVarQueryParameter['cohortId'] = cohortId;
+            }
+
+            if (listId !== undefined) {
+                localVarQueryParameter['listId'] = listId;
             }
 
 
@@ -4608,11 +4619,12 @@ export const ShoppersApiFp = function(configuration?: Configuration) {
          * @param {string} shopperId the ID of the shopper for whom items will be returned
          * @param {number} [lookBackDays] how far back to include purchase history (default 365)
          * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+         * @param {string} [listId] optional target list id for category auto-assign hints
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options);
+        async getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Item>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, listId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ShoppersApi.getPurchasedItems']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -4742,11 +4754,12 @@ export const ShoppersApiFactory = function (configuration?: Configuration, baseP
          * @param {string} shopperId the ID of the shopper for whom items will be returned
          * @param {number} [lookBackDays] how far back to include purchase history (default 365)
          * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+         * @param {string} [listId] optional target list id for category auto-assign hints
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>> {
-            return localVarFp.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then((request) => request(axios, basePath));
+        getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Item>> {
+            return localVarFp.getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, listId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -4881,12 +4894,13 @@ export class ShoppersApi extends BaseAPI {
      * @param {string} shopperId the ID of the shopper for whom items will be returned
      * @param {number} [lookBackDays] how far back to include purchase history (default 365)
      * @param {string} [cohortId] optional household (group) id; omit for private-list corpus
+     * @param {string} [listId] optional target list id for category auto-assign hints
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShoppersApi
      */
-    public getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, options?: RawAxiosRequestConfig) {
-        return ShoppersApiFp(this.configuration).getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, options).then((request) => request(this.axios, this.basePath));
+    public getPurchasedItems(xAuthUser: string, shopperId: string, lookBackDays?: number, cohortId?: string, listId?: string, options?: RawAxiosRequestConfig) {
+        return ShoppersApiFp(this.configuration).getPurchasedItems(xAuthUser, shopperId, lookBackDays, cohortId, listId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
