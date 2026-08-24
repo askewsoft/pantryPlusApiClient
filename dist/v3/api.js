@@ -2003,7 +2003,7 @@ var ItemsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
          * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2169,7 +2169,7 @@ var ItemsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
          * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2250,7 +2250,7 @@ var ItemsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
          * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2330,7 +2330,7 @@ var ItemsApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
      * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2386,6 +2386,63 @@ var ListsApiAxiosParamCreator = function (configuration) {
                                 baseOptions = configuration.baseOptions;
                             }
                             localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Clears all category associations for an item on this list (keeps list membership)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        clearItemCategories: function (xAuthUser_1, listId_1, itemId_1) {
+            var args_1 = [];
+            for (var _i = 3; _i < arguments.length; _i++) {
+                args_1[_i - 3] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, listId_1, itemId_1], args_1, true), void 0, function (xAuthUser, listId, itemId, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('clearItemCategories', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('clearItemCategories', 'listId', listId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('clearItemCategories', 'itemId', itemId);
+                            localVarPath = "/lists/{listId}/items/{itemId}/categories"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
                             localVarHeaderParameter = {};
                             localVarQueryParameter = {};
                             // authentication bearerAuth required
@@ -2627,6 +2684,63 @@ var ListsApiAxiosParamCreator = function (configuration) {
                             }
                             if (xAuthLocation != null) {
                                 localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+                            }
+                            (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: (0, common_1.toPathString)(localVarUrlObj),
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Category links for an item on this list (0 or 1 after exclusivity)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getItemCategories: function (xAuthUser_1, listId_1, itemId_1) {
+            var args_1 = [];
+            for (var _i = 3; _i < arguments.length; _i++) {
+                args_1[_i - 3] = arguments[_i];
+            }
+            return __awaiter(_this, __spreadArray([xAuthUser_1, listId_1, itemId_1], args_1, true), void 0, function (xAuthUser, listId, itemId, options) {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, headersFromBaseOptions;
+                if (options === void 0) { options = {}; }
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            // verify required parameter 'xAuthUser' is not null or undefined
+                            (0, common_1.assertParamExists)('getItemCategories', 'xAuthUser', xAuthUser);
+                            // verify required parameter 'listId' is not null or undefined
+                            (0, common_1.assertParamExists)('getItemCategories', 'listId', listId);
+                            // verify required parameter 'itemId' is not null or undefined
+                            (0, common_1.assertParamExists)('getItemCategories', 'itemId', itemId);
+                            localVarPath = "/lists/{listId}/items/{itemId}/categories"
+                                .replace("{".concat("listId", "}"), encodeURIComponent(String(listId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, common_1.DUMMY_BASE_URL);
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            return [4 /*yield*/, (0, common_1.setBearerAuthToObject)(localVarHeaderParameter, configuration)];
+                        case 1:
+                            // authentication bearerAuth required
+                            // http bearer authentication required
+                            _a.sent();
+                            if (xAuthUser != null) {
+                                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
                             }
                             (0, common_1.setSearchParams)(localVarUrlObj, localVarQueryParameter);
                             headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -3206,6 +3320,31 @@ var ListsApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Clears all category associations for an item on this list (keeps list membership)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        clearItemCategories: function (xAuthUser, listId, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.clearItemCategories(xAuthUser, listId, itemId, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ListsApi.clearItemCategories']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Adds a category to a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -3298,6 +3437,31 @@ var ListsApiFp = function (configuration) {
                             localVarAxiosArgs = _d.sent();
                             localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
                             localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ListsApi.getCategories']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
+                            return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Category links for an item on this list (0 or 1 after exclusivity)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getItemCategories: function (xAuthUser, listId, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs, localVarOperationServerIndex, localVarOperationServerBasePath;
+                var _a, _b, _c;
+                return __generator(this, function (_d) {
+                    switch (_d.label) {
+                        case 0: return [4 /*yield*/, localVarAxiosParamCreator.getItemCategories(xAuthUser, listId, itemId, options)];
+                        case 1:
+                            localVarAxiosArgs = _d.sent();
+                            localVarOperationServerIndex = (_a = configuration === null || configuration === void 0 ? void 0 : configuration.serverIndex) !== null && _a !== void 0 ? _a : 0;
+                            localVarOperationServerBasePath = (_c = (_b = base_1.operationServerMap['ListsApi.getItemCategories']) === null || _b === void 0 ? void 0 : _b[localVarOperationServerIndex]) === null || _c === void 0 ? void 0 : _c.url;
                             return [2 /*return*/, function (axios, basePath) { return (0, common_1.createRequestFunction)(localVarAxiosArgs, axios_1.default, base_1.BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath); }];
                     }
                 });
@@ -3554,6 +3718,18 @@ var ListsApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Clears all category associations for an item on this list (keeps list membership)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        clearItemCategories: function (xAuthUser, listId, itemId, options) {
+            return localVarFp.clearItemCategories(xAuthUser, listId, itemId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
          * @summary Adds a category to a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -3598,6 +3774,18 @@ var ListsApiFactory = function (configuration, basePath, axios) {
          */
         getCategories: function (xAuthUser, xAuthLocation, listId, options) {
             return localVarFp.getCategories(xAuthUser, xAuthLocation, listId, options).then(function (request) { return request(axios, basePath); });
+        },
+        /**
+         *
+         * @summary Category links for an item on this list (0 or 1 after exclusivity)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getItemCategories: function (xAuthUser, listId, itemId, options) {
+            return localVarFp.getItemCategories(xAuthUser, listId, itemId, options).then(function (request) { return request(axios, basePath); });
         },
         /**
          *
@@ -3739,6 +3927,20 @@ var ListsApi = /** @class */ (function (_super) {
     };
     /**
      *
+     * @summary Clears all category associations for an item on this list (keeps list membership)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    ListsApi.prototype.clearItemCategories = function (xAuthUser, listId, itemId, options) {
+        var _this = this;
+        return (0, exports.ListsApiFp)(this.configuration).clearItemCategories(xAuthUser, listId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
      * @summary Adds a category to a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -3791,6 +3993,20 @@ var ListsApi = /** @class */ (function (_super) {
     ListsApi.prototype.getCategories = function (xAuthUser, xAuthLocation, listId, options) {
         var _this = this;
         return (0, exports.ListsApiFp)(this.configuration).getCategories(xAuthUser, xAuthLocation, listId, options).then(function (request) { return request(_this.axios, _this.basePath); });
+    };
+    /**
+     *
+     * @summary Category links for an item on this list (0 or 1 after exclusivity)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    ListsApi.prototype.getItemCategories = function (xAuthUser, listId, itemId, options) {
+        var _this = this;
+        return (0, exports.ListsApiFp)(this.configuration).getItemCategories(xAuthUser, listId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); });
     };
     /**
      *

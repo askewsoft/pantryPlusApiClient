@@ -310,6 +310,25 @@ export interface NearbyLocation {
 /**
  * From T, pick a set of properties whose keys are in the union K
  * @export
+ * @interface PickCategoryIdOrName
+ */
+export interface PickCategoryIdOrName {
+    /**
+     * UUID representation of the category\'s ID
+     * @type {string}
+     * @memberof PickCategoryIdOrName
+     */
+    'id': string;
+    /**
+     * The name of the category
+     * @type {string}
+     * @memberof PickCategoryIdOrName
+     */
+    'name': string;
+}
+/**
+ * From T, pick a set of properties whose keys are in the union K
+ * @export
  * @interface PickCategoryNameOrOrdinal
  */
 export interface PickCategoryNameOrOrdinal {
@@ -1227,7 +1246,7 @@ export declare const ItemsApiAxiosParamCreator: (configuration?: Configuration) 
     listItemAliases: (xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
      * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -1281,7 +1300,7 @@ export declare const ItemsApiFp: (configuration?: Configuration) => {
     listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ItemAlias>>>;
     /**
      *
-     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
      * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -1335,7 +1354,7 @@ export declare const ItemsApiFactory: (configuration?: Configuration, basePath?:
     listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<ItemAlias>>;
     /**
      *
-     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
      * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -1395,7 +1414,7 @@ export declare class ItemsApi extends BaseAPI {
     listItemAliases(xAuthUser: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<ItemAlias[], any>>;
     /**
      *
-     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
      * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -1420,6 +1439,16 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     addItem: (xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Clears all category associations for an item on this list (keeps list membership)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    clearItemCategories: (xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Adds a category to a list
@@ -1459,6 +1488,16 @@ export declare const ListsApiAxiosParamCreator: (configuration?: Configuration) 
      * @throws {RequiredError}
      */
     getCategories: (xAuthUser: string, xAuthLocation: string, listId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Category links for an item on this list (0 or 1 after exclusivity)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getItemCategories: (xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -1569,6 +1608,16 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
     addItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
     /**
      *
+     * @summary Clears all category associations for an item on this list (keeps list membership)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    clearItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>>;
+    /**
+     *
      * @summary Adds a category to a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -1606,6 +1655,16 @@ export declare const ListsApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Category>>>;
+    /**
+     *
+     * @summary Category links for an item on this list (0 or 1 after exclusivity)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PickCategoryIdOrName>>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -1716,6 +1775,16 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
     addItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
     /**
      *
+     * @summary Clears all category associations for an item on this list (keeps list membership)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    clearItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void>;
+    /**
+     *
      * @summary Adds a category to a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -1753,6 +1822,16 @@ export declare const ListsApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Category>>;
+    /**
+     *
+     * @summary Category links for an item on this list (0 or 1 after exclusivity)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<PickCategoryIdOrName>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list
@@ -1866,6 +1945,17 @@ export declare class ListsApi extends BaseAPI {
     addItem(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
     /**
      *
+     * @summary Clears all category associations for an item on this list (keeps list membership)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    clearItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<void, any>>;
+    /**
+     *
      * @summary Adds a category to a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -1907,6 +1997,17 @@ export declare class ListsApi extends BaseAPI {
      * @memberof ListsApi
      */
     getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<Category[], any>>;
+    /**
+     *
+     * @summary Category links for an item on this list (0 or 1 after exclusivity)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    getItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<import("axios").AxiosResponse<PickCategoryIdOrName[], any>>;
     /**
      *
      * @summary Retrieves the uncategorized items for a list

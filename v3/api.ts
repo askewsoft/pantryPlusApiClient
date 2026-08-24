@@ -320,6 +320,25 @@ export interface NearbyLocation {
 /**
  * From T, pick a set of properties whose keys are in the union K
  * @export
+ * @interface PickCategoryIdOrName
+ */
+export interface PickCategoryIdOrName {
+    /**
+     * UUID representation of the category\'s ID
+     * @type {string}
+     * @memberof PickCategoryIdOrName
+     */
+    'id': string;
+    /**
+     * The name of the category
+     * @type {string}
+     * @memberof PickCategoryIdOrName
+     */
+    'name': string;
+}
+/**
+ * From T, pick a set of properties whose keys are in the union K
+ * @export
  * @interface PickCategoryNameOrOrdinal
  */
 export interface PickCategoryNameOrOrdinal {
@@ -2134,7 +2153,7 @@ export const ItemsApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
-         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
          * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2252,7 +2271,7 @@ export const ItemsApiFp = function(configuration?: Configuration) {
         },
         /**
          *
-         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
          * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2323,7 +2342,7 @@ export const ItemsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          *
-         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+         * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
          * @param {string} xAuthUser
          * @param {string} itemId the ID of the item currently on the list
          * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2399,7 +2418,7 @@ export class ItemsApi extends BaseAPI {
 
     /**
      *
-     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or fork). Case-only changes update display name in place.
+     * @summary Rename an item on a list. Returns the item the client should use (id may change on find-existing or find-or-create). Case-only changes update display name in place; real name changes never rewrite the catalog row in place.
      * @param {string} xAuthUser
      * @param {string} itemId the ID of the item currently on the list
      * @param {ItemUpdate} itemUpdate name, optional UPC, and the list whose membership to re-point
@@ -2447,6 +2466,54 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
             }
 
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Clears all category associations for an item on this list (keeps list membership)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        clearItemCategories: async (xAuthUser: string, listId: string, itemId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('clearItemCategories', 'xAuthUser', xAuthUser)
+            // verify required parameter 'listId' is not null or undefined
+            assertParamExists('clearItemCategories', 'listId', listId)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('clearItemCategories', 'itemId', itemId)
+            const localVarPath = `/lists/{listId}/items/{itemId}/categories`
+                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -2654,6 +2721,54 @@ export const ListsApiAxiosParamCreator = function (configuration?: Configuration
             }
             if (xAuthLocation != null) {
                 localVarHeaderParameter['X-Auth-Location'] = String(xAuthLocation);
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @summary Category links for an item on this list (0 or 1 after exclusivity)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getItemCategories: async (xAuthUser: string, listId: string, itemId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'xAuthUser' is not null or undefined
+            assertParamExists('getItemCategories', 'xAuthUser', xAuthUser)
+            // verify required parameter 'listId' is not null or undefined
+            assertParamExists('getItemCategories', 'listId', listId)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('getItemCategories', 'itemId', itemId)
+            const localVarPath = `/lists/{listId}/items/{itemId}/categories`
+                .replace(`{${"listId"}}`, encodeURIComponent(String(listId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+
+            if (xAuthUser != null) {
+                localVarHeaderParameter['X-Auth-User'] = String(xAuthUser);
             }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -3143,6 +3258,21 @@ export const ListsApiFp = function(configuration?: Configuration) {
         },
         /**
          *
+         * @summary Clears all category associations for an item on this list (keeps list membership)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async clearItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.clearItemCategories(xAuthUser, listId, itemId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ListsApi.clearItemCategories']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @summary Adds a category to a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -3198,6 +3328,21 @@ export const ListsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCategories(xAuthUser, xAuthLocation, listId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ListsApi.getCategories']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @summary Category links for an item on this list (0 or 1 after exclusivity)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PickCategoryIdOrName>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getItemCategories(xAuthUser, listId, itemId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ListsApi.getItemCategories']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -3361,6 +3506,18 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
         },
         /**
          *
+         * @summary Clears all category associations for an item on this list (keeps list membership)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        clearItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.clearItemCategories(xAuthUser, listId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @summary Adds a category to a list
          * @param {string} xAuthUser the email address of the user
          * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -3405,6 +3562,18 @@ export const ListsApiFactory = function (configuration?: Configuration, basePath
          */
         getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<Category>> {
             return localVarFp.getCategories(xAuthUser, xAuthLocation, listId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @summary Category links for an item on this list (0 or 1 after exclusivity)
+         * @param {string} xAuthUser
+         * @param {string} listId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<PickCategoryIdOrName>> {
+            return localVarFp.getItemCategories(xAuthUser, listId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -3542,6 +3711,20 @@ export class ListsApi extends BaseAPI {
 
     /**
      *
+     * @summary Clears all category associations for an item on this list (keeps list membership)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    public clearItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) {
+        return ListsApiFp(this.configuration).clearItemCategories(xAuthUser, listId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
      * @summary Adds a category to a list
      * @param {string} xAuthUser the email address of the user
      * @param {string} xAuthLocation the ID of the user\&#39;s nearest store location
@@ -3593,6 +3776,20 @@ export class ListsApi extends BaseAPI {
      */
     public getCategories(xAuthUser: string, xAuthLocation: string, listId: string, options?: RawAxiosRequestConfig) {
         return ListsApiFp(this.configuration).getCategories(xAuthUser, xAuthLocation, listId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @summary Category links for an item on this list (0 or 1 after exclusivity)
+     * @param {string} xAuthUser
+     * @param {string} listId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ListsApi
+     */
+    public getItemCategories(xAuthUser: string, listId: string, itemId: string, options?: RawAxiosRequestConfig) {
+        return ListsApiFp(this.configuration).getItemCategories(xAuthUser, listId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
